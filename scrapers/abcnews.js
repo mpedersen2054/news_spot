@@ -25,7 +25,7 @@ module.exports = class ABCNews extends Scraper {
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, data: newData })
+        return JSON.stringify({ title: obj.title, stories: newData })
     }
 
 }
