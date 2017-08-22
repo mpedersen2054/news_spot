@@ -41,23 +41,27 @@ describe('ABCNews scraper', function() {
             expect(dataObj[0].stories).to.have.lengthOf(dataObj[0].stories.length)
         })
 
-        it('data object should contain a title', function() {
+        it('story data object should contain a title', function() {
             expect(dataObj[0].stories[0]).to.have.property('title').that.is.not.empty
         })
 
-        it('data object should contain a thumbnail', function() {
+        it('story data object should contain a published_at', function() {
+            expect(dataObj[0].stories[0]).to.have.property('published_at').that.is.not.empty
+        })
+
+        it('story data object should contain a thumbnail', function() {
             expect(dataObj[0].stories[0]).to.have.property('thumbnail').that.is.not.empty
         })
 
-        it('data object should contain a url', function() {
+        it('story data object should contain a url', function() {
             expect(dataObj[0].stories[0]).to.have.property('url').that.is.not.empty
         })
 
-        it('data object should contain a description', function() {
+        it('story data object should contain a description', function() {
             expect(dataObj[0].stories[0]).to.have.property('description').that.is.not.empty
         })
 
-        it('data object should contain a category', function() {
+        it('story data object should contain a category', function() {
             expect(dataObj[0].stories[0]).to.have.property('category').that.is.not.empty
         })
     })

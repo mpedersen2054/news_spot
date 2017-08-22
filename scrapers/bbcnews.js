@@ -24,10 +24,10 @@ module.exports = class BBCNews extends Scraper {
         var js = JSON.parse(obj.data)
         var data = js.rss.channel.item
         var newData = []
-        // console.log(obj)
         for (var news of data) {
             var newsObj = {}
             newsObj.title = news['title']
+            newsObj.published_at = new Date(news['pubDate'])
             newsObj.thumbnail = news['media:thumbnail']['url']
             newsObj.url = news['link']
             newsObj.description = news['description']
