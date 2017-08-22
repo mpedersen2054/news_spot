@@ -21,7 +21,7 @@ module.exports = class Scraper {
             axios.get(item.url)
                 .then((response) => {
                     let parsed = parser.toJson(response.data)
-                    let objWTitle = { title: item.title, data: parsed }
+                    let objWTitle = { title: item.title, category: item.category, data: parsed }
                     resolve(objWTitle)
                 })
                 .catch((err) => {
@@ -31,4 +31,20 @@ module.exports = class Scraper {
         })
     }
 
+    format(obj) {
+        var js = JSON.parse(obj.data)
+        var data = js.rss.channel.item
+        var newData = []
+        for (var news of data) {
+            var newsObj = {}
+            newsObj.title = news['title']
+            newsObj.thumbnail = news['media:thumbnail'][3]
+            newsObj.url = news['link']
+            newsObj.description = news['description']
+            newsObj.category = obj.category
+            // push the formatted data into newData[]
+            newData.push(newsObj)
+        }
+        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+    }
 }

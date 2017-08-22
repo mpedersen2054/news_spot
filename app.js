@@ -1,8 +1,10 @@
 var parser = require('xml2json')
 var ABCNews = require('./scrapers/abcnews')
+var BBCNews = require('./scrapers/bbcnews')
 
-var ab = new ABCNews()
-ab.init((obj) => {
-    console.log('hi there!')
+var bbcnew = new BBCNews()
+bbcnew.init((obj) => {
+    console.log('FROM BBC NEWS!')
+    console.log('==============')
     console.log(obj)
 })
