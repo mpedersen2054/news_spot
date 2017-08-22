@@ -7,7 +7,21 @@ module.exports = class ABCNews extends Scraper {
         super()
         this.urls = [
             { title: 'top_stories', url: 'http://abcnews.go.com/abcnews/topstories' },
-            { title: 'international_headlines', url: 'http://abcnews.go.com/abcnews/internationalheadlines' }
+            { title: 'international_headlines', url: 'http://abcnews.go.com/abcnews/internationalheadlines' },
+            { title: 'us_headlines', url: 'http://abcnews.go.com/abcnews/usheadlines' },
+            { title: 'politics_headlines', url: 'http://abcnews.go.com/abcnews/politicsheadlines' },
+            { title: 'blotter_headlines', url: 'http://abcnews.go.com/abcnews/blotterheadlines' },
+            { title: 'money_headlines', url: 'http://abcnews.go.com/abcnews/moneyheadlines' },
+            { title: 'technology_headlines', url: 'http://abcnews.go.com/abcnews/technologyheadlines' },
+            { title: 'health_headlines', url: 'http://abcnews.go.com/abcnews/healthheadlines' },
+            { title: 'entertainment_headlines', url: 'http://abcnews.go.com/abcnews/entertainmentheadlines' },
+            { title: 'travel_headlines', url: 'http://abcnews.go.com/abcnews/travelheadlines' },
+            { title: 'sports_headlines', url: 'http://abcnews.go.com/abcnews/sportsheadlines' },
+            { title: 'worldnews_headlines', url: 'http://abcnews.go.com/abcnews/worldnewsheadlines' },
+            { title: '2020_headlines', url: 'http://abcnews.go.com/abcnews/2020headlines' },
+            { title: 'primetime_headlines', url: 'http://abcnews.go.com/abcnews/primetimeheadlines' },
+            { title: 'nighttime_headlines', url: 'http://abcnews.go.com/abcnews/nightlineheadlines' },
+            { title: 'gma_headlines', url: 'http://abcnews.go.com/abcnews/gmaheadlines' }
         ]
     }
 

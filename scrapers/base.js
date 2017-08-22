@@ -3,7 +3,8 @@ let axios = require('axios')
 let parser = require('xml2json')
 
 module.exports = class Scraper {
-
+    // waits until all fetch calls are finished before
+    // using the callback, will return [] of all results
     init(callback) {
         Promise.all(this.urls.map(this.fetch))
             .then((results) => {
