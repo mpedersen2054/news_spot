@@ -4,12 +4,11 @@ let parser = require('xml2json')
 
 module.exports = class Scraper {
 
-    init() {
+    init(callback) {
         Promise.all(this.urls.map(this.fetch))
             .then((results) => {
-                var formatted = results.map(this.format)
-                console.log(formatted)
-                this.data = formatted
+                this.data = results.map(this.format)
+                callback(this)
             })
             .catch((err) => {
                 console.log(err)
