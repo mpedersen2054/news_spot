@@ -21,7 +21,7 @@ module.exports = class ABCNews extends Scraper {
             { title: '2020_headlines', url: 'http://abcnews.go.com/abcnews/2020headlines', category: 'politics' },
             { title: 'primetime_headlines', url: 'http://abcnews.go.com/abcnews/primetimeheadlines', category: 'misc' },
             { title: 'nighttime_headlines', url: 'http://abcnews.go.com/abcnews/nightlineheadlines', category: 'misc' },
-            { title: 'gma_headlines', url: 'http://abcnews.go.com/abcnews/gmaheadlines', category: 'entertainment' }
+            { title: 'gma_headlines', url: 'http://abcnews.go.com/abcnews/gmaheadlines', category: 'entertainment' },
         ]
     }
 }
