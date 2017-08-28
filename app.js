@@ -2,6 +2,7 @@ var parser = require('xml2json')
 var ABCNews = require('./scrapers/abcnews')
 var BBCNews = require('./scrapers/bbcnews')
 var CBSNews = require('./scrapers/cbsnews')
+var CNBCNews = require('./scrapers/cnbcnews')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -17,8 +18,15 @@ var CBSNews = require('./scrapers/cbsnews')
     // console.log(obj)
 // })
 
-var cbsnew = new CBSNews()
-cbsnew.init((obj) => {
+// var cbsnew = new CBSNews()
+// cbsnew.init((obj) => {
+//     console.log('FROM CBS NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var cnbcnew = new CNBCNews()
+cnbcnew.init((obj) => {
     console.log('FROM CBS NEWS!')
     console.log('==============')
     console.log(obj)
