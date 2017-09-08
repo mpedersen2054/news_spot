@@ -4,6 +4,7 @@ var BBCNews = require('./scrapers/bbcnews')
 var CBSNews = require('./scrapers/cbsnews')
 var CNBCNews = require('./scrapers/cnbcnews')
 var CNNNews = require('./scrapers/cnnnews')
+var AtlanicNews = require('./scrapers/atlanticnews')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -33,9 +34,16 @@ var CNNNews = require('./scrapers/cnnnews')
 //     console.log(obj)
 // })
 
-var cnnnew = new CNNNews()
-cnnnew.init((obj) => {
-    console.log('FROM CNN NEWS!')
+// var cnnnew = new CNNNews()
+// cnnnew.init((obj) => {
+//     console.log('FROM CNN NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var atlanticnew = new AtlanicNews()
+atlanticnew.init((obj) => {
+    console.log('FROM The Atlantic NEWS!')
     console.log('==============')
     console.log(obj)
 })
