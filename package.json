@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "scriptsComments": {
+    "test": "--recursive allows nesting, --timeout 0 makes it so long loading async events wont fail with before hook failure"
+  },
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --recursive --timeout 0"
   },
   "author": "",
   "license": "ISC",
