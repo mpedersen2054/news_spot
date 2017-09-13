@@ -16,15 +16,14 @@ module.exports = class BostonGlobe extends Scraper {
         var newData = []
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
-            // newsObj.title = news['title']
-            // newsObj.published_at = new Date(news['pubDate'])
-            // newsObj.thumbnail = news['media:thumbnail']['url']
-            // newsObj.url = news['link']
-            // newsObj.description = news['description']
-            // newsObj.category = obj.category
-            // // push the formatted data into newData[]
-            // newData.push(newsObj)
+            newsObj.title = news['title']
+            newsObj.published_at = new Date(news['pubDate'])
+            newsObj.thumbnail = news['enclosure']['url']
+            newsObj.url = news['link']
+            newsObj.description = news['description']
+            newsObj.category = obj.category
+            // push the formatted data into newData[]
+            newData.push(newsObj)
         }
         return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
     }
