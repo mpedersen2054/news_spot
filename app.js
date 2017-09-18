@@ -9,6 +9,7 @@ var BostonGlobe = require('./scrapers/bostonglobe')
 var ChicagoSun = require('./scrapers/chicagosun')
 var ChristianScience = require('./scrapers/christianscience')
 var DailyCaller = require('./scrapers/dailycaller')
+var DerSpiegel = require('./scrapers/derspiegel')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -74,9 +75,16 @@ var DailyCaller = require('./scrapers/dailycaller')
 //     console.log(obj)
 // })
 
-var dailycaller = new DailyCaller()
-dailycaller.init((obj) => {
-    console.log('FROM The Daily Caller NEWS!')
+// var dailycaller = new DailyCaller()
+// dailycaller.init((obj) => {
+//     console.log('FROM The Daily Caller NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var derspiegel = new DerSpiegel()
+derspiegel.init((obj) => {
+    console.log('FROM Der Spiegel NEWS!')
     console.log('==============')
     console.log(obj)
 })
