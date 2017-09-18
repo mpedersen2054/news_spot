@@ -15,6 +15,7 @@ var TheEconomist = require('./scrapers/theeconomist')
 var FoxNews = require('./scrapers/foxnews')
 var France24 = require('./scrapers/france24')
 var FreeBeacon = require('./scrapers/freebeacon')
+var TheHill = require('./scrapers/thehill')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -122,9 +123,16 @@ var FreeBeacon = require('./scrapers/freebeacon')
 //     console.log(obj)
 // })
 
-var freebeacon = new FreeBeacon()
-freebeacon.init((obj) => {
-    console.log('FROM Free Beacon NEWS!')
+// var freebeacon = new FreeBeacon()
+// freebeacon.init((obj) => {
+//     console.log('FROM Free Beacon NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var thehill = new TheHill()
+thehill.init((obj) => {
+    console.log('FROM The Hill NEWS!')
     console.log('==============')
     console.log(obj)
 })
