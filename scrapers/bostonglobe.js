@@ -2,6 +2,8 @@ let axios = require('axios')
 let parser = require('xml2json')
 let Scraper = require('./base')
 
+// COME BACK AND FIX ME!!!
+
 module.exports = class BostonGlobe extends Scraper {
     constructor(urls) {
         super()
@@ -33,6 +35,7 @@ module.exports = class BostonGlobe extends Scraper {
         var newData = []
         for (var news of data) {
             var newsObj = {}
+            // console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             newsObj.thumbnail = news['enclosure']['url']

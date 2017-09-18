@@ -20,12 +20,15 @@ module.exports = class Scraper {
         return new Promise((resolve, reject) => {
             axios.get(item.url)
                 .then((response) => {
+                    // console.log(response.data)
                     let parsed = parser.toJson(response.data)
+                    // console.log(parsed)
                     let objWTitle = { title: item.title, category: item.category, data: parsed }
                     resolve(objWTitle)
                 })
                 .catch((err) => {
                     console.log('there was an error!')
+                    console.log(err)
                     reject(err)
                 })
         })

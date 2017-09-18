@@ -6,6 +6,7 @@ var CNBCNews = require('./scrapers/cnbcnews')
 var CNNNews = require('./scrapers/cnnnews')
 var AtlanicNews = require('./scrapers/atlanticnews')
 var BostonGlobe = require('./scrapers/bostonglobe')
+var ChicagoSun = require('./scrapers/chicagosun')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -49,9 +50,17 @@ var BostonGlobe = require('./scrapers/bostonglobe')
 //     console.log(obj)
 // })
 
-var bostonglobe = new BostonGlobe()
-bostonglobe.init((obj) => {
-    console.log('FROM The boston globe NEWS!')
+// NEED TO COME BACK AND MAKE SURE I WORK
+// var bostonglobe = new BostonGlobe()
+// bostonglobe.init((obj) => {
+//     console.log('FROM The boston globe NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var chicagosun = new ChicagoSun()
+chicagosun.init((obj) => {
+    console.log('FROM The chicago sun NEWS!')
     console.log('==============')
     console.log(obj)
 })
