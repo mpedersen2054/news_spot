@@ -7,6 +7,16 @@ module.exports = class ChicagoSun extends Scraper {
         super()
         this.urls = [
             { title: 'top_news', url: 'http://www.thesuntimes.com/news?template=rss&mime=xml', category: 'top' },
+            { title: 'education_news', url: 'http://www.thesuntimes.com/news/education?template=rss&mime=xml', category: 'education' },
+            { title: 'entertainment_news', url: 'http://www.thesuntimes.com/entertainment/books?template=rss&mime=xml', category: 'entertainment' },
+            { title: 'celebrity_news', url: 'http://www.thesuntimes.com/entertainment/celebrity-news?template=rss&mime=xml', category: 'entertainment' },
+            { title: 'movies_news', url: 'http://www.thesuntimes.com/entertainment/movies?template=rss&mime=xml', category: 'entertainment' },
+            { title: 'music_news', url: 'http://www.thesuntimes.com/entertainment/music?template=rss&mime=xml', category: 'music' },
+            { title: 'food_news', url: 'http://www.thesuntimes.com/lifestyle/food?template=rss&mime=xml', category: 'misc' },
+            { title: 'health_news', url: 'http://www.thesuntimes.com/lifestyle/health?template=rss&mime=xml', category: 'health' },
+            { title: 'travel_news', url: 'http://www.thesuntimes.com/lifestyle/travel?template=rss&mime=xml', category: 'travel' },
+            { title: 'opinion_news', url: 'http://www.thesuntimes.com/opinion?template=rss&mime=xml', category: 'misc' },
+            { title: 'business_news', url: 'http://www.thesuntimes.com/business-news?template=rss&mime=xml', category: 'economy' },
         ]
     }
 
