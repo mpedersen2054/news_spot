@@ -24,7 +24,6 @@ module.exports = class FoxNews extends Scraper {
 
     format(obj) {
         var js = JSON.parse(obj.data)
-        console.log(js)
         var data = js.rss.channel.item
         var newData = []
         if (!data) {

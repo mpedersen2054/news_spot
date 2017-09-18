@@ -13,6 +13,7 @@ var DerSpiegel = require('./scrapers/derspiegel')
 var EOnline = require('./scrapers/eonline')
 var TheEconomist = require('./scrapers/theeconomist')
 var FoxNews = require('./scrapers/foxnews')
+var France24 = require('./scrapers/france24')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -106,9 +107,16 @@ var FoxNews = require('./scrapers/foxnews')
 //     console.log(obj)
 // })
 
-var foxnews = new FoxNews()
-foxnews.init((obj) => {
-    console.log('FROM Fox News NEWS!')
+// var foxnews = new FoxNews()
+// foxnews.init((obj) => {
+//     console.log('FROM Fox News NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var france24 = new France24()
+france24.init((obj) => {
+    console.log('FROM France 24 NEWS!')
     console.log('==============')
     console.log(obj)
 })
