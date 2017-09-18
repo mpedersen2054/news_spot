@@ -11,6 +11,7 @@ var ChristianScience = require('./scrapers/christianscience')
 var DailyCaller = require('./scrapers/dailycaller')
 var DerSpiegel = require('./scrapers/derspiegel')
 var EOnline = require('./scrapers/eonline')
+var TheEconomist = require('./scrapers/theeconomist')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -90,9 +91,16 @@ var EOnline = require('./scrapers/eonline')
 //     console.log(obj)
 // })
 
-var eonline = new EOnline()
-eonline.init((obj) => {
-    console.log('FROM E Online NEWS!')
+// var eonline = new EOnline()
+// eonline.init((obj) => {
+//     console.log('FROM E Online NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var theeconomist = new TheEconomist()
+theeconomist.init((obj) => {
+    console.log('FROM The Economist NEWS!')
     console.log('==============')
     console.log(obj)
 })
