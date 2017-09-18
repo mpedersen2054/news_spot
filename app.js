@@ -7,6 +7,7 @@ var CNNNews = require('./scrapers/cnnnews')
 var AtlanicNews = require('./scrapers/atlanticnews')
 var BostonGlobe = require('./scrapers/bostonglobe')
 var ChicagoSun = require('./scrapers/chicagosun')
+var ChristianScience = require('./scrapers/christianscience')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -58,9 +59,16 @@ var ChicagoSun = require('./scrapers/chicagosun')
 //     console.log(obj)
 // })
 
-var chicagosun = new ChicagoSun()
-chicagosun.init((obj) => {
-    console.log('FROM The chicago sun NEWS!')
+// var chicagosun = new ChicagoSun()
+// chicagosun.init((obj) => {
+//     console.log('FROM The chicago sun NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var christianscience = new ChristianScience()
+christianscience.init((obj) => {
+    console.log('FROM The Christian Science Monitor NEWS!')
     console.log('==============')
     console.log(obj)
 })
