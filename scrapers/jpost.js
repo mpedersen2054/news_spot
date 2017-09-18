@@ -7,26 +7,19 @@ module.exports = class JPost extends Scraper {
         super()
         this.urls = [
             { title: 'top_news', url: 'http://www.jpost.com/Rss/RssFeedsFrontPage.aspx', category: 'top' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
-            { title: '', url: '', category: '' },
+            { title: 'green_news', url: 'http://www.jpost.com/Rss/RssFeedsGreenIsrael.aspx', category: 'environment' },
+            { title: 'innovation_news', url: 'http://www.jpost.com/Rss/RssFeedsInnovativeResearch.aspx', category: 'science' },
+            { title: 'israel_news', url: 'http://www.jpost.com/Rss/RssFeedsIsraelNews.aspx', category: 'me' },
+            { title: 'sports_news', url: 'http://www.jpost.com/Rss/RssFeedsSports.aspx', category: 'sports' },
+            { title: 'diplomacy_news', url: 'http://www.jpost.com/Rss/RssFeedsPoliticsDiplomacy.aspx', category: 'politics' },
+            { title: 'middleeast_news', url: 'http://www.jpost.com/Rss/RssFeedsMiddleEastNews.aspx', category: 'me' },
+            { title: 'iran_news', url: 'http://www.jpost.com/Rss/RssFeedsIran', category: 'me' },
+            { title: 'isis_news', url: 'http://www.jpost.com/Rss/RssFeedsISISThreat', category: 'me' },
+            { title: 'opinion_news', url: 'http://www.jpost.com/Rss/RssFeedsOpinion.aspx', category: 'misc' },
+            { title: 'israel_conflict_news', url: 'http://www.jpost.com/Rss/RssFeedsArabIsraeliConflict.aspx', category: 'me' },
+            { title: 'business_news', url: 'http://www.jpost.com/Rss/RssFeedsBusinessAndInnovation', category: 'economy' },
+            { title: 'health_news', url: 'http://www.jpost.com/Rss/RssFeedsBusinessAndInnovationHealthAndScience', category: 'health' },
+            { title: 'christian_news', url: 'http://www.jpost.com/Rss/RssFeedsChristianNews', category: 'misc' },
         ]
     }
 
@@ -39,7 +32,6 @@ module.exports = class JPost extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             newsObj.thumbnail = 'http://placehold.it/250x200'
