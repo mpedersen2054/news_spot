@@ -12,6 +12,7 @@ var DailyCaller = require('./scrapers/dailycaller')
 var DerSpiegel = require('./scrapers/derspiegel')
 var EOnline = require('./scrapers/eonline')
 var TheEconomist = require('./scrapers/theeconomist')
+var FoxNews = require('./scrapers/foxnews')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -98,9 +99,16 @@ var TheEconomist = require('./scrapers/theeconomist')
 //     console.log(obj)
 // })
 
-var theeconomist = new TheEconomist()
-theeconomist.init((obj) => {
-    console.log('FROM The Economist NEWS!')
+// var theeconomist = new TheEconomist()
+// theeconomist.init((obj) => {
+//     console.log('FROM The Economist NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var foxnews = new FoxNews()
+foxnews.init((obj) => {
+    console.log('FROM Fox News NEWS!')
     console.log('==============')
     console.log(obj)
 })
