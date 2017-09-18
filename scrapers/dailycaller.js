@@ -7,6 +7,14 @@ module.exports = class DailyCaller extends Scraper {
         super()
         this.urls = [
             { title: 'top_news', url: 'http://feeds.feedburner.com/dailycaller', category: 'top' },
+            { title: 'politics_news', url: 'http://feeds.feedburner.com/dailycaller-politics', category: 'politics' },
+            { title: 'us_news', url: 'http://feeds.feedburner.com/dailycaller-us', category: 'us' },
+            { title: 'entertainment_news', url: 'http://feeds.feedburner.com/dailycaller-entertainment', category: 'entertainment' },
+            { title: 'world_news', url: 'http://feeds.feedburner.com/dailycaller-world', category: 'international' },
+            { title: 'sports_news', url: 'http://feeds.feedburner.com/dailycaller-sports', category: 'sports' },
+            { title: 'business_news', url: 'http://feeds.feedburner.com/dailycaller-business', category: 'economy' },
+            { title: 'technology_news', url: 'http://feeds.feedburner.com/dailycaller-tech', category: 'technology' },
+            { title: 'opinion_news', url: 'http://feeds.feedburner.com/dailycaller-opinion', category: 'misc' },
         ]
     }
 
@@ -14,6 +22,9 @@ module.exports = class DailyCaller extends Scraper {
         var js = JSON.parse(obj.data)
         var data = js.rss.channel.item
         var newData = []
+        if (!data) {
+            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+        }
         for (var news of data) {
             // console.log(news)
             var newsObj = {}
