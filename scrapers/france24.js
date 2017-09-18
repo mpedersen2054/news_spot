@@ -20,11 +20,12 @@ module.exports = class France24 extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
+            console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             // not all articles have an image
-            if (news['media:thumbnail'] && news['media:thumbnail']['url']) {
-                newsObj.thumbnail = news['media:thumbnail']['url']
+            if (news['enclosure'] && news['enclosure']['url']) {
+                newsObj.thumbnail = news['enclosure']['url']
             } else {
                 newsObj.thumbnail = 'http://placehold.it/250x200'
             }
