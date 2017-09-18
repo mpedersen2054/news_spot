@@ -8,7 +8,8 @@ module.exports = class DerSpiegel extends Scraper {
         this.urls = [
             { title: 'top_news', url: 'http://www.spiegel.de/international/index.rss', category: 'top' },
             { title: 'eu_news', url: 'http://www.spiegel.de/international/europe/index.rss', category: 'eu' },
-            // { title: 'eu_news', url: '', category: '' },
+            { title: 'world_news', url: 'http://www.spiegel.de/international/world/index.rss', category: 'international' },
+            { title: 'business_news', url: 'http://www.spiegel.de/international/business/index.rss', category: 'economy' },
         ]
     }
 
@@ -20,7 +21,6 @@ module.exports = class DerSpiegel extends Scraper {
             return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
         }
         for (var news of data) {
-            console.log(news)
             var newsObj = {}
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
