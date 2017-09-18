@@ -20,6 +20,7 @@ var HuffPost = require('./scrapers/huffpost')
 var Infowars = require('./scrapers/infowars')
 var TheIntercept = require('./scrapers/theintercept')
 var JPost = require('./scrapers/jpost')
+var LATimes = require('./scrapers/latimes')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -162,9 +163,16 @@ var JPost = require('./scrapers/jpost')
 //     console.log(obj)
 // })
 
-var jpost = new JPost()
-jpost.init((obj) => {
-    console.log('FROM The Jerusalem NEWS!')
+// var jpost = new JPost()
+// jpost.init((obj) => {
+//     console.log('FROM The Jerusalem NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var latimes = new LATimes()
+latimes.init((obj) => {
+    console.log('FROM The LA Times NEWS!')
     console.log('==============')
     console.log(obj)
 })
