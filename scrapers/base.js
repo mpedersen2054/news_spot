@@ -20,8 +20,8 @@ module.exports = class Scraper {
         return new Promise((resolve, reject) => {
             axios.get(item.url)
                 .then((response) => {
-                    // console.log(response.data)
-                    let parsed = parser.toJson(response.data)
+                    // added trim, got an xml file with blank line at top
+                    let parsed = parser.toJson(response.data.trim())
                     // console.log(parsed)
                     let objWTitle = { title: item.title, category: item.category, data: parsed }
                     resolve(objWTitle)
