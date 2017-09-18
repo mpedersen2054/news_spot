@@ -7,6 +7,19 @@ module.exports = class ChristianScience extends Scraper {
         super()
         this.urls = [
             { title: 'top_news', url: 'http://rss.csmonitor.com/feeds/csm', category: 'top' },
+            { title: 'arts_news', url: 'http://rss.csmonitor.com/feeds/arts', category: 'entertainment' },
+            { title: 'books_news', url: 'http://rss.csmonitor.com/feeds/books', category: 'entertainment' },
+            { title: 'commentary_news', url: 'http://rss.csmonitor.com/feeds/commentary', category: 'misc' },
+            { title: 'dcdecoder_news', url: 'http://rss.csmonitor.com/feeds/dcdecoder', category: 'politics' },
+            { title: 'environment_news', url: 'http://rss.csmonitor.com/feeds/environment', category: 'science' },
+            { title: 'innovation_news', url: 'http://rss.csmonitor.com/feeds/scitech', category: 'science' },
+            { title: 'living_news', url: 'http://rss.csmonitor.com/feeds/living', category: 'health' },
+            { title: 'business_news', url: 'http://rss.csmonitor.com/feeds/wam', category: 'economy' },
+            { title: 'politics_news', url: 'http://rss.csmonitor.com/feeds/politics', category: 'politics' },
+            { title: 'science_news', url: 'http://rss.csmonitor.com/feeds/science', category: 'science' },
+            { title: 'culture_news', url: 'http://rss.csmonitor.com/feeds/theculture', category: 'misc' },
+            { title: 'us_news', url: 'http://rss.csmonitor.com/feeds/usa', category: 'us' },
+            { title: 'world_news', url: 'http://rss.csmonitor.com/feeds/world', category: 'international' },
         ]
     }
 
