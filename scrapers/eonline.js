@@ -7,7 +7,9 @@ module.exports = class EOnline extends Scraper {
         super()
         this.urls = [
             { title: 'entertainment_news', url: 'http://syndication.eonline.com/syndication/feeds/rssfeeds/topstories.xml', category: 'entertainment' },
-            // { title: '', url: '', category: '' },
+            { title: 'tv_news', url: 'http://syndication.eonline.com/syndication/feeds/rssfeeds/tvnews.xml', category: 'entertainment' },
+            { title: 'style_news', url: 'http://syndication.eonline.com/syndication/feeds/rssfeeds/style.xml', category: 'entertainment' },
+            { title: 'redcarpet_news', url: 'http://syndication.eonline.com/syndication/feeds/rssfeeds/redcarpet.xml', category: 'entertainment' },
         ]
     }
 
@@ -20,7 +22,6 @@ module.exports = class EOnline extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             // not all articles have an image
