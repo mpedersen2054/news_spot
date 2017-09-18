@@ -18,6 +18,7 @@ var FreeBeacon = require('./scrapers/freebeacon')
 var TheHill = require('./scrapers/thehill')
 var HuffPost = require('./scrapers/huffpost')
 var Infowars = require('./scrapers/infowars')
+var TheIntercept = require('./scrapers/theintercept')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -149,6 +150,13 @@ var Infowars = require('./scrapers/infowars')
 var infowars = new Infowars()
 infowars.init((obj) => {
     console.log('FROM Infowars NEWS!')
+    console.log('==============')
+    console.log(obj)
+})
+
+var theintercept = new TheIntercept()
+theintercept.init((obj) => {
+    console.log('FROM The Intercept NEWS!')
     console.log('==============')
     console.log(obj)
 })

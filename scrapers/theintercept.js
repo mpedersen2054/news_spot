@@ -2,11 +2,11 @@ let axios = require('axios')
 let parser = require('xml2json')
 let Scraper = require('./base')
 
-module.exports = class Infowars extends Scraper {
+module.exports = class TheIntercept extends Scraper {
     constructor(urls) {
         super()
         this.urls = [
-            { title: 'top_news', url: 'https://www.infowars.com/feed/custom_feed_rss', category: 'top' },
+            { title: 'all_news', url: 'https://theintercept.com/feed/?lang=en', category: 'top' },
         ]
     }
 
@@ -18,10 +18,16 @@ module.exports = class Infowars extends Scraper {
             return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
         }
         for (var news of data) {
+            // console.log(news)
             var newsObj = {}
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
-            newsObj.thumbnail = 'http://placehold.it/250x200'
+            // newsObj.thumbnail = newObj['media:thumbnail']['url']
+            if (news['media:thumbnail'] && news['media:thumbnail']['url']) {
+                newsObj.thumbnail = news['media:thumbnail']['url']
+            } else {
+                newsObj.thumbnail = 'http://placehold.it/250x200'
+            }
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category
