@@ -7,7 +7,14 @@ module.exports = class France24 extends Scraper {
         super()
         this.urls = [
             { title: 'top_news', url: 'http://www.france24.com/en/top-stories/rss', category: 'top' },
-            // { title: '', url: '', category: '' },
+            { title: 'eu_news', url: 'http://www.france24.com/en/europe/rss', category: 'eu' },
+            { title: 'france_news', url: 'http://www.france24.com/en/france/rss', category: 'eu' },
+            { title: 'africa_news', url: 'http://www.france24.com/en/africa/rss', category: 'af' },
+            { title: 'middleeast_news', url: 'http://www.france24.com/en/middle-east/rss', category: 'me' },
+            { title: 'americas_news', url: 'http://www.france24.com/en/americas/rss', category: 'us' },
+            { title: 'asia_news', url: 'http://www.france24.com/en/asia-pacific/rss', category: 'asia' },
+            { title: 'technology_news', url: 'http://www.france24.com/en/business-tech/rss', category: 'technology' },
+            { title: 'culture_news', url: 'http://www.france24.com/en/culture/rss', category: 'misc' },
         ]
     }
 
@@ -20,7 +27,6 @@ module.exports = class France24 extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             // not all articles have an image
@@ -30,7 +36,6 @@ module.exports = class France24 extends Scraper {
                 newsObj.thumbnail = 'http://placehold.it/250x200'
             }
             newsObj.url = news['link']
-            // LATER STRIP HTML FROM DESCRIPTION!
             newsObj.description = news['description']
             newsObj.category = obj.category
             // push the formatted data into newData[]
