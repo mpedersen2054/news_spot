@@ -19,6 +19,7 @@ var TheHill = require('./scrapers/thehill')
 var HuffPost = require('./scrapers/huffpost')
 var Infowars = require('./scrapers/infowars')
 var TheIntercept = require('./scrapers/theintercept')
+var JPost = require('./scrapers/jpost')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -147,16 +148,23 @@ var TheIntercept = require('./scrapers/theintercept')
 //     console.log(obj)
 // })
 
-var infowars = new Infowars()
-infowars.init((obj) => {
-    console.log('FROM Infowars NEWS!')
-    console.log('==============')
-    console.log(obj)
-})
+// var infowars = new Infowars()
+// infowars.init((obj) => {
+//     console.log('FROM Infowars NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
 
-var theintercept = new TheIntercept()
-theintercept.init((obj) => {
-    console.log('FROM The Intercept NEWS!')
+// var theintercept = new TheIntercept()
+// theintercept.init((obj) => {
+//     console.log('FROM The Intercept NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var jpost = new JPost()
+jpost.init((obj) => {
+    console.log('FROM The Jerusalem NEWS!')
     console.log('==============')
     console.log(obj)
 })

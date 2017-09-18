@@ -18,11 +18,9 @@ module.exports = class TheIntercept extends Scraper {
             return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
         }
         for (var news of data) {
-            // console.log(news)
             var newsObj = {}
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
-            // newsObj.thumbnail = newObj['media:thumbnail']['url']
             if (news['media:thumbnail'] && news['media:thumbnail']['url']) {
                 newsObj.thumbnail = news['media:thumbnail']['url']
             } else {
