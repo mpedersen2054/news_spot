@@ -30,8 +30,8 @@ module.exports = class ChristianScience extends Scraper {
         for (var news of data) {
             var newsObj = {}
             newsObj.title = news['title']
-            newsObj.published_at = new Date()
-            newsObj.thumbnail = 'Not provided.'
+            newsObj.published_at = 'Not provided.'
+            newsObj.thumbnail = 'http://placehold.it/250x200'
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category

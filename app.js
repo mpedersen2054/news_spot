@@ -8,6 +8,7 @@ var AtlanicNews = require('./scrapers/atlanticnews')
 var BostonGlobe = require('./scrapers/bostonglobe')
 var ChicagoSun = require('./scrapers/chicagosun')
 var ChristianScience = require('./scrapers/christianscience')
+var DailyCaller = require('./scrapers/dailycaller')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -66,9 +67,16 @@ var ChristianScience = require('./scrapers/christianscience')
 //     console.log(obj)
 // })
 
-var christianscience = new ChristianScience()
-christianscience.init((obj) => {
-    console.log('FROM The Christian Science Monitor NEWS!')
+// var christianscience = new ChristianScience()
+// christianscience.init((obj) => {
+//     console.log('FROM The Christian Science Monitor NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var dailycaller = new DailyCaller()
+dailycaller.init((obj) => {
+    console.log('FROM The Daily Caller NEWS!')
     console.log('==============')
     console.log(obj)
 })
