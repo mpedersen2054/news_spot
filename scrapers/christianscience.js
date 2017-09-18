@@ -6,19 +6,19 @@ module.exports = class ChristianScience extends Scraper {
     constructor(urls) {
         super()
         this.urls = [
-            { title: '', url: '', category: '' },
+            { title: 'top_news', url: 'http://rss.csmonitor.com/feeds/csm', category: 'top' },
         ]
     }
 
     format(obj) {
         var js = JSON.parse(obj.data)
-        var data = js.rss.channel.item
+        var data = js['rdf:RDF']['item']
         var newData = []
         for (var news of data) {
             var newsObj = {}
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
-            newsObj.thumbnail = 'http://placehold.it/250x200'
+            newsObj.published_at = new Date()
+            newsObj.thumbnail = 'Not provided.'
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category
