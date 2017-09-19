@@ -34,6 +34,7 @@ var RollingStone = require('./scrapers/rollingstone')
 var SkyNews = require('./scrapers/skynews')
 var Times = require('./scrapers/times')
 var TMZ = require('./scrapers/tmz')
+var DailyMail = require('./scrapers/dailymail')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -274,9 +275,16 @@ var TMZ = require('./scrapers/tmz')
 //     console.log(obj)
 // })
 
-var tmz = new TMZ()
-tmz.init((obj) => {
-    console.log('FROM TMZ NEWS!')
+// var tmz = new TMZ()
+// tmz.init((obj) => {
+//     console.log('FROM TMZ NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var dailymail = new DailyMail()
+dailymail.init((obj) => {
+    console.log('FROM Daily Mail NEWS!')
     console.log('==============')
     console.log(obj)
 })
