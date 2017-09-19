@@ -35,6 +35,7 @@ var SkyNews = require('./scrapers/skynews')
 var Times = require('./scrapers/times')
 var TMZ = require('./scrapers/tmz')
 var DailyMail = require('./scrapers/dailymail')
+var ExpressNews = require('./scrapers/expressnews')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -285,6 +286,13 @@ var DailyMail = require('./scrapers/dailymail')
 var dailymail = new DailyMail()
 dailymail.init((obj) => {
     console.log('FROM Daily Mail NEWS!')
+    console.log('==============')
+    console.log(obj)
+})
+
+var expressnews = new ExpressNews()
+expressnews.init((obj) => {
+    console.log('FROM Express UK NEWS!')
     console.log('==============')
     console.log(obj)
 })
