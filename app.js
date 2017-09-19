@@ -32,6 +32,7 @@ var RealClearPolitics = require('./scrapers/realclearpolitics')
 var RollCall = require('./scrapers/rollcall')
 var RollingStone = require('./scrapers/rollingstone')
 var SkyNews = require('./scrapers/skynews')
+var Times = require('./scrapers/times')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
