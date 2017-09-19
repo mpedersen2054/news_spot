@@ -27,7 +27,6 @@ module.exports = class Newsmax extends Scraper {
     format(obj) {
         var js = JSON.parse(obj.data)
         var data = js.rss.channel.item
-        console.log(typeof data)
         var newData = []
         if (!data) {
             return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
