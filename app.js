@@ -23,6 +23,7 @@ var JPost = require('./scrapers/jpost')
 var LATimes = require('./scrapers/latimes')
 var NYDaily = require('./scrapers/nydaily')
 var NYPost = require('./scrapers/nypost')
+var NYTimes = require('./scrapers/nytimes')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -186,9 +187,16 @@ var NYPost = require('./scrapers/nypost')
 //     console.log(obj)
 // })
 
-var nypost = new NYPost()
-nypost.init((obj) => {
-    console.log('FROM The New York Post NEWS!')
+// var nypost = new NYPost()
+// nypost.init((obj) => {
+//     console.log('FROM The New York Post NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var nytimes = new NYTimes()
+nytimes.init((obj) => {
+    console.log('FROM The New York Times NEWS!')
     console.log('==============')
     console.log(obj)
 })
