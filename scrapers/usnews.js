@@ -7,7 +7,13 @@ module.exports = class USNews extends Scraper {
         super()
         this.urls = [
             { title: 'world_news', url: 'https://www.usnews.com/rss/news', category: 'international' },
-            // { title: '', url: '', category: '' },
+            { title: 'travel_news', url: 'https://www.usnews.com/rss/travel-editorial', category: 'travel' },
+            { title: 'opinion_news', url: 'https://www.usnews.com/rss/opinion', category: 'misc' },
+            { title: 'money_news', url: 'https://www.usnews.com/rss/money', category: 'economy' },
+            { title: 'health_news', url: 'https://www.usnews.com/rss/health', category: 'health' },
+            { title: 'education_news', url: 'https://www.usnews.com/rss/education', category: 'education' },
+            { title: 'science_news', url: 'https://www.usnews.com/topics/subjects/science/rss', category: 'science' },
+            { title: 'us_news', url: 'https://www.usnews.com/rss/the-report', category: 'us' },
         ]
     }
 
