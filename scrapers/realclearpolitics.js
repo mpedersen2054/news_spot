@@ -2,23 +2,16 @@ let axios = require('axios')
 let parser = require('xml2json')
 let Scraper = require('./base')
 
-module.exports = class NYPost extends Scraper {
+module.exports = class RealClearPolitics extends Scraper {
     constructor(urls) {
         super()
         this.urls = [
-            { title: 'top_news', url: 'http://nypost.com/news/feed/', category: 'top' },
-            { title: 'ny_news', url: 'http://nypost.com/metro/feed/', category: 'us' },
-            { title: 'sports_news', url: 'http://nypost.com/sports/feed/', category: 'sports' },
-            { title: 'business_news', url: 'http://nypost.com/business/feed/', category: 'economy' },
-            { title: 'opinion_news', url: 'http://nypost.com/opinion/feed/', category: 'misc' },
-            { title: 'entertainment_news', url: 'http://nypost.com/entertainment/feed/', category: 'entertainment' },
-            { title: 'fashion_news', url: 'http://nypost.com/fashion/feed/', category: 'entertainment' },
-            { title: 'living_news', url: 'http://nypost.com/living/feed/', category: 'health' },
-            { title: 'technology_news', url: 'http://nypost.com/tech/feed/', category: 'technology' },
-            { title: 'media_news', url: 'http://nypost.com/media/feed/', category: 'entertainment' },
-            { title: 'realestate_news', url: 'http://nypost.com/real-estate/feed/', category: 'economy' },
+            { title: 'top_news', url: 'http://feeds.feedburner.com/realclearpolitics/qlMj', category: 'top' },
         ]
     }
+
+    // EU ONLY HAD 1 ITEM, SOMEHOW THIS MESSED UP GIVING
+    // TypeError: data[Symbol.iterator] is not a function error
 
     format(obj) {
         var js = JSON.parse(obj.data)
@@ -29,8 +22,10 @@ module.exports = class NYPost extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
+            console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
+            // not all entries have a thumbnail
             if (news['media:content'] && news['media:content']['url']) {
                 newsObj.thumbnail = news['media:content']['url']
             } else {
@@ -38,6 +33,7 @@ module.exports = class NYPost extends Scraper {
             }
             newsObj.url = news['link']
             // need to remove html from description
+            // blank description represented as {}
             if (typeof news['description'] !== 'string') {
                 newsObj.description = 'No description provided.'
             } else {

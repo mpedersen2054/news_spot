@@ -28,6 +28,7 @@ var NewsBusters = require('./scrapers/newsbusters')
 var Newsmax = require('./scrapers/newsmax')
 var Politico = require('./scrapers/politico')
 var RadarOnline = require('./scrapers/radaronline')
+var RealClearPolitics = require('./scrapers/realclearpolitics')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -226,9 +227,16 @@ var RadarOnline = require('./scrapers/radaronline')
 //     console.log(obj)
 // })
 
-var radar = new RadarOnline()
-radar.init((obj) => {
-    console.log('FROM Radar Online NEWS!')
+// var radar = new RadarOnline()
+// radar.init((obj) => {
+//     console.log('FROM Radar Online NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var rcp = new RealClearPolitics()
+rcp.init((obj) => {
+    console.log('FROM Real Clear Poltics NEWS!')
     console.log('==============')
     console.log(obj)
 })
