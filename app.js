@@ -36,6 +36,7 @@ var Times = require('./scrapers/times')
 var TMZ = require('./scrapers/tmz')
 var DailyMail = require('./scrapers/dailymail')
 var ExpressNews = require('./scrapers/expressnews')
+var TheIndependent = require('./scrapers/theindependent')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -283,16 +284,23 @@ var ExpressNews = require('./scrapers/expressnews')
 //     console.log(obj)
 // })
 
-var dailymail = new DailyMail()
-dailymail.init((obj) => {
-    console.log('FROM Daily Mail NEWS!')
-    console.log('==============')
-    console.log(obj)
-})
+// var dailymail = new DailyMail()
+// dailymail.init((obj) => {
+//     console.log('FROM Daily Mail NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
 
-var expressnews = new ExpressNews()
-expressnews.init((obj) => {
-    console.log('FROM Express UK NEWS!')
+// var expressnews = new ExpressNews()
+// expressnews.init((obj) => {
+//     console.log('FROM Express UK NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var theindependent = new TheIndependent()
+theindependent.init((obj) => {
+    console.log('FROM The Independent NEWS!')
     console.log('==============')
     console.log(obj)
 })
