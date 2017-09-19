@@ -33,6 +33,7 @@ var RollCall = require('./scrapers/rollcall')
 var RollingStone = require('./scrapers/rollingstone')
 var SkyNews = require('./scrapers/skynews')
 var Times = require('./scrapers/times')
+var TMZ = require('./scrapers/tmz')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -266,9 +267,16 @@ var Times = require('./scrapers/times')
 //     console.log(obj)
 // })
 
-var times = new Times()
-times.init((obj) => {
-    console.log('FROM Times NEWS!')
+// var times = new Times()
+// times.init((obj) => {
+//     console.log('FROM Times NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var tmz = new TMZ()
+tmz.init((obj) => {
+    console.log('FROM TMZ NEWS!')
     console.log('==============')
     console.log(obj)
 })
