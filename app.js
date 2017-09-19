@@ -29,6 +29,7 @@ var Newsmax = require('./scrapers/newsmax')
 var Politico = require('./scrapers/politico')
 var RadarOnline = require('./scrapers/radaronline')
 var RealClearPolitics = require('./scrapers/realclearpolitics')
+var RollCall = require('./scrapers/rollcall')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -234,9 +235,16 @@ var RealClearPolitics = require('./scrapers/realclearpolitics')
 //     console.log(obj)
 // })
 
-var rcp = new RealClearPolitics()
-rcp.init((obj) => {
-    console.log('FROM Real Clear Poltics NEWS!')
+// var rcp = new RealClearPolitics()
+// rcp.init((obj) => {
+//     console.log('FROM Real Clear Poltics NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var rollcall = new RollCall()
+rollcall.init((obj) => {
+    console.log('FROM Roll Call NEWS!')
     console.log('==============')
     console.log(obj)
 })
