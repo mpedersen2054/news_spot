@@ -7,6 +7,11 @@ module.exports = class WSJ extends Scraper {
         super()
         this.urls = [
             { title: 'world_news', url: 'http://www.wsj.com/xml/rss/3_7085.xml', category: 'international' },
+            { title: 'business_news', url: 'http://www.wsj.com/xml/rss/3_7014.xml', category: 'economy' },
+            { title: 'economy_news', url: 'http://www.wsj.com/xml/rss/3_7031.xml', category: 'economy' },
+            { title: 'technology_news', url: 'http://www.wsj.com/xml/rss/3_7455.xml', category: 'technology' },
+            { title: 'lifestyle_news', url: 'http://www.wsj.com/xml/rss/3_7201.xml', category: 'health' },
+            { title: 'opinion_news', url: 'http://www.wsj.com/xml/rss/3_7041.xml', category: 'opinion' },
         ]
     }
 
