@@ -12,7 +12,8 @@ module.exports = class Scraper {
                 callback(this)
             })
             .catch((err) => {
-                console.log(err)
+                console.log('there was in error!', err)
+                // callback(err)
             })
     }
 
@@ -27,8 +28,7 @@ module.exports = class Scraper {
                     resolve(objWTitle)
                 })
                 .catch((err) => {
-                    console.log('there was an error!')
-                    console.log(err)
+                    console.log('there was an error!', err)
                     reject(err)
                 })
         })
