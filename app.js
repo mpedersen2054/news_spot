@@ -21,6 +21,7 @@ var Infowars = require('./scrapers/infowars')
 var TheIntercept = require('./scrapers/theintercept')
 var JPost = require('./scrapers/jpost')
 var LATimes = require('./scrapers/latimes')
+var NYDaily = require('./scrapers/nydaily')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -170,9 +171,16 @@ var LATimes = require('./scrapers/latimes')
 //     console.log(obj)
 // })
 
-var latimes = new LATimes()
-latimes.init((obj) => {
-    console.log('FROM The LA Times NEWS!')
+// var latimes = new LATimes()
+// latimes.init((obj) => {
+//     console.log('FROM The LA Times NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var nydaily = new NYDaily()
+nydaily.init((obj) => {
+    console.log('FROM The New York Daily NEWS!')
     console.log('==============')
     console.log(obj)
 })
