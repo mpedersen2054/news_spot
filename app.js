@@ -27,6 +27,7 @@ var NYTimes = require('./scrapers/nytimes')
 var NewsBusters = require('./scrapers/newsbusters')
 var Newsmax = require('./scrapers/newsmax')
 var Politico = require('./scrapers/politico')
+var RadarOnline = require('./scrapers/radaronline')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -218,9 +219,16 @@ var Politico = require('./scrapers/politico')
 //     console.log(obj)
 // })
 
-var politico = new Politico()
-politico.init((obj) => {
-    console.log('FROM Politico NEWS!')
+// var politico = new Politico()
+// politico.init((obj) => {
+//     console.log('FROM Politico NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var radar = new RadarOnline()
+radar.init((obj) => {
+    console.log('FROM Radar Online NEWS!')
     console.log('==============')
     console.log(obj)
 })
