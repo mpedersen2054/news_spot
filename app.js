@@ -24,6 +24,7 @@ var LATimes = require('./scrapers/latimes')
 var NYDaily = require('./scrapers/nydaily')
 var NYPost = require('./scrapers/nypost')
 var NYTimes = require('./scrapers/nytimes')
+var NewsBusters = require('./scrapers/newsbusters')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -194,9 +195,16 @@ var NYTimes = require('./scrapers/nytimes')
 //     console.log(obj)
 // })
 
-var nytimes = new NYTimes()
-nytimes.init((obj) => {
-    console.log('FROM The New York Times NEWS!')
+// var nytimes = new NYTimes()
+// nytimes.init((obj) => {
+//     console.log('FROM The New York Times NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var newsbusters = new NewsBusters()
+newsbusters.init((obj) => {
+    console.log('FROM News Busters NEWS!')
     console.log('==============')
     console.log(obj)
 })
