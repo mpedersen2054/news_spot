@@ -7,6 +7,14 @@ module.exports = class SkyNews extends Scraper {
         super()
         this.urls = [
             { title: 'top_news', url: 'http://feeds.skynews.com/feeds/rss/home.xml', category: 'top' },
+            { title: 'uk_news', url: 'http://feeds.skynews.com/feeds/rss/uk.xml', category: 'uk' },
+            { title: 'world_news', url: 'http://feeds.skynews.com/feeds/rss/world.xml', category: 'international' },
+            { title: 'us_news', url: 'http://feeds.skynews.com/feeds/rss/us.xml', category: 'us' },
+            { title: 'business_news', url: 'http://feeds.skynews.com/feeds/rss/business.xml', category: 'economy' },
+            { title: 'politics_news', url: 'http://feeds.skynews.com/feeds/rss/politics.xml', category: 'politics' },
+            { title: 'technology_news', url: 'http://feeds.skynews.com/feeds/rss/technology.xml', category: 'technology' },
+            { title: 'entertainment_news', url: 'http://feeds.skynews.com/feeds/rss/entertainment.xml', category: 'entertainment' },
+            { title: 'strange_news', url: 'http://feeds.skynews.com/feeds/rss/strange.xml', category: 'misc' },
         ]
     }
 
@@ -19,7 +27,6 @@ module.exports = class SkyNews extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             if (news['enclosure'] && news['enclosure']['url']) {

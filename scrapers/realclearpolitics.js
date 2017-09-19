@@ -19,7 +19,6 @@ module.exports = class RealClearPolitics extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             // not all entries have a thumbnail

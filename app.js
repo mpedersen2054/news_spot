@@ -258,9 +258,16 @@ var SkyNews = require('./scrapers/skynews')
 //     console.log(obj)
 // })
 
-var skynews = new SkyNews()
-skynews.init((obj) => {
-    console.log('FROM Sky NEWS!')
+// var skynews = new SkyNews()
+// skynews.init((obj) => {
+//     console.log('FROM Sky NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var times = new Times()
+times.init((obj) => {
+    console.log('FROM Times NEWS!')
     console.log('==============')
     console.log(obj)
 })
