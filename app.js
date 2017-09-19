@@ -31,6 +31,7 @@ var RadarOnline = require('./scrapers/radaronline')
 var RealClearPolitics = require('./scrapers/realclearpolitics')
 var RollCall = require('./scrapers/rollcall')
 var RollingStone = require('./scrapers/rollingstone')
+var SkyNews = require('./scrapers/skynews')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -250,9 +251,16 @@ var RollingStone = require('./scrapers/rollingstone')
 //     console.log(obj)
 // })
 
-var rollingstone = new RollingStone()
-rollingstone.init((obj) => {
-    console.log('FROM RollingStone NEWS!')
+// var rollingstone = new RollingStone()
+// rollingstone.init((obj) => {
+//     console.log('FROM RollingStone NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var skynews = new SkyNews()
+skynews.init((obj) => {
+    console.log('FROM Sky NEWS!')
     console.log('==============')
     console.log(obj)
 })
