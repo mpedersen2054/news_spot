@@ -41,6 +41,7 @@ var TheSun = require('./scrapers/thesun')
 var USNews = require('./scrapers/usnews')
 var USAToday = require('./scrapers/usatoday')
 var Variety = require('./scrapers/variety')
+var WSJ = require('./scrapers/wsj')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -330,9 +331,16 @@ var Variety = require('./scrapers/variety')
 //     console.log(obj)
 // })
 
-var variety = new Variety()
-variety.init((obj) => {
-    console.log('FROM The Variety NEWS!')
+// var variety = new Variety()
+// variety.init((obj) => {
+//     console.log('FROM The Variety NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var wsj = new WSJ()
+wsj.init((obj) => {
+    console.log('FROM The Wall Street Journal NEWS!')
     console.log('==============')
     console.log(obj)
 })
