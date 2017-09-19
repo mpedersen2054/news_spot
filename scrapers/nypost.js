@@ -7,7 +7,16 @@ module.exports = class NYPost extends Scraper {
         super()
         this.urls = [
             { title: 'top_news', url: 'http://nypost.com/news/feed/', category: 'top' },
-            // { title: '', url: '', category: '' },
+            { title: 'ny_news', url: 'http://nypost.com/metro/feed/', category: 'us' },
+            { title: 'sports_news', url: 'http://nypost.com/sports/feed/', category: 'sports' },
+            { title: 'business_news', url: 'http://nypost.com/business/feed/', category: 'economy' },
+            { title: 'opinion_news', url: 'http://nypost.com/opinion/feed/', category: 'misc' },
+            { title: 'entertainment_news', url: 'http://nypost.com/entertainment/feed/', category: 'entertainment' },
+            { title: 'fashion_news', url: 'http://nypost.com/fashion/feed/', category: 'entertainment' },
+            { title: 'living_news', url: 'http://nypost.com/living/feed/', category: 'health' },
+            { title: 'technology_news', url: 'http://nypost.com/tech/feed/', category: 'technology' },
+            { title: 'media_news', url: 'http://nypost.com/media/feed/', category: 'entertainment' },
+            { title: 'realestate_news', url: 'http://nypost.com/real-estate/feed/', category: 'economy' },
         ]
     }
 
@@ -20,7 +29,6 @@ module.exports = class NYPost extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             if (news['media:content'] && news['media:content']['url']) {
