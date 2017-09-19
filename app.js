@@ -38,6 +38,7 @@ var DailyMail = require('./scrapers/dailymail')
 var ExpressNews = require('./scrapers/expressnews')
 var TheIndependent = require('./scrapers/theindependent')
 var TheSun = require('./scrapers/thesun')
+var USNews = require('./scrapers/usnews')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -306,9 +307,16 @@ var TheSun = require('./scrapers/thesun')
 //     console.log(obj)
 // })
 
-var thesun = new TheSun()
-thesun.init((obj) => {
-    console.log('FROM The Sun NEWS!')
+// var thesun = new TheSun()
+// thesun.init((obj) => {
+//     console.log('FROM The Sun NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var usnews = new USNews()
+usnews.init((obj) => {
+    console.log('FROM The US NEWS!')
     console.log('==============')
     console.log(obj)
 })
