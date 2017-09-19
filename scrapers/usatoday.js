@@ -29,7 +29,6 @@ module.exports = class USAToday extends Scraper {
             var newsObj = {}
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
-            newsObj.thumbnail = 'http://placehold.it/250x200'
             if (news['enclosure'] &&
                 news['enclosure']['url'] &&
                 news['enclosure']['url'] != '') {
