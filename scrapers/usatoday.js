@@ -7,6 +7,14 @@ module.exports = class USAToday extends Scraper {
         super()
         this.urls = [
             { title: 'us_news', url: 'http://rssfeeds.usatoday.com/UsatodaycomNation-TopStories', category: 'us' },
+            { title: 'politics_news', url: 'http://rssfeeds.usatoday.com/UsatodaycomWashington-TopStories', category: 'politics' },
+            { title: 'world_news', url: 'http://rssfeeds.usatoday.com/UsatodaycomWorld-TopStories', category: 'international' },
+            { title: 'opinion_news', url: 'http://rssfeeds.usatoday.com/News-Opinion', category: 'misc' },
+            { title: 'sports_news', url: 'http://rssfeeds.usatoday.com/UsatodaycomSports-TopStories', category: 'sports' },
+            { title: 'life_news', url: 'http://rssfeeds.usatoday.com/usatoday-LifeTopStories', category: 'health' },
+            { title: 'money_news', url: 'http://rssfeeds.usatoday.com/UsatodaycomMoney-TopStories', category: 'economy' },
+            { title: 'technology_news', url: 'http://rssfeeds.usatoday.com/usatoday-TechTopStories', category: 'technology' },
+            { title: 'travel_news', url: 'http://rssfeeds.usatoday.com/UsatodaycomTravel-TopStories', category: 'travel' },
         ]
     }
 
@@ -19,7 +27,6 @@ module.exports = class USAToday extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            // console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             newsObj.thumbnail = 'http://placehold.it/250x200'
