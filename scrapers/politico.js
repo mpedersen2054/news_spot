@@ -22,9 +22,6 @@ module.exports = class Politico extends Scraper {
         ]
     }
 
-    // EU ONLY HAD 1 ITEM, SOMEHOW THIS MESSED UP GIVING
-    // TypeError: data[Symbol.iterator] is not a function error
-
     format(obj) {
         var js = JSON.parse(obj.data)
         var data = js.rss.channel.item

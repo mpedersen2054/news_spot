@@ -7,11 +7,12 @@ module.exports = class RollingStone extends Scraper {
         super()
         this.urls = [
             { title: 'music_news', url: 'http://www.rollingstone.com/music/rss', category: 'entertainment' },
+            { title: 'movies_news', url: 'http://www.rollingstone.com/movies/rss', category: 'entertainment' },
+            { title: 'culture_news', url: 'http://www.rollingstone.com/culture/rss', category: 'entertainment' },
+            { title: 'politics_news', url: 'http://www.rollingstone.com/politics/rss', category: 'politics' },
+            { title: 'sports_news', url: 'http://www.rollingstone.com/sports/rss', category: 'sports' },
         ]
     }
-
-    // EU ONLY HAD 1 ITEM, SOMEHOW THIS MESSED UP GIVING
-    // TypeError: data[Symbol.iterator] is not a function error
 
     format(obj) {
         var js = JSON.parse(obj.data)
