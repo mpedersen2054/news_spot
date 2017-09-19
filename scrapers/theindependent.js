@@ -7,6 +7,16 @@ module.exports = class TheIndependent extends Scraper {
         super()
         this.urls = [
             { title: 'uk_news', url: 'http://www.independent.co.uk/news/uk/rss', category: 'uk' },
+            { title: 'world_news', url: 'http://www.independent.co.uk/news/world/rss', category: 'international' },
+            { title: 'business_news', url: 'http://www.independent.co.uk/news/business/rss', category: 'economy' },
+            { title: 'science_news', url: 'http://www.independent.co.uk/news/science/rss', category: 'science' },
+            // { title: 'education_news', url: 'http://www.independent.co.uk/news/education/rss', category: 'education' },
+            { title: 'environment_news', url: 'http://www.independent.co.uk/environment/rss', category: 'environment' },
+            { title: 'sports_news', url: 'http://www.independent.co.uk/sport/rss', category: 'sports' },
+            { title: 'lifestyle_news', url: 'http://www.independent.co.uk/life-style/rss', category: 'misc' },
+            { title: 'entertainment_news', url: 'http://www.independent.co.uk/arts-entertainment/rss', category: 'entertainment' },
+            { title: 'travel_news', url: 'http://www.independent.co.uk/travel/rss', category: 'travel' },
+            // { title: 'money_news', url: 'http://www.independent.co.uk/money/rss', category: 'economy' },
         ]
     }
 
@@ -19,7 +29,7 @@ module.exports = class TheIndependent extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
+            // console.log(news)
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             if (news['media:content'] && news['media:content']['url']) {
