@@ -28,7 +28,11 @@ module.exports = class BBCNews extends Scraper {
             var newsObj = {}
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
-            newsObj.thumbnail = news['media:thumbnail']['url']
+            if (news['media:thumbnail'] && news['media:thumbnail']['url']) {
+                newsObj.thumbnail = news['media:thumbnail']['url']
+            } else {
+                newsObj.thumbnail = 'http://placehold.it/250x200'
+            }
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category
