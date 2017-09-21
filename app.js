@@ -46,6 +46,7 @@ var WashingtonExaminer = require('./scrapers/washingtonexaminer')
 var WashingtonPost = require('./scrapers/washingtonpost')
 var WashingtonTimes = require('./scrapers/washingtontimes')
 var WeeklyStandard = require('./scrapers/weeklystandard')
+var ZeroHedge = require('./scrapers/zerohedge')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -370,9 +371,16 @@ var WeeklyStandard = require('./scrapers/weeklystandard')
 //     console.log(obj)
 // })
 
-var weeklystandard = new WeeklyStandard()
-weeklystandard.init((obj) => {
-    console.log('FROM The Weekly Standard NEWS!')
+// var weeklystandard = new WeeklyStandard()
+// weeklystandard.init((obj) => {
+//     console.log('FROM The Weekly Standard NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var zerohedge = new ZeroHedge()
+zerohedge.init((obj) => {
+    console.log('FROM Zero Hedge NEWS!')
     console.log('==============')
     console.log(obj)
 })
