@@ -44,6 +44,7 @@ var Variety = require('./scrapers/variety')
 var WSJ = require('./scrapers/wsj')
 var WashingtonExaminer = require('./scrapers/washingtonexaminer')
 var WashingtonPost = require('./scrapers/washingtonpost')
+var WashingtonTimes = require('./scrapers/washingtontimes')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -354,9 +355,16 @@ var WashingtonPost = require('./scrapers/washingtonpost')
 //     console.log(obj)
 // })
 
-var washpost = new WashingtonPost()
-washpost.init((obj) => {
-    console.log('FROM The Washington Post NEWS!')
+// var washpost = new WashingtonPost()
+// washpost.init((obj) => {
+//     console.log('FROM The Washington Post NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var washtimes = new WashingtonTimes()
+washtimes.init((obj) => {
+    console.log('FROM The Washington Times NEWS!')
     console.log('==============')
     console.log(obj)
 })

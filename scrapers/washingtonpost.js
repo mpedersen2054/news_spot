@@ -39,7 +39,6 @@ module.exports = class WashingtonPost extends Scraper {
                 newsObj.thumbnail = 'http://placehold.it/250x200'
             }
             newsObj.url = news['link']
-            // need to remove html from description
             newsObj.description = news['description']
             newsObj.category = obj.category
             // push the formatted data into newData[]
