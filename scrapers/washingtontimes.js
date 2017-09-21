@@ -7,6 +7,10 @@ module.exports = class WashingtonTimes extends Scraper {
         super()
         this.urls = [
             { title: 'us_news', url: 'http://www.washingtontimes.com/rss/headlines/news/', category: 'us' },
+            { title: 'culture_news', url: 'http://www.washingtontimes.com/rss/headlines/culture/', category: 'us' },
+            { title: 'opinion_news', url: 'http://www.washingtontimes.com/rss/headlines/opinion/', category: 'misc' },
+            { title: 'communities_news', url: 'http://www.washingtontimes.com/rss/headlines/communities/', category: 'us' },
+            { title: 'advocacy_news', url: 'http://www.washingtontimes.com/rss/headlines/advocacy/', category: 'us' },
         ]
     }
 
