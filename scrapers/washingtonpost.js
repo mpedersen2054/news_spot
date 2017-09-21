@@ -7,6 +7,13 @@ module.exports = class WashingtonPost extends Scraper {
         super()
         this.urls = [
             { title: 'politics_news', url: 'http://feeds.washingtonpost.com/rss/politics', category: 'politics' },
+            { title: 'opinion_news', url: 'http://feeds.washingtonpost.com/rss/opinions', category: 'misc' },
+            { title: 'sports_news', url: 'http://feeds.washingtonpost.com/rss/sports', category: 'sports' },
+            { title: 'us_news', url: 'http://feeds.washingtonpost.com/rss/national', category: 'us' },
+            { title: 'world_news', url: 'http://feeds.washingtonpost.com/rss/world', category: 'international' },
+            { title: 'business_news', url: 'http://feeds.washingtonpost.com/rss/business', category: 'economy' },
+            { title: 'lifestyle_news', url: 'http://feeds.washingtonpost.com/rss/lifestyle', category: 'entertainment' },
+            { title: 'entertainment_news', url: 'http://feeds.washingtonpost.com/rss/entertainment', category: 'entertainment' },
         ]
     }
 
@@ -19,7 +26,6 @@ module.exports = class WashingtonPost extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             newsObj.title = news['title']
             // there is no pub date for some reason
             if (news['pubDate']) {
