@@ -7,6 +7,11 @@ module.exports = class WeeklyStandard extends Scraper {
         super()
         this.urls = [
             { title: 'obama_news', url: 'http://www.weeklystandard.com/rss/Obama/rss.xml', category: 'politics' },
+            { title: 'healthcare_news', url: 'http://www.weeklystandard.com/rss/Healthcare/rss.xml', category: 'politics' },
+            { title: 'media_news', url: 'http://www.weeklystandard.com/rss/Media/rss.xml', category: 'politics' },
+            { title: 'iraq_news', url: 'http://www.weeklystandard.com/rss/Iraq/rss.xml', category: 'me' },
+            { title: 'iran_news', url: 'http://www.weeklystandard.com/rss/Iran/rss.xml', category: 'me' },
+            { title: 'afganistan_news', url: 'http://www.weeklystandard.com/rss/Afghanistan/rss.xml', category: 'me' },
         ]
     }
 
@@ -19,7 +24,6 @@ module.exports = class WeeklyStandard extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             newsObj.title = news['title']
             // there is no pub date for some reason
             newsObj.published_at = new Date(news['pubDate'])
