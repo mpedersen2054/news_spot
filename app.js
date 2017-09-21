@@ -43,6 +43,7 @@ var USAToday = require('./scrapers/usatoday')
 var Variety = require('./scrapers/variety')
 var WSJ = require('./scrapers/wsj')
 var WashingtonExaminer = require('./scrapers/washingtonexaminer')
+var WashingtonPost = require('./scrapers/washingtonpost')
 
 // var abcnew = new ABCNews()
 // abcnew.init((obj) => {
@@ -346,9 +347,16 @@ var WashingtonExaminer = require('./scrapers/washingtonexaminer')
 //     console.log(obj)
 // })
 
-var washingtonexaminer = new WashingtonExaminer()
-washingtonexaminer.init((obj) => {
-    console.log('FROM The Washington Examiner NEWS!')
+// var washingtonexaminer = new WashingtonExaminer()
+// washingtonexaminer.init((obj) => {
+//     console.log('FROM The Washington Examiner NEWS!')
+//     console.log('==============')
+//     console.log(obj)
+// })
+
+var washpost = new WashingtonPost()
+washpost.init((obj) => {
+    console.log('FROM The Washington Post NEWS!')
     console.log('==============')
     console.log(obj)
 })
