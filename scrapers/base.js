@@ -1,6 +1,7 @@
 
 let axios = require('axios')
 let parser = require('xml2json')
+let sanitizer = require('sanitize-html')
 
 module.exports = class Scraper {
     // waits until all fetch calls are finished before
@@ -32,5 +33,16 @@ module.exports = class Scraper {
                     reject(err)
                 })
         })
+    }
+
+    // to be used in newsObj.description to shorten it & remove html
+    sanitizeHtml(html) {
+        let opts = { allowedTags: [], allowedAttributes: [] }
+        // remove all \n and \r and only allow the first 501 chars
+        let clean = sanitizer(html, opts)
+            .replace(/[\r\n]+/g, '')
+            .slice(0, 500)
+        // returns so it isnt ending in middle of sentence, goes towards the front of string
+        return clean.slice(0, clean.lastIndexOf('.') + 1)
     }
 }

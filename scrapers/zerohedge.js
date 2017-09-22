@@ -1,5 +1,5 @@
-let axios = require('axios')
-let parser = require('xml2json')
+// let axios = require('axios')
+// let parser = require('xml2json')
 let Scraper = require('./base')
 
 module.exports = class ZeroHedge extends Scraper {
@@ -11,6 +11,7 @@ module.exports = class ZeroHedge extends Scraper {
     }
 
     format(obj) {
+        // console.log('hiiiiii')
         var js = JSON.parse(obj.data)
         var data = js.rss.channel.item
         var newData = []
@@ -29,7 +30,7 @@ module.exports = class ZeroHedge extends Scraper {
             }
             newsObj.url = news['link']
             // need to remove html from description
-            newsObj.description = news['description']
+            newsObj.description = super.sanitizeHtml(news['description'])
             newsObj.category = obj.category
             // push the formatted data into newData[]
             newData.push(newsObj)
