@@ -1,6 +1,5 @@
-
-let axios = require('axios')
 let parser = require('xml2json')
+let axios = require('axios')
 let sanitizer = require('sanitize-html')
 
 module.exports = class Scraper {

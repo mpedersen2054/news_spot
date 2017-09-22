@@ -1,5 +1,3 @@
-let axios = require('axios')
-let parser = require('xml2json')
 let Scraper = require('./base')
 
 module.exports = class RadarOnline extends Scraper {
