@@ -6,10 +6,7 @@ let assert = require('assert'),
 describe('ABCNews scraper', function() {
     before(function(done) {
         new ABCNews().init().then(retObj => {
-            // flatten
-            dataObj = retObj.reduce(function(a, b) {
-                return a.concat(b)
-            })
+            dataObj = retObj
             done()
         })
     })
@@ -18,7 +15,7 @@ describe('ABCNews scraper', function() {
 
         it('should have atleast one story', function() {
             console.log(dataObj)
-            expect(dataObj).to.have.lengthOf(dataObj[0].stories.length)
+            expect(dataObj).to.have.lengthOf(dataObj.length)
         })
 
         it('story data object should contain a title', function() {

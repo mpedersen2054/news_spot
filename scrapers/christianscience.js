@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class ChristianScience extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'The Christian Science Monitor'
+        this.leaning = 'r'
+        this.website = 'https://www.csmonitor.com/'
         this.urls = [
             { title: 'top_news', url: 'http://rss.csmonitor.com/feeds/csm', category: 'top' },
             { title: 'arts_news', url: 'http://rss.csmonitor.com/feeds/arts', category: 'entertainment' },
@@ -25,6 +28,9 @@ module.exports = class ChristianScience extends Scraper {
         var js = JSON.parse(obj.data)
         var data = js['rdf:RDF']['item']
         var newData = []
+        if (!data) {
+            return []
+        }
         for (var news of data) {
             var newsObj = {}
             newsObj.title = news['title']
@@ -33,9 +39,10 @@ module.exports = class ChristianScience extends Scraper {
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

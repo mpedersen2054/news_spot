@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class CNNNews extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'CNN News'
+        this.leaning = 'l'
+        this.website = 'http://www.cnn.com/'
         this.urls = [
             { title: 'top_news', url: 'http://rss.cnn.com/rss/cnn_topstories.rss', category: 'top' },
             { title: 'world_news', url: 'http://rss.cnn.com/rss/cnn_world.rss', category: 'international' },
@@ -21,6 +24,9 @@ module.exports = class CNNNews extends Scraper {
         var js = JSON.parse(obj.data)
         var data = js.rss.channel.item
         var newData = []
+        if (!data) {
+            return []
+        }
         for (var news of data) {
             var newsObj = {}
             newsObj.title = news['title']
@@ -40,9 +46,10 @@ module.exports = class CNNNews extends Scraper {
             // might want to remove all of the HTML stuff from the description?
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

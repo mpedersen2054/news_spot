@@ -26,7 +26,7 @@ module.exports = class BBCNews extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return { title: obj.title, category: obj.category, stories: [] }
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -44,7 +44,7 @@ module.exports = class BBCNews extends Scraper {
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return { title: obj.title, category: obj.category, stories: newData }
+        return newData
     }
 
 }

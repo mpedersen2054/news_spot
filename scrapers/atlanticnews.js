@@ -27,7 +27,7 @@ module.exports = class AtlanticNews extends Scraper {
         var data = js.feed.entry
         var newData = []
         if (!data) {
-            return { title: obj.title, category: obj.category, stories: [] }
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -56,6 +56,6 @@ module.exports = class AtlanticNews extends Scraper {
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return { title: obj.title, category: obj.category, stories: newData }
+        return newData
     }
 }
