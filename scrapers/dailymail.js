@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class DailyMail extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'The Daily Mail'
+        this.leaning = 'i'
+        this.website = 'http://www.dailymail.co.uk/ushome/index.html'
         this.urls = [
             { title: 'top_news', url: 'http://www.dailymail.co.uk/news/index.rss', category: 'top' },
             { title: 'us_news', url: 'http://www.dailymail.co.uk/ushome/index.rss', category: 'us' },
@@ -20,7 +23,7 @@ module.exports = class DailyMail extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -34,9 +37,10 @@ module.exports = class DailyMail extends Scraper {
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }
