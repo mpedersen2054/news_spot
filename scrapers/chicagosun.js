@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class ChicagoSun extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'The Chicago Sun'
+        this.leaning = 'l'
+        this.website = ''
         this.urls = [
             { title: 'top_news', url: 'http://www.thesuntimes.com/news?template=rss&mime=xml', category: 'top' },
             { title: 'education_news', url: 'http://www.thesuntimes.com/news/education?template=rss&mime=xml', category: 'education' },

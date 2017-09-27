@@ -9,8 +9,9 @@ module.exports = class Scraper {
         return new Promise((resolve, reject) => {
             Promise.all(this.urls.map(this.fetch))
                 .then(results => results.map(this.format))
-                .then(formatted => {
-                    resolve(formatted)
+                .then(formatted => formatted.reduce((a, b) => a.concat(b)))
+                .then(flattened => {
+                    resolve(flattened)
                 })
                 .catch((err) => {
                     console.log('there was in error!', err)

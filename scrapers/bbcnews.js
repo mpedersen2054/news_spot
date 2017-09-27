@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class BBCNews extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'BBC News'
+        this.leaning = 'l'
+        this.website = 'http://www.bbc.com/news'
         this.urls = [
             { title: 'top_stories', url: 'http://feeds.bbci.co.uk/news/rss.xml', category: 'top' },
             { title: 'world_news', url: 'http://feeds.bbci.co.uk/news/world/rss.xml', category: 'international' },
@@ -22,6 +25,9 @@ module.exports = class BBCNews extends Scraper {
         var js = JSON.parse(obj.data)
         var data = js.rss.channel.item
         var newData = []
+        if (!data) {
+            return { title: obj.title, category: obj.category, stories: [] }
+        }
         for (var news of data) {
             var newsObj = {}
             newsObj.title = news['title']
@@ -34,10 +40,11 @@ module.exports = class BBCNews extends Scraper {
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return { title: obj.title, category: obj.category, stories: newData }
     }
 
 }

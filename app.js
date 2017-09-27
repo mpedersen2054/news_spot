@@ -48,12 +48,12 @@ var WashingtonTimes = require('./scrapers/washingtontimes')
 var WeeklyStandard = require('./scrapers/weeklystandard')
 var ZeroHedge = require('./scrapers/zerohedge')
 
-// var abcnew = new ABCNews()
-// abcnew.init((obj) => {
-    // console.log('FROM ABC NEWS!')
-    // console.log('==============')
-    // console.log(obj)
-// })
+var abcnew = new ABCNews()
+abcnew.init().then(results => {
+    console.log('FROM ABC NEWS!')
+    console.log('==============')
+    console.log(results)
+})
 
 // var bbcnew = new BBCNews()
 // bbcnew.init((obj) => {
@@ -378,16 +378,16 @@ var ZeroHedge = require('./scrapers/zerohedge')
 //     console.log(obj)
 // })
 
-// var zerohedge = new ZeroHedge()
-// zerohedge.init()
-//     .then(data => {
-//         console.log('HERES THE DATA!')
-//         console.log(data)
-//     })
-//     .catch(err => {
-//         console.log('THERE WAS AN ERROR!')
-//         console.log(err)
-//     })
+var zerohedge = new ZeroHedge()
+zerohedge.init()
+    .then(data => {
+        console.log('HERES THE DATA!')
+        console.log(data)
+    })
+    .catch(err => {
+        console.log('THERE WAS AN ERROR!')
+        console.log(err)
+    })
 
 // PLAYING AROUND WITH HOW IM GOING TO GET IT TO SCRAPE EVERY SINGLE SITE AT ONCE
 
