@@ -1,0 +1,20 @@
+
+SCHEMA NOTES
+
+NewsOutlet
+- nid
+- name
+- leaning (left, right)
+- websiteUrl
+
+Story
+- sid
+- title
+- published_at
+- added_on
+- thumbnail
+- description
+- newsOutlet
+-- nid
+-- name
+-- leaning

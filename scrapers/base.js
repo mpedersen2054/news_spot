@@ -5,29 +5,32 @@ let sanitizer = require('sanitize-html')
 module.exports = class Scraper {
     // waits until all fetch calls are finished before
     // using the callback, will return [] of all results
-    init(callback) {
-        Promise.all(this.urls.map(this.fetch))
-            .then((results) => {
-                this.data = results.map(this.format)
-                callback(this)
-            })
-            .catch((err) => {
-                console.log('there was in error!', err)
-                // callback(err)
-            })
+    init() {
+        return new Promise((resolve, reject) => {
+            Promise.all(this.urls.map(this.fetch))
+                .then(results => results.map(this.format))
+                .then(formatted => {
+                    resolve(formatted)
+                })
+                .catch((err) => {
+                    console.log('there was in error!', err)
+                    reject(err)
+                })
+        })
     }
 
     fetch(item) {
         return new Promise((resolve, reject) => {
             axios.get(item.url)
-                .then((response) => {
-                    // added trim, got an xml file with blank line at top
-                    let parsed = parser.toJson(response.data.trim())
-                    // console.log(parsed)
-                    let objWTitle = { title: item.title, category: item.category, data: parsed }
-                    resolve(objWTitle)
+                .then(response => parser.toJson(response.data.trim()))
+                .then(parsed => {
+                    resolve({
+                        title: item.title,
+                        category: item.category,
+                        data: parsed
+                    })
                 })
-                .catch((err) => {
+                .catch(err => {
                     console.log('there was an error!', err)
                     reject(err)
                 })

@@ -18,7 +18,7 @@ module.exports = class WeeklyStandard extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return { title: obj.title, category: obj.category, stories: [] }
         }
         for (var news of data) {
             var newsObj = {}
@@ -37,6 +37,10 @@ module.exports = class WeeklyStandard extends Scraper {
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return {
+            title: obj.title,
+            category: obj.category,
+            stories: newData
+        }
     }
 }
