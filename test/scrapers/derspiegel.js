@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    DerSpiegel = require('../../scrapers/derspiegel'),
+    DerSpiegel = require('../../server/scrapers/derspiegel'),
     expect = require('chai').expect,
     dataObj
 

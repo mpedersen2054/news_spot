@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    DailyCaller = require('../../scrapers/dailycaller'),
+    DailyCaller = require('../../server/scrapers/dailycaller'),
     expect = require('chai').expect,
     dataObj
 

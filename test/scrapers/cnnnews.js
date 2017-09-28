@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    CNNNews = require('../../scrapers/cnnnews'),
+    CNNNews = require('../../server/scrapers/cnnnews'),
     expect = require('chai').expect,
     dataObj
 

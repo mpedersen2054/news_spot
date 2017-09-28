@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    WSJ = require('../../scrapers/wsj'),
+    WSJ = require('../../server/scrapers/wsj'),
     expect = require('chai').expect,
     dataObj
 

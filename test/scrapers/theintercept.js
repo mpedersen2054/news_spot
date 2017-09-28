@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    TheIntercept = require('../../scrapers/theintercept'),
+    TheIntercept = require('../../server/scrapers/theintercept'),
     expect = require('chai').expect,
     dataObj
 

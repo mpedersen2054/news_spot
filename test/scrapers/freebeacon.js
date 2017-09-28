@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    FreeBeacon = require('../../scrapers/freebeacon'),
+    FreeBeacon = require('../../server/scrapers/freebeacon'),
     expect = require('chai').expect,
     dataObj
 

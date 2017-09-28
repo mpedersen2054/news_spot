@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    RadarOnline = require('../../scrapers/radaronline'),
+    RadarOnline = require('../../server/scrapers/radaronline'),
     expect = require('chai').expect,
     dataObj
 

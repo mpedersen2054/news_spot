@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    JPost = require('../../scrapers/jpost'),
+    JPost = require('../../server/scrapers/jpost'),
     expect = require('chai').expect,
     dataObj
 

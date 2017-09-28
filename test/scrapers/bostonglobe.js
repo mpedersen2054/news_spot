@@ -1,5 +1,5 @@
 // let assert = require('assert')
-// let BonstonGlobe = require('../../scrapers/bostonglobe')
+// let BonstonGlobe = require('../../server/scrapers/bostonglobe')
 // let expect = require('chai').expect
 // var obj, dataObj
 //

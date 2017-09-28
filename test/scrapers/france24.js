@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    France24 = require('../../scrapers/france24'),
+    France24 = require('../../server/scrapers/france24'),
     expect = require('chai').expect,
     dataObj
 

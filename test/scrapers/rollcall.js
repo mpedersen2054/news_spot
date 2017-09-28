@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    RollCall = require('../../scrapers/rollcall'),
+    RollCall = require('../../server/scrapers/rollcall'),
     expect = require('chai').expect,
     dataObj
 

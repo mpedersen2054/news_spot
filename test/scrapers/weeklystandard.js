@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    WeeklyStandard = require('../../scrapers/weeklystandard'),
+    WeeklyStandard = require('../../server/scrapers/weeklystandard'),
     expect = require('chai').expect,
     dataObj
 

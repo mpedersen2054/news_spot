@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    ZeroHedge = require('../../scrapers/zerohedge'),
+    ZeroHedge = require('../../server/scrapers/zerohedge'),
     expect = require('chai').expect,
     dataObj
 

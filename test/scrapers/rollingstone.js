@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    RollingStone = require('../../scrapers/rollingstone'),
+    RollingStone = require('../../server/scrapers/rollingstone'),
     expect = require('chai').expect,
     dataObj
 

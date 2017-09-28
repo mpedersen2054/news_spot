@@ -1,5 +1,5 @@
 let assert = require('assert'),
-    Variety = require('../../scrapers/variety'),
+    Variety = require('../../server/scrapers/variety'),
     expect = require('chai').expect,
     dataObj
 
