@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class RollCall extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'Roll Call'
+        this.leaning = 'i'
+        this.website = 'https://www.rollcall.com/'
         this.urls = [
             { title: 'top_news', url: 'https://www.rollcall.com/rss/tag/rss-feed/all-news', category: 'politics' },
         ]
@@ -13,7 +16,7 @@ module.exports = class RollCall extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -23,9 +26,10 @@ module.exports = class RollCall extends Scraper {
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

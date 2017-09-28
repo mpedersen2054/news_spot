@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class TheSun extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'The Sun'
+        this.leaning = 'l'
+        this.website = 'https://www.thesun.co.uk/'
         this.urls = [
             { title: 'world_news', url: 'http://www.thesundaily.my/rss/world', category: 'international' },
             { title: 'business_news', url: 'http://www.thesundaily.my/rss/business', category: 'economy' },
@@ -20,7 +23,7 @@ module.exports = class TheSun extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -31,9 +34,10 @@ module.exports = class TheSun extends Scraper {
             newsObj.url = news['link']
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

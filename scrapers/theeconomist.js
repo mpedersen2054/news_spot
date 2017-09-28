@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class TheEconomist extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'The Economist'
+        this.leaning = 'l'
+        this.website = 'https://www.economist.com/'
         this.urls = [
             { title: 'business_news', url: 'http://www.economist.com/sections/business-finance/rss.xml', category: 'economy' },
             { title: 'economy_news', url: 'http://www.economist.com/sections/economics/rss.xml', category: 'economy' },
@@ -26,7 +29,7 @@ module.exports = class TheEconomist extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -38,9 +41,10 @@ module.exports = class TheEconomist extends Scraper {
             // LATER STRIP HTML FROM DESCRIPTION!
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

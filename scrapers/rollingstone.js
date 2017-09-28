@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class RollingStone extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'Rolling Stone'
+        this.leaning = 'l'
+        this.website = 'http://www.rollingstone.com/'
         this.urls = [
             { title: 'music_news', url: 'http://www.rollingstone.com/music/rss', category: 'entertainment' },
             { title: 'movies_news', url: 'http://www.rollingstone.com/movies/rss', category: 'entertainment' },
@@ -17,7 +20,7 @@ module.exports = class RollingStone extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -36,9 +39,10 @@ module.exports = class RollingStone extends Scraper {
             // need to remove html from the description
             newsObj.description = news['content:encoded']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }
