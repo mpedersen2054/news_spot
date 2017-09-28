@@ -2,10 +2,10 @@ let Scraper = require('./base')
 
 module.exports = class SkyNews extends Scraper {
     constructor(urls) {
+        super()
         this.name = 'Sky News'
         this.leaning = 'l'
         this.website = 'http://news.sky.com/'
-        super()
         this.urls = [
             { title: 'top_news', url: 'http://feeds.skynews.com/feeds/rss/home.xml', category: 'top' },
             { title: 'uk_news', url: 'http://feeds.skynews.com/feeds/rss/uk.xml', category: 'uk' },
