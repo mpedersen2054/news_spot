@@ -14,7 +14,6 @@ describe('ABCNews scraper', function() {
     describe('ABCNews stories object', function() {
 
         it('should have atleast one story', function() {
-            console.log(dataObj)
             expect(dataObj).to.have.lengthOf(dataObj.length)
         })
 
