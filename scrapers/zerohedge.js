@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class ZeroHedge extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'Zero Hedge'
+        this.leaning = 'r'
+        this.website = 'http://www.zerohedge.com/'
         this.urls = [
             { title: 'top_news', url: 'http://feeds.feedburner.com/zerohedge/feed', category: 'top' },
         ]
@@ -13,7 +16,7 @@ module.exports = class ZeroHedge extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return { title: obj.title, category: obj.category, stories: [] }
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -29,13 +32,10 @@ module.exports = class ZeroHedge extends Scraper {
             // need to remove html from description
             newsObj.description = super.sanitizeHtml(news['description'])
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return {
-            title: obj.title,
-            category: obj.category,
-            stories: newData
-        }
+        return newData
     }
 }
