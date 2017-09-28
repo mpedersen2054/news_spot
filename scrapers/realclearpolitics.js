@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class RealClearPolitics extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'Real Clear Politics'
+        this.leaning = 'i'
+        this.website = 'https://www.realclearpolitics.com/?i10c.encReferrer='
         this.urls = [
             { title: 'top_news', url: 'http://feeds.feedburner.com/realclearpolitics/qlMj', category: 'top' },
         ]
@@ -13,7 +16,7 @@ module.exports = class RealClearPolitics extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -34,9 +37,10 @@ module.exports = class RealClearPolitics extends Scraper {
                 newsObj.description = news['description']
             }
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

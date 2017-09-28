@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class LATimes extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'LA Times'
+        this.leaning = 'l'
+        this.website = 'http://www.latimes.com/hp-2/'
         this.urls = [
             { title: 'la_news', url: 'http://www.latimes.com/local/rss2.0.xml', category: 'us' },
             { title: 'sports_news', url: 'http://www.latimes.com/sports/rss2.0.xml', category: 'sports' },
@@ -21,7 +24,7 @@ module.exports = class LATimes extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -36,9 +39,10 @@ module.exports = class LATimes extends Scraper {
             // need to remove html from description
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

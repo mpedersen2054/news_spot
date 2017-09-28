@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class NYDaily extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'Daily News'
+        this.leaning = 'l'
+        this.website = 'http://www.nydailynews.com/'
         this.urls = [
             { title: 'ny_news', url: 'http://www.nydailynews.com/cmlink/NYDN.Local.rss', category: 'us' },
             { title: 'us_news', url: 'http://www.nydailynews.com/cmlink/NYDN.News.National.rss', category: 'us' },
@@ -23,7 +26,7 @@ module.exports = class NYDaily extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -38,9 +41,10 @@ module.exports = class NYDaily extends Scraper {
             // need to remove html from description
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

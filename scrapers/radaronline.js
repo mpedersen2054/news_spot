@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class RadarOnline extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'Radar Online'
+        this.leaning = 'l'
+        this.website = 'http://radaronline.com/'
         this.urls = [
             { title: 'celebrity_news', url: 'http://radaronline.com/feed/', category: 'entertainment' },
         ]
@@ -13,7 +16,7 @@ module.exports = class RadarOnline extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -24,9 +27,10 @@ module.exports = class RadarOnline extends Scraper {
             // need to remove html from the description
             newsObj.description = news['description']
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }

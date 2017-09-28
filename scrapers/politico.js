@@ -3,6 +3,9 @@ let Scraper = require('./base')
 module.exports = class Politico extends Scraper {
     constructor(urls) {
         super()
+        this.name = 'Politico'
+        this.leaning = 'l'
+        this.website = 'http://www.politico.com/'
         this.urls = [
             { title: 'congress_news', url: 'http://www.politico.com/rss/congress.xml', category: 'politics' },
             { title: 'healthcare_news', url: 'http://www.politico.com/rss/healthcare.xml', category: 'politics' },
@@ -25,7 +28,7 @@ module.exports = class Politico extends Scraper {
         var data = js.rss.channel.item
         var newData = []
         if (!data) {
-            return JSON.stringify({ title: obj.title, category: obj.category, stories: [] })
+            return []
         }
         for (var news of data) {
             var newsObj = {}
@@ -40,9 +43,10 @@ module.exports = class Politico extends Scraper {
                 newsObj.description = news['description']
             }
             newsObj.category = obj.category
+            newsObj.headline = obj.title
             // push the formatted data into newData[]
             newData.push(newsObj)
         }
-        return JSON.stringify({ title: obj.title, category: obj.category, stories: newData })
+        return newData
     }
 }
