@@ -9,12 +9,19 @@ module.exports = outlet => {
             where: { name: outlet.name },
             attributes: ['id'],
             raw: true
-        }).then(results => { // { id: X }
-            console.log('the id: ', results.id)
+        }).then(results => {
+            // results: { id: X }
             outlet.init().then(stories => {
+                // stores: [ {...}, {...}, ... ]
                 stories.forEach(story => {
-                    console.log('HI IM A STORY!!')
-                    console.log(story)
+                    // story: {...}
+                    // find or create based on the stories name and its outletId
+                    Story.findOrCreate({
+                        where: { title: story['title'], outletId: results['id'] },
+                        defaults: {
+                            // add all props if no story found
+                        }
+                    })
                 })
             })
         })
