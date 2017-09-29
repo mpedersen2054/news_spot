@@ -7,12 +7,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         leaning: {
             type: DataTypes.STRING(1),
-            allowNull: false
+            allowNull: false,
             defaultValue: false
         },
         website: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
             defaultValue: false
         }
     })
