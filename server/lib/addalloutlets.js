@@ -1,13 +1,13 @@
-let Outlet = require('../models').Outlet
-let scrapers = require('./scrapers_load_obj')
+let Outlet = require('../models').Outlet,
+    scrapers = require('./scrapers_load_obj')
 
 // returns promise that creates db entry with info given
-let createOutlet = info => {
+let createOutlet = outletInfo => {
     return new Promise((resolve, reject) => {
-        Outlet.findOrCreate({ where: { name: info['name'] }, defaults: {
-            name: info['name'],
-            leaning: info['leaning'],
-            website: info['website']
+        Outlet.findOrCreate({ where: { name: outletInfo['name'] }, defaults: {
+            name: outletInfo['name'],
+            leaning: outletInfo['leaning'],
+            website: outletInfo['website']
         }})
             .then(() => resolve())
             .catch(err => reject(err))
