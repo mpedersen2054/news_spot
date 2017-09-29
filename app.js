@@ -377,48 +377,13 @@ abcnew.init().then(results => {
 //     console.log(obj)
 // })
 
-var zerohedge = new ZeroHedge()
-zerohedge.init()
-    .then(data => {
-        console.log('HERES THE DATA!')
-        console.log(data)
-    })
-    .catch(err => {
-        console.log('THERE WAS AN ERROR!')
-        console.log(err)
-    })
-
-// PLAYING AROUND WITH HOW IM GOING TO GET IT TO SCRAPE EVERY SINGLE SITE AT ONCE
-
-// class Big {
-//     constructor() {
-//         this.sites = [
-//             new WeeklyStandard(),
-//             new ZeroHedge()
-//         ]
-//     }
-//
-//     getAll() {
-//         return new Promise((resolve, reject) => {
-//             Promise.all(this.sites.map(site => site.init()))
-//                 .then(results => {
-//                     resolve(results)
-//                 })
-//                 .catch(err => {
-//                     console.log('THERE WAS AN ERROR', err)
-//                     reject(err)
-//                 })
-//         })
-//     }
-// }
-//
-// var big = new Big()
-// big.getAll()
-// .then(results => {
-//     console.log('RESULTSSSS')
-//     console.log(results)
-// })
-// .catch(err => {
-//     console.log('THERE WAS AN ERROR')
-//     console.log(err)
-// })
+// var zerohedge = new ZeroHedge()
+// zerohedge.init()
+//     .then(data => {
+//         console.log('HERES THE DATA!')
+//         console.log(data)
+//     })
+//     .catch(err => {
+//         console.log('THERE WAS AN ERROR!')
+//         console.log(err)
+//     })

@@ -39,7 +39,12 @@ module.exports = class ABCNews extends Scraper {
             newsObj.published_at = new Date(news['pubDate'])
             newsObj.thumbnail = news['media:thumbnail'][3]['url']
             newsObj.url = news['link']
-            newsObj.description = news['description']
+            // not every story has a description
+            if (typeof news['description'] != 'string') {
+                newsObj.description = 'No description provided.'
+            } else {
+                newsObj.description = super.sanitizeHtml(news['description'])
+            }
             newsObj.category = obj.category
             newsObj.headline = obj.title
             // push the formatted data into newData[]

@@ -4,12 +4,19 @@ let Outlet = require('../models').Outlet,
 
 module.exports = outlet => {
     return new Promise((resolve, reject) => {
-        let { name, leaning, website } = outlet
-
-        outlet.init().then(stories => {
-            console.log('hi from addoutletstories!')
-            // console.log(name, leaning, website)
-            console.log(stories)
+        // get the outlet id to check in story findOrCreate
+        Outlet.findOne({
+            where: { name: outlet.name },
+            attributes: ['id'],
+            raw: true
+        }).then(results => { // { id: X }
+            console.log('the id: ', results.id)
+            outlet.init().then(stories => {
+                stories.forEach(story => {
+                    console.log('HI IM A STORY!!')
+                    console.log(story)
+                })
+            })
         })
         // console.log(name, leaning, website)
     })
