@@ -36,8 +36,11 @@ module.exports = class RollingStone extends Scraper {
                 newsObj.thumbnail = 'http://placehold.it/250x200'
             }
             newsObj.url = news['link']
-            // need to remove html from the description
-            newsObj.description = news['content:encoded']
+            newsObj.description = super.sanitizeHtml(news['content:encoded'])
+            if (newsObj.description.length == 0 ||
+                typeof newsObj.description != 'string') {
+                newsObj.description = 'No description provided.'
+            }
             newsObj.category = obj.category
             newsObj.headline = obj.title
             // push the formatted data into newData[]

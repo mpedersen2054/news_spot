@@ -47,7 +47,11 @@ module.exports = class Newsmax extends Scraper {
             }
             newsObj.url = news['link']
             // need to remove html from description
-            newsObj.description = news['description']
+            newsObj.description = super.sanitizeHtml(news['description'])
+            if (newsObj.description.length == 0 ||
+                typeof newsObj.description != 'string') {
+                newsObj.description = 'No description provided.'
+            }
             newsObj.category = obj.category
             newsObj.headline = obj.title
             // push the formatted data into newData[]

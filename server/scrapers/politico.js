@@ -36,11 +36,10 @@ module.exports = class Politico extends Scraper {
             newsObj.published_at = new Date(news['pubDate'])
             newsObj.thumbnail = 'http://placehold.it/250x200'
             newsObj.url = news['link']
-            // when there is no description, politico makes it : description: {}
-            if (typeof news['description'] !== 'string') {
+            newsObj.description = super.sanitizeHtml(news['description'])
+            if (newsObj.description.length == 0 ||
+                typeof newsObj.description != 'string') {
                 newsObj.description = 'No description provided.'
-            } else {
-                newsObj.description = news['description']
             }
             newsObj.category = obj.category
             newsObj.headline = obj.title

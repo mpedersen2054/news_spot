@@ -44,7 +44,11 @@ module.exports = class BostonGlobe extends Scraper {
             newsObj.published_at = new Date(news['pubDate'])
             newsObj.thumbnail = news['enclosure']['url']
             newsObj.url = news['link']
-            newsObj.description = news['description']
+            newsObj.description = super.sanitizeHtml(news['description'])
+            if (newsObj.description.length == 0 ||
+                typeof newsObj.description != 'string') {
+                newsObj.description = 'No description provided.'
+            }
             newsObj.category = obj.category
             newsObj.headline = obj.title
             // push the formatted data into newData[]

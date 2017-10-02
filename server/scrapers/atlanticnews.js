@@ -47,9 +47,13 @@ module.exports = class AtlanticNews extends Scraper {
             }
 
             if (news['summary'] && news['summary']['$t']) {
-                newsObj.description = news['summary']['$t']
+                newsObj.description = super.sanitizeHtml(news['summary']['$t'])
             } else {
                 newsObj.description = 'No description.'
+            }
+            if (newsObj.description.length == 0 ||
+                typeof newsObj.description != 'string') {
+                newsObj.description = 'No description provided.'
             }
             newsObj.category = obj.category
             newsObj.headline = obj.title

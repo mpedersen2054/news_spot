@@ -29,12 +29,10 @@ module.exports = class RealClearPolitics extends Scraper {
                 newsObj.thumbnail = 'http://placehold.it/250x200'
             }
             newsObj.url = news['link']
-            // need to remove html from description
-            // blank description represented as {}
-            if (typeof news['description'] !== 'string') {
+            newsObj.description = super.sanitizeHtml(news['description'])
+            if (newsObj.description.length == 0 ||
+                typeof newsObj.description != 'string') {
                 newsObj.description = 'No description provided.'
-            } else {
-                newsObj.description = news['description']
             }
             newsObj.category = obj.category
             newsObj.headline = obj.title

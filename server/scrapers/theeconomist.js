@@ -38,8 +38,11 @@ module.exports = class TheEconomist extends Scraper {
             // not all articles have an image
             newsObj.thumbnail = 'http://placehold.it/250x200'
             newsObj.url = news['link']
-            // LATER STRIP HTML FROM DESCRIPTION!
-            newsObj.description = news['description']
+            newsObj.description = super.sanitizeHtml(news['description'])
+            if (newsObj.description.length == 0 ||
+                typeof newsObj.description != 'string') {
+                newsObj.description = 'No description provided.'
+            }
             newsObj.category = obj.category
             newsObj.headline = obj.title
             // push the formatted data into newData[]

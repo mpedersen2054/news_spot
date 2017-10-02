@@ -29,8 +29,11 @@ module.exports = class WashingtonTimes extends Scraper {
             newsObj.published_at = new Date(news['pubDate'])
             newsObj.thumbnail = 'http://placehold.it/250x200'
             newsObj.url = news['link']
-            // need to remove html from description
-            newsObj.description = news['description']
+            newsObj.description = super.sanitizeHtml(news['description'])
+            if (newsObj.description.length == 0 ||
+                typeof newsObj.description != 'string') {
+                newsObj.description = 'No description provided.'
+            }
             newsObj.category = obj.category
             newsObj.headline = obj.title
             // push the formatted data into newData[]
