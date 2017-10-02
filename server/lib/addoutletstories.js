@@ -4,6 +4,8 @@ let Outlet = require('../models').Outlet,
 
 const addStory = (story, outletId) => {
     return new Promise((resolve, reject) => {
+        // check to see if that story is already in DB
+        // based on the title and its' outletId
         Story.findOrCreate({
             where: { title: story['title'], outletId },
             defaults: {
@@ -17,10 +19,8 @@ const addStory = (story, outletId) => {
                 outletId    : outletId
             }
         })
-            .then(() => {
-                console.log(`Successfully added story ${story['title']}`)
-                resolve()
-            })
+            .spread((story, created) => console.log(`Added new entry? : ${created}`))
+            .then(() => resolve())
             .catch(err => {
                 console.log(`Error adding story ${story['title']}`)
                 reject(err)
@@ -39,15 +39,10 @@ module.exports = outlet => {
             // results: { id: X }
             outlet.init().then(stories => {
                 // stores: [ {...}, {...}, ... ]
+                // call .then once all stories are added
                 Promise.all(stories.map(story => addStory(story, results['id'])))
-                    .then(() => {
-                        console.log('Successfully added all stories.')
-                        resolve()
-                    })
-                    .catch(err => {
-                        console.log('There was an error adding all stories', err)
-                        reject(err)
-                    })
+                    .then(() => resolve())
+                    .catch(err => reject(err))
             })
         })
     })

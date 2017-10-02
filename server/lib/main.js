@@ -1,15 +1,16 @@
 let scrapers = require('./scrapers_load_obj'),
     addOutletStories = require('./addoutletstories')
 
-let sample = Object.values(scrapers).slice(0, 2)
+// let outlets = Object.values(scrapers).slice(0, 2)
+let outlets = Object.values(scrapers).slice(0)
+console.log(outlets)
 
-Promise.all(Object.values(sample).map(outlet => addOutletStories(new outlet())))
+Promise.all(Object.values(outlets).map(outlet => addOutletStories(new outlet())))
     .then(() => {
-        console.log('hi from main.js\n\n')
+        console.log('Successfully added all stories.\n')
         process.exit()
     })
     .catch(err => {
-        console.log('There was an error.')
-        console.log(err)
+        console.log('There was an error adding all stories.\n', err)
         process.exit()
     })

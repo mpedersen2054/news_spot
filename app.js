@@ -49,17 +49,16 @@ var ZeroHedge = require('./server/scrapers/zerohedge')
 
 var abcnew = new ABCNews()
 abcnew.init().then(results => {
-    console.log('FROM ABC NEWS!')
-    console.log('==============')
-    console.log(results)
-})
-
-// var bbcnew = new BBCNews()
-// bbcnew.init((obj) => {
-    // console.log('FROM BBC NEWS!')
+    // console.log('FROM ABC NEWS!')
     // console.log('==============')
-    // console.log(obj)
-// })
+    console.log('ABC LENGTH: ', results.length)
+    var bbcnew = new BBCNews()
+    bbcnew.init().then(resz => {
+        var newarr = results.concat(resz)
+        console.log('BBC LENGTH: ', resz.length)
+        console.log(newarr.length)
+    })
+})
 
 // var cbsnew = new CBSNews()
 // cbsnew.init((obj) => {
