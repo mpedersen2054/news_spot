@@ -16,7 +16,7 @@ let createOutlet = outletInfo => {
 
 // turn scrapers{} into array, instantiate each of them
 // and call createOutlet to turn it into a promise
-Promise.all(Object.values(scrapers).map(s => createOutlet(new s())))
+Promise.all(Object.values(scrapers).map(outlet => createOutlet(new outlet())))
     .then(() => {
         console.log('\nSuccessfully added all News Outlets to Database.')
         process.exit()

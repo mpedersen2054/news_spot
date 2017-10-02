@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Outlet.associate = (models) => {
         Outlet.hasMany(models.Story, {
-            foreignKey: 'storyId',
+            foreignKey: 'outletId',
             as: 'outletStories'
         })
     }
