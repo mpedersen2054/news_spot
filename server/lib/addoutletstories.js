@@ -38,7 +38,7 @@ module.exports = outlet => {
             attributes: ['id'],
             raw: true
         }).then(results => {
-            console.log(results)
+            console.log(`Adding stories for Outlet #${results.id}`)
             // results: { id: X }
             outlet.init().then(stories => {
                 // stores: [ {...}, {...}, ... ]

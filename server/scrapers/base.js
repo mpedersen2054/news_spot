@@ -41,8 +41,15 @@ module.exports = class Scraper {
     // to be used in newsObj.description to shorten it & remove html
     sanitizeHtml(html) {
         let opts = { allowedTags: [], allowedAttributes: [] },
-            sliceLen = (html.length > 499) ? 500 : html.length
+            sliceLen
 
+        if (html && html.length) {
+            sliceLen = (html.length > 499) ? 500 : html.length
+        } else {
+            // handle if there isnt even a description
+            html = 'No description provided.'
+            sliceLen = (html.length > 499) ? 500 : html.length
+        }
         // remove all \n and \r and only allow the first 501 chars
         let clean = sanitizer(html, opts)
             .replace(/[\r\n]+/g, '')
