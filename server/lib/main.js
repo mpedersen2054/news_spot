@@ -1,11 +1,14 @@
 let scrapers = require('./scrapers_load_obj'),
-    addOutletStories = require('./addoutletstories')
+    addOutletStories = require('./addoutletstories'),
+    mapSeries = require('promise-map-series')
 
-// let outlets = Object.values(scrapers).slice(0, 2)
-let outlets = Object.values(scrapers).slice(0)
-console.log(outlets)
+let outlets = Object.values(scrapers).slice(0, 4)
+// let outlets = Object.values(scrapers).slice(0)
 
-Promise.all(Object.values(outlets).map(outlet => addOutletStories(new outlet())))
+// will run addOutletStories SYNCRONOUSLY. need this
+// because if running it asyncronously, there will be way
+// too many threads/processes in use and it will throw errors.
+mapSeries(outlets, addOutletStories)
     .then(() => {
         console.log('Successfully added all stories.\n')
         process.exit()

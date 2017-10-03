@@ -22,20 +22,23 @@ const addStory = (story, outletId) => {
             .spread((story, created) => console.log(`Added new entry? : ${created}`))
             .then(() => resolve())
             .catch(err => {
-                console.log(`Error adding story ${story['title']}`)
+                console.log(`Error adding story ${story['title']}`, err)
                 reject(err)
             })
     })
 }
 
 module.exports = outlet => {
+    outlet = new outlet()
     return new Promise((resolve, reject) => {
         // get the outlet id to check in story findOrCreate
+        // console.log(outlet.name)
         Outlet.findOne({
             where: { name: outlet.name },
             attributes: ['id'],
             raw: true
         }).then(results => {
+            console.log(results)
             // results: { id: X }
             outlet.init().then(stories => {
                 // stores: [ {...}, {...}, ... ]
