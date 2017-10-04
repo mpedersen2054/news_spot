@@ -8,7 +8,7 @@ module.exports = class Times extends Scraper {
         this.website = 'http://time.com/'
         this.urls = [
             { title: 'top_news', url: 'http://feeds2.feedburner.com/time/topstories', category: 'top' },
-            // { title: 'us_news', url: 'http://feeds2.feedburner.com/time/nation', category: 'us' },
+            { title: 'us_news', url: 'http://feeds2.feedburner.com/time/nation', category: 'us' },
             // COME BACK TO ME, ALL OF THE RSS TOPICS WERE SHOWING UP BLANK?
         ]
     }
@@ -20,8 +20,14 @@ module.exports = class Times extends Scraper {
         if (!data) {
             return []
         }
+        if (typeof data != 'array') {
+            data = [data]
+        }
         for (var news of data) {
             var newsObj = {}
+            if (!news['title']) {
+                continue
+            }
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             if (news['media:content'] && news['media:content']['url']) {
