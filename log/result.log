@@ -1,0 +1,11 @@
+{"name":"foo","hostname":"Matts-MacBook-Air.local","pid":24293,"level":30,"msg":"hello logger!","time":"2017-10-04T22:10:47.948Z","v":0}
+{"name":"foo","hostname":"Matts-MacBook-Air.local","pid":24293,"level":40,"msg":"hi warning","time":"2017-10-04T22:10:47.950Z","v":0}
+{"name":"foo","hostname":"Matts-MacBook-Air.local","pid":24293,"level":50,"msg":"hello warning!","time":"2017-10-04T22:10:47.950Z","v":0}
+{"name":"scraperLogger","hostname":"Matts-MacBook-Air.local","pid":24361,"level":50,"msg":"some error hey there another thing","time":"2017-10-04T22:14:56.619Z","v":0}
+{"name":"scraperLogger","hostname":"Matts-MacBook-Air.local","pid":24361,"level":30,"msg":"Faulty outlet requests { s1: true, s2: true, s3: true }","time":"2017-10-04T22:14:56.623Z","v":0}
+{"name":"scraperLogger","hostname":"Matts-MacBook-Air.local","pid":24391,"level":50,"msg":"some error hey there another thing","time":"2017-10-04T22:16:33.107Z","v":0}
+{"name":"scraperLogger","hostname":"Matts-MacBook-Air.local","pid":24391,"level":30,"s1":true,"s2":true,"s3":true,"msg":"faulty outlet requests","time":"2017-10-04T22:16:33.109Z","v":0}
+{"name":"scraperLogger","hostname":"Matts-MacBook-Air.local","pid":24420,"level":50,"msg":"some error hey there another thing","time":"2017-10-04T22:17:28.573Z","v":0}
+{"name":"scraperLogger","hostname":"Matts-MacBook-Air.local","pid":24420,"level":30,"s1":true,"s2":true,"s3":true,"s4":{"text":"hello world","success":false},"msg":"faulty outlet requests","time":"2017-10-04T22:17:28.574Z","v":0}
+{"name":"scraperLogger","hostname":"Matts-MacBook-Air.local","pid":24452,"level":50,"msg":"some error hey there another thing","time":"2017-10-04T22:19:09.517Z","v":0}
+{"name":"scraperLogger","hostname":"Matts-MacBook-Air.local","pid":24452,"level":30,"s1":true,"s2":true,"s3":true,"s4":{"text":"hello world","success":false},"msg":"faulty outlet requests","time":"2017-10-04T22:19:09.518Z","v":0}

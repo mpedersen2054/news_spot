@@ -5,7 +5,7 @@ module.exports = {
     CNBCNews: require('../scrapers/cnbcnews'),
     CNNNews: require('../scrapers/cnnnews'),
     AtlanicNews: require('../scrapers/atlanticnews'),
-    BostonGlobe: require('../scrapers/bostonglobe'),
+    // BostonGlobe: require('../scrapers/bostonglobe'), // was giving errors
     ChicagoSun: require('../scrapers/chicagosun'),
     ChristianScience: require('../scrapers/christianscience'),
     DailyCaller: require('../scrapers/dailycaller'),

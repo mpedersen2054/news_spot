@@ -34,7 +34,6 @@ module.exports = class Newsmax extends Scraper {
         // }
         for (var news of data) {
             var newsObj = {}
-            console.log(news)
             // if (!news['title']) {
             //     continue
             // }

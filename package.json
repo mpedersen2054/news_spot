@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
+    "bunyan": "^1.8.12",
     "mysql2": "^1.4.2",
     "path": "^0.12.7",
     "promise-map-series": "^0.2.3",

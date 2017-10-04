@@ -14,8 +14,20 @@ module.exports = class Scraper {
                     resolve(flattened)
                 })
                 .catch((err) => {
-                    console.log('there was in error!', err)
-                    reject(err)
+                    // for ERRNET error, there will be no status
+                    let status
+                    if (err.response.status) {
+                        status = err.response.status
+                    } else {
+                        status = 'No status provided.'
+                    }
+                    const errObj = {
+                        name: this.name,
+                        error: err.message,
+                        status
+                    }
+                    console.log(`Error in Base.init for ${this.name}`)
+                    reject(errObj)
                 })
         })
     }
@@ -34,7 +46,7 @@ module.exports = class Scraper {
                 .catch(err => {
                     // console.log(err.response.status)
                     // reject({ url: item.url, status: err.response.status })
-                    console.log(`There was an error for ${item.url}`, err)
+                    console.log(`Error in Base.fetch for ${item.url}`)
                     reject(err)
                 })
         })
