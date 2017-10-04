@@ -2,3 +2,4 @@ node_modules/
 notes.txt
 secrets.js
 ./secrets.js
+./tester.js

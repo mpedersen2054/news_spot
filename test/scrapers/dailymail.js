@@ -8,6 +8,9 @@ describe('DailyMail scraper', function() {
         new DailyMail().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

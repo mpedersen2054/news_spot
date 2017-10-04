@@ -8,6 +8,9 @@ describe('Variety scraper', function() {
         new Variety().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

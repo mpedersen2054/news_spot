@@ -8,6 +8,9 @@ describe('ZeroHedge scraper', function() {
         new ZeroHedge().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

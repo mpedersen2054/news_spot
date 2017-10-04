@@ -6,10 +6,6 @@ module.exports = class Newsmax extends Scraper {
         this.name = 'Newsmax'
         this.leaning = 'r'
         this.website = 'http://www.newsmax.com/'
-
-        // NEED TO COME BACK HERE AND FIGURE OUT HOW TO MAKE TESTS PASS WHEN THERE
-        // IS > 1 ENTRY
-
         this.urls = [
             { title: 'top_news', url: 'https://www.newsmax.com/rss/Newsfront/16/', category: 'top' },
             { title: 'us_news', url: 'https://www.newsmax.com/rss/US/18/', category: 'us' },
@@ -26,9 +22,6 @@ module.exports = class Newsmax extends Scraper {
         ]
     }
 
-    // EU ONLY HAD 1 ITEM, SOMEHOW THIS MESSED UP GIVING
-    // TypeError: data[Symbol.iterator] is not a function error
-
     format(obj) {
         var js = JSON.parse(obj.data)
         var data = js.rss.channel.item
@@ -36,14 +29,16 @@ module.exports = class Newsmax extends Scraper {
         if (!data) {
             return []
         }
-        if (typeof data != 'array') {
-            data = [data]
-        }
+        // if (typeof data != 'array') {
+        //     data = [data]
+        // }
         for (var news of data) {
             var newsObj = {}
-            if (!news['title']) {
-                continue
-            }
+            console.log(news)
+            // if (!news['title']) {
+            //     continue
+            // }
+            // some reason the new addition of on line 32 & 38 make this break?
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             if (news['enclosure'] && news['enclosure']['url']) {

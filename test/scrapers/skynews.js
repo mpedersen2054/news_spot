@@ -8,6 +8,9 @@ describe('SkyNews scraper', function() {
         new SkyNews().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

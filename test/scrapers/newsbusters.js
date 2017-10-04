@@ -8,6 +8,9 @@ describe('NewsBusters scraper', function() {
         new NewsBusters().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

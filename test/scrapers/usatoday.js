@@ -8,6 +8,9 @@ describe('USAToday scraper', function() {
         new USAToday().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

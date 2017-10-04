@@ -8,6 +8,9 @@ describe('WeeklyStandard scraper', function() {
         new WeeklyStandard().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

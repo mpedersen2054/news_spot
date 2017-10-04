@@ -32,7 +32,9 @@ module.exports = class Scraper {
                     })
                 })
                 .catch(err => {
-                    console.log('there was an error!', err)
+                    // console.log(err.response.status)
+                    // reject({ url: item.url, status: err.response.status })
+                    console.log(`There was an error for ${item.url}`, err)
                     reject(err)
                 })
         })

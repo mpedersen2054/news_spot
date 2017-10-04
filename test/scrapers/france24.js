@@ -8,6 +8,9 @@ describe('France24 scraper', function() {
         new France24().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

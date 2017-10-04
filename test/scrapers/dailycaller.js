@@ -8,6 +8,9 @@ describe('DailyCaller scraper', function() {
         new DailyCaller().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

@@ -8,6 +8,9 @@ describe('WashingtonExaminer scraper', function() {
         new WashingtonExaminer().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 

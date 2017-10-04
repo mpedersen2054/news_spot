@@ -8,6 +8,9 @@ describe('TheIntercept scraper', function() {
         new TheIntercept().init().then(retObj => {
             dataObj = retObj
             done()
+        }).catch(err => {
+            console.log('Error in test: ', err)
+            done()
         })
     })
 
