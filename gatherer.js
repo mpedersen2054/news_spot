@@ -9,7 +9,9 @@ let outlets = Object.values(scrapers).slice(0)
 // because if running it asyncronously, there will be way
 // too many threads/processes in use and it will throw errors.
 mapSeries(outlets, addOutletStories)
-    .then(() => {
+    .then((failures) => {
+        failures = failures.filter(v => v !== 0)
+        console.log(failures)
         console.log('Successfully added all stories.\n')
         process.exit()
     })

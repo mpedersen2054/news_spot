@@ -1,13 +1,14 @@
 let Outlet = require('../models').Outlet,
     Story = require('../models').Story,
-    scrapers = require('./scrapers_load_obj'),
-    failures = []
+    scrapers = require('./scrapers_load_obj')
 
 const addStory = (story, outletId) => {
     return new Promise((resolve, reject) => {
         // check to see if that story is already in DB
         // based on the title and its' outletId
-        console.log(story, outletId)
+
+        resolve()
+
         // Story.findOrCreate({
         //     where: { title: story['title'], outletId },
         //     defaults: {
@@ -22,11 +23,11 @@ const addStory = (story, outletId) => {
         //     }
         // })
         //     .spread((story, created) => console.log(`Added new entry? : ${created}`))
-            .then(() => resolve())
-            .catch(err => {
-                console.log(`Error adding story ${story['title']}`, err)
-                reject(err)
-            })
+        //     .then(() => resolve())
+        //     .catch(err => {
+        //         console.log(`Error adding story ${story['title']}`, err)
+        //         reject(err)
+        //     })
     })
 }
 
@@ -47,13 +48,12 @@ module.exports = outlet => {
                     // stores: [ {...}, {...}, ... ]
                     // call .then once all stories are added
                     Promise.all(stories.map(story => addStory(story, results['id'])))
-                        .then(() => resolve())
+                        .then(() => resolve(0)) // 0 for no failures
                         .catch(err => reject(err))
                 })
                 .catch(errObj => {
                     console.log(`Error in addoutletstories for ${outlet.name}`, errObj)
-                    failures.push(errObj)
-                    resolve()
+                    resolve(errObj)
                 })
         })
     })

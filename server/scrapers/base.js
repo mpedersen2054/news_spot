@@ -14,16 +14,16 @@ module.exports = class Scraper {
                     resolve(flattened)
                 })
                 .catch((err) => {
-                    // for ERRNET error, there will be no status
+                    // for ECONNRESET error, there will be no status
                     let status
-                    if (err.response.status) {
+                    if (err && err.response && err.response.status) {
                         status = err.response.status
                     } else {
                         status = 'No status provided.'
                     }
                     const errObj = {
                         name: this.name,
-                        error: err.message,
+                        message: err.message,
                         status
                     }
                     console.log(`Error in Base.init for ${this.name}`)
