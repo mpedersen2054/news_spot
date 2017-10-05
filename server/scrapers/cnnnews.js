@@ -29,14 +29,21 @@ module.exports = class CNNNews extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
+            if (!news['title'] ||
+                news['title'].length == 0 ||
+                typeof news['title'] != 'string') {
+                    continue
+            }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
-            // image is different for CNN, and not all of them contain the
-            // media group property
-            if (news['media:group']
-                && news['media:group']['media:content']
-                && news['media:group']['media:content'][0]
-                && news['media:group']['media:content'][0]['url']) {
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
+            if (news['media:group'] &&
+                news['media:group']['media:content'] &&
+                news['media:group']['media:content'][0] &&
+                news['media:group']['media:content'][0]['url']) {
                     newsObj.thumbnail = news['media:group']['media:content'][0]['url']
             } else {
                 // if no prop, use placeholder

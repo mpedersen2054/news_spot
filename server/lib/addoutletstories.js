@@ -7,27 +7,26 @@ const addStory = (story, outletId) => {
         // check to see if that story is already in DB
         // based on the title and its' outletId
 
-        resolve()
-
-        // Story.findOrCreate({
-        //     where: { title: story['title'], outletId },
-        //     defaults: {
-        //         // add all props if no story found
-        //         title       : story['title'],
-        //         publishedAt : story['published_at'],
-        //         thumbnail   : story['thumbnail'],
-        //         description : story['description'],
-        //         category    : story['category'],
-        //         headline    : story['headline'],
-        //         outletId    : outletId
-        //     }
-        // })
-        //     .spread((story, created) => console.log(`Added new entry? : ${created}`))
-        //     .then(() => resolve())
-        //     .catch(err => {
-        //         console.log(`Error adding story ${story['title']}`, err)
-        //         reject(err)
-        //     })
+        Story.findOrCreate({
+            where: { title: story['title'], outletId },
+            defaults: {
+                // add all props if no story found
+                title       : story['title'],
+                publishedAt : story['published_at'],
+                thumbnail   : story['thumbnail'],
+                description : story['description'],
+                category    : story['category'],
+                headline    : story['headline'],
+                outletId    : outletId
+            }
+        })
+            .spread((story, created) => console.log(`Added new entry? : ${created}`))
+            .then(() => resolve())
+            .catch(err => {
+                console.log(`Error adding story ${story['title']}`)
+                console.dir(story)
+                reject(err)
+            })
     })
 }
 
@@ -52,6 +51,7 @@ module.exports = outlet => {
                         .catch(err => reject(err))
                 })
                 .catch(errObj => {
+                    errObj['id'] = results['id']
                     console.log(`Error in addoutletstories for ${outlet.name}`, errObj)
                     resolve(errObj)
                 })

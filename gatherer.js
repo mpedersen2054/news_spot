@@ -2,7 +2,7 @@ let scrapers = require('./server/lib/scrapers_load_obj'),
     addOutletStories = require('./server/lib/addoutletstories'),
     mapSeries = require('promise-map-series')
 
-// let outlets = Object.values(scrapers).slice(0, 4)
+// let outlets = Object.values(scrapers).slice(0, 47)
 let outlets = Object.values(scrapers).slice(0)
 
 // will run addOutletStories SYNCRONOUSLY. need this

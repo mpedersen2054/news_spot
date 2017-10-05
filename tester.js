@@ -47,12 +47,42 @@ var WashingtonTimes = require('./server/scrapers/washingtontimes')
 var WeeklyStandard = require('./server/scrapers/weeklystandard')
 var ZeroHedge = require('./server/scrapers/zerohedge')
 
-new Newsmax()
+// new Newsmax()
+//     .init()
+//     .then(response => {
+//         console.log('response from newsmax:')
+//         console.log(response)
+//     })
+//     .catch(err => {
+//         console.log('there was an error for newsmax!', err)
+//     })
+
+// new CNNNews()
+//     .init()
+//     .then(response => {
+//         console.log('response from cnn:')
+//         console.log(response)
+//     })
+//     .catch(err => {
+//         console.log('there was an error for cnn!', err)
+//     })
+
+// new NewsBusters()
+//     .init()
+//     .then(response => {
+//         console.log('response from news busters:')
+//         console.log(response)
+//     })
+//     .catch(err => {
+//         console.log('there was an error for news busters!', err)
+//     })
+
+new Politico()
     .init()
     .then(response => {
-        console.log('response from newsmax:')
+        console.log('response from politico:')
         console.log(response)
     })
     .catch(err => {
-        console.log('there was an error for newsmax!', err)
+        console.log('there was an error for politico!', err)
     })
