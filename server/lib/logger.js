@@ -1,22 +1,24 @@
-let bunyan = require('bunyan')
+const winston = require('winston')
 const fs = require('fs')
 const logDir = 'log'
-const logPath = './log/result.log'
 
 // Create the log directory if it does not exist
 if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir)
-    // fs.openSync(logPath, 'w')
 }
 
-var logger = bunyan.createLogger({
-    name: 'scraperLogger',
-    streams: [{
-        type: 'rotating-file',
-        path: logPath,
-        period: '1d', // daily rotation
-        count: 10 // keep 3 back copies
-    }]
-})
+// const tsFormat = () => (new Date()).toLocaleTimeString()
+const tsFormat = () => `${new Date().toLocaleDateString()} | ${new Date().toLocaleTimeString()}`
 
-module.exports = logger
+exports.scraperLogger = new(winston.Logger)({
+    transports: [
+        // colorize the output to the console
+        new(winston.transports.Console)({timestamp: tsFormat, colorize: true, level: 'info'}),
+        new(require('winston-daily-rotate-file'))({
+            filename: `${logDir}/-results.log`,
+            timestamp: tsFormat,
+            datePattern: 'yyyy-MM-dd',
+            prepend: true
+        })
+    ]
+})
