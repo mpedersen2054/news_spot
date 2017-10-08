@@ -24,6 +24,11 @@ module.exports = class WashingtonTimes extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
+            if (!news['title'] ||
+                news['title'].length == 0 ||
+                typeof news['title'] != 'string') {
+                    continue
+            }
             newsObj.title = news['title']
             // there is no pub date for some reason
             newsObj.published_at = new Date(news['pubDate'])

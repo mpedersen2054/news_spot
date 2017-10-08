@@ -30,6 +30,11 @@ module.exports = class NYPost extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
+            if (!news['title'] ||
+                news['title'].length == 0 ||
+                typeof news['title'] != 'string') {
+                    continue
+            }
             newsObj.title = news['title']
             newsObj.published_at = new Date(news['pubDate'])
             if (news['media:content'] && news['media:content']['url']) {

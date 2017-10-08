@@ -33,6 +33,11 @@ module.exports = class ChristianScience extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
+            if (!news['title'] ||
+                news['title'].length == 0 ||
+                typeof news['title'] != 'string') {
+                    continue
+            }
             newsObj.title = news['title']
             newsObj.published_at = new Date()
             newsObj.thumbnail = 'http://placehold.it/250x200'

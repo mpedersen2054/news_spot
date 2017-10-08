@@ -32,6 +32,11 @@ module.exports = class Politico extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
+            if (!news['title'] ||
+                news['title'].length == 0 ||
+                typeof news['title'] != 'string') {
+                    continue
+            }
             newsObj.title = news['title']
             if (news['pubDate']) {
                 newsObj.published_at = new Date(news['pubDate'])
