@@ -2,8 +2,8 @@ let scrapers = require('./server/lib/scrapers_load_obj'),
     addOutletStories = require('./server/lib/addoutletstories'),
     mapSeries = require('promise-map-series')
 
-// let outlets = Object.values(scrapers).slice(0, 47)
-let outlets = Object.values(scrapers).slice(0)
+// const outlets = Object.values(scrapers).slice(0, 47)
+const outlets = Object.values(scrapers).slice(0)
 
 // will run addOutletStories SYNCRONOUSLY. need this
 // because if running it asyncronously there will be way

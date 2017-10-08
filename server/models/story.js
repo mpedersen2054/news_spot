@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         thumbnail: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(510), // sometimes the url is long...
             allowNull: false,
             defaultValue: false,
         },

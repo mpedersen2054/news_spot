@@ -19,7 +19,7 @@ module.exports = {
             thumbnail: {
                 allowNull: false,
                 defaultValue: false,
-                type: Sequelize.STRING
+                type: Sequelize.STRING(510)
             },
             description: {
                 allowNull: false,
