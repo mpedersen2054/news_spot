@@ -26,7 +26,11 @@ module.exports = class Variety extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             if (news['media:content'] &&
                 news['media:content'][0] &&
                 news['media:content'][0]['url']) {

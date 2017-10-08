@@ -41,7 +41,11 @@ module.exports = class ABCNews extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             newsObj.thumbnail = news['media:thumbnail'][3]['url']
             newsObj.url = news['link']
             // some descriptions are {}, strangly this was only way to get

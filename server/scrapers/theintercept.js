@@ -26,7 +26,11 @@ module.exports = class TheIntercept extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             if (news['media:thumbnail'] && news['media:thumbnail']['url']) {
                 newsObj.thumbnail = news['media:thumbnail']['url']
             } else {

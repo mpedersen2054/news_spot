@@ -27,14 +27,17 @@ module.exports = class TheSun extends Scraper {
         }
         for (var news of data) {
             var newsObj = {}
-            // console.log(news)
             if (!news['title'] ||
                 news['title'].length == 0 ||
                 typeof news['title'] != 'string') {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             newsObj.thumbnail = 'http://placehold.it/250x200'
             newsObj.url = news['link']
             newsObj.description = super.sanitizeHtml(news['description'])

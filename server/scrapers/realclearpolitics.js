@@ -26,7 +26,11 @@ module.exports = class RealClearPolitics extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             // not all entries have a thumbnail
             if (news['media:content'] && news['media:content']['url']) {
                 newsObj.thumbnail = news['media:content']['url']

@@ -36,8 +36,12 @@ module.exports = class AtlanticNews extends Scraper {
                 typeof news['title']['$t'] != 'string') {
                     continue
             }
-            newsObj.title = news['title']
-            newsObj.published_at = new Date(news['published'])
+            newsObj.title = news['title']['$t']
+            if (news['published']) {
+                newsObj.published_at = new Date(news['published'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             // thumbnail wasnt always provided
             if (news['media:content'] && news['media:content']['url']) {
                 newsObj.thumbnail = news['media:content']['url']

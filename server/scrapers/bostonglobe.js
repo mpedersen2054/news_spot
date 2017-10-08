@@ -45,7 +45,11 @@ module.exports = class BostonGlobe extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             newsObj.thumbnail = news['enclosure']['url']
             newsObj.url = news['link']
             newsObj.description = super.sanitizeHtml(news['description'])

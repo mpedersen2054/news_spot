@@ -29,9 +29,6 @@ module.exports = class Newsmax extends Scraper {
         if (!data) {
             return []
         }
-        // if (typeof data != 'array') {
-        //     data = [data]
-        // }
         for (var news of data) {
             var newsObj = {}
             if (!news['title'] ||
@@ -40,7 +37,11 @@ module.exports = class Newsmax extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             if (news['enclosure'] && news['enclosure']['url']) {
                 newsObj.thumbnail = news['enclosure']['url']
             } else {

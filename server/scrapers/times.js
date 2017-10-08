@@ -31,7 +31,11 @@ module.exports = class Times extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             if (news['media:content'] && news['media:content']['url']) {
                 newsObj.thumbnail = news['media:content']['url']
             } else {

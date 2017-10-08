@@ -26,7 +26,11 @@ module.exports = class TMZ extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['dc:date'])
+            if (news['dc:date']) {
+                newsObj.published_at = new Date(news['dc:date'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             newsObj.thumbnail = 'http://placehold.it/250x200'
             newsObj.url = news['link']
             newsObj.description = super.sanitizeHtml(news['description'])

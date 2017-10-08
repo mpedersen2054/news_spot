@@ -30,8 +30,11 @@ module.exports = class WashingtonTimes extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            // there is no pub date for some reason
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             newsObj.thumbnail = 'http://placehold.it/250x200'
             newsObj.url = news['link']
             newsObj.description = super.sanitizeHtml(news['description'])

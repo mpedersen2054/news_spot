@@ -1,4 +1,8 @@
-let Scraper = require('./base')
+if (news['pubDate']) {
+    newsObj.published_at = new Date(news['pubDate'])
+} else {
+    newsObj.published_at = new Date()
+}
 
 module.exports = class WeeklyStandard extends Scraper {
     constructor(urls) {
@@ -31,7 +35,11 @@ module.exports = class WeeklyStandard extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             if (news['enclosure'] && news['enclosure']['url']) {
                 newsObj.thumbnail = news['enclosure']['url']
             } else {

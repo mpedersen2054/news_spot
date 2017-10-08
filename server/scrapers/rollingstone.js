@@ -30,7 +30,11 @@ module.exports = class RollingStone extends Scraper {
                     continue
             }
             newsObj.title = news['title']
-            newsObj.published_at = new Date(news['pubDate'])
+            if (news['pubDate']) {
+                newsObj.published_at = new Date(news['pubDate'])
+            } else {
+                newsObj.published_at = new Date()
+            }
             // the image is quite embedded...
             if (news['media:group'] &&
                 news['media:group']['media:content'] &&
