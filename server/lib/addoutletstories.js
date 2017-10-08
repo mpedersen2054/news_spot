@@ -52,6 +52,7 @@ module.exports = outlet => {
                 })
                 .catch(errObj => {
                     errObj['id'] = results['id']
+                    errObj['failDate'] = new Date()
                     console.log(`Error in addoutletstories for ${outlet.name}`, errObj)
                     resolve(errObj)
                 })

@@ -1,8 +1,4 @@
-if (news['pubDate']) {
-    newsObj.published_at = new Date(news['pubDate'])
-} else {
-    newsObj.published_at = new Date()
-}
+let Scraper = require('./base')
 
 module.exports = class WeeklyStandard extends Scraper {
     constructor(urls) {
