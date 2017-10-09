@@ -1,14 +1,11 @@
 
-let logger = require('./server/lib/logger')
+let express = require('express'),
+    port = process.env.PORT || 8080
 
-const url = 'something.com/api'
-logger.error('some error', 'hey there', 'another thing')
-logger.info({
-    s1: true,
-    s2: true,
-    s3: true,
-    s4: {
-        text: 'hello world',
-        success: false
-    }
-}, 'faulty outlet requests')
+let app = express()
+
+app.get('/', (req, res) => {
+    res.send('Hello there news_spot app!')
+})
+
+app.listen(port, () => console.log(`App running on port ${port}`))

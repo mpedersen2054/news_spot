@@ -4,5 +4,9 @@ secrets.js
 ./secrets.js
 ./tester.js
 tester.js
-./logs.log
-logs.log
+log
+log/
+./log
+./log/
+log/*
+./log/*

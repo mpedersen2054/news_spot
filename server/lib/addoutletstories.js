@@ -1,6 +1,7 @@
-let Outlet = require('../models').Outlet,
-    Story = require('../models').Story,
-    scrapers = require('./scrapers_load_obj')
+let Outlet   = require('../models').Outlet,
+    Story    = require('../models').Story,
+    scrapers = require('./scrapers_load_obj'),
+    logger   = require('./logger').scraperLogger
 
 const addStory = (story, outletId) => {
     return new Promise((resolve, reject) => {
@@ -20,10 +21,10 @@ const addStory = (story, outletId) => {
                 outletId    : outletId
             }
         })
-            .spread((story, created) => console.log(`Added new entry? : ${created}`))
+            // .spread((story, created) => console.log(`Added new entry? : ${created}`))
             .then(() => resolve())
             .catch(err => {
-                console.log(`Error adding story ${story['title']}`)
+                // console.log(`Error adding story ${story['title']}`)
                 console.dir(story)
                 reject(err)
             })
@@ -40,20 +41,20 @@ module.exports = outlet => {
             attributes: ['id'],
             raw: true
         }).then(results => {
-            console.log(`Adding stories for Outlet #${results.id}`)
+            // console.log(`Adding stories for Outlet #${results.id}`)
             // results: { id: X }
             outlet.init()
                 .then(stories => {
                     // stores: [ {...}, {...}, ... ]
                     // call .then once all stories are added
                     Promise.all(stories.map(story => addStory(story, results['id'])))
-                        .then(() => resolve(0)) // 0 for no failures
+                        .then(() => resolve(1)) // 0 for no failures
                         .catch(err => reject(err))
                 })
                 .catch(errObj => {
                     errObj['id'] = results['id']
                     errObj['failDate'] = new Date()
-                    console.log(`Error in addoutletstories for ${outlet.name}`, errObj)
+                    // console.log(`Error in addoutletstories for ${outlet.name}`, errObj)
                     resolve(errObj)
                 })
         })
