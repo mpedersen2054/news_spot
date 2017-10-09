@@ -3,7 +3,7 @@ let express = require('express'),
     // port = process.env.PORT || 8080,
     port = 8080,
 
-let app = express()
+const app = express()
 
 app.get('/', (req, res) => {
     res.send('Hello there news_spot app!')
