@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "",
     "main": "app.js",
+    "engines": {
+        "node": "8.4.0",
+        "npm": ">= 5.3.0"
+    },
     "scriptsComments": {
         "test": "--recursive allows nesting, --timeout 0 makes it so long loading async events wont fail with before hook failure"
     },
