@@ -5,6 +5,7 @@ let express = require('express'),
 
 app.get('/', (req, res) => {
     res.send({
+        env: process.env,
         testing: process.env.TESTING,
         username: process.env.PROD_DB_USERNAME,
         password: process.env.PROD_DB_PASSWORD,
