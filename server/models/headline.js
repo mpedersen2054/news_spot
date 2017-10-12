@@ -1,32 +1,32 @@
 module.exports = (sequelize, DataTypes) => {
-    var Outlet = sequelize.define('Outlet', {
+    var Headline = sequelize.define('Headline', {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: false
         },
-        leaning: {
-            type: DataTypes.STRING(1),
+        category: {
+            type: DataTypes.STRING(55),
             allowNull: false,
             defaultValue: false
         },
-        website: {
+        url: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: false
         }
     })
 
-    Outlet.associate = (models) => {
-        Outlet.hasMany(models.Story, {
-            foreignKey: 'outletId',
-            as: 'outletStories'
+    Headline.associate = (models) => {
+        Headline.hasMany(models.Story, {
+            foreignKey: 'headlineId',
+            as: 'headlineStories'
         })
-        Outlet.hasMany(models.Headline, {
+        Headline.belongsTo(models.Outlet, {
             foreignKey: 'outletId',
-            as: 'outletHeadlines'
+            onDelete: 'CASCADE'
         })
     }
 
-    return Outlet
+    return Headline
 }

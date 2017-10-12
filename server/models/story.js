@@ -18,22 +18,16 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(510),
             allowNull: false,
             defaultValue: false,
-        },
-        category: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: false,
-        },
-        headline: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: false,
         }
     })
 
     Story.associate = (models) => {
         Story.belongsTo(models.Outlet, {
             foreignKey: 'outletId',
+            onDelete: 'CASCADE'
+        })
+        Story.belongsTo(models.Headline, {
+            foreignKey: 'headlineId',
             onDelete: 'CASCADE'
         })
     }

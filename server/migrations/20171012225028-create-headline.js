@@ -1,37 +1,23 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('Stories', {
+        return queryInterface.createTable('Headlines', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            title: {
+            name: {
                 allowNull: false,
                 defaultValue: false,
                 type: Sequelize.STRING
-            },
-            publishedAt: {
-                allowNull: false,
-                type: Sequelize.DATE
-            },
-            thumbnail: {
-                allowNull: false,
-                defaultValue: false,
-                type: Sequelize.STRING(510)
-            },
-            description: {
-                allowNull: false,
-                defaultValue: false,
-                type: Sequelize.STRING(510)
             },
             category: {
                 allowNull: false,
                 defaultValue: false,
-                type: Sequelize.STRING
+                type: Sequelize.STRING(55)
             },
-            headline: {
+            url: {
                 allowNull: false,
                 defaultValue: false,
                 type: Sequelize.STRING
@@ -56,6 +42,6 @@ module.exports = {
         })
     },
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('Stories')
+        return queryInterface.dropTable('Headlines')
     }
 }
