@@ -1,6 +1,6 @@
-let Outlet = require('../models').Outlet,
-    scrapers = require('./scrapers_load_obj'),
-    mapSeries = require('promise-map-series') // sometimes it adds them in non alpha order so using this
+let Outlet    = require('../models').Outlet,
+    scrapers  = require('./scrapers_load_obj'),
+    mapSeries = require('promise-map-series')
 
 // returns promise that creates db entry with info given
 const createOutlet = outlet => {
@@ -17,7 +17,7 @@ const createOutlet = outlet => {
 }
 
 // turn scrapers{} into array, instantiate each of them
-// and call createOutlet to turn it into a promise
+// and call createOutlet to turn it into a promise, SYNCRONOUSLY
 const outlets = Object.values(scrapers).slice(0)
 mapSeries(outlets, createOutlet)
     .then(() => {

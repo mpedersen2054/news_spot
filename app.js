@@ -1,17 +1,11 @@
 
 let express = require('express'),
-    port = 8080,
-    app = express()
+    bodyParser = require('body-parser');
 
-app.get('/', (req, res) => {
-    res.send({
-        testing: process.env.TESTING,
-        username: process.env.PROD_DB_USERNAME,
-        password: process.env.PROD_DB_PASSWORD,
-        dbname: process.env.PROD_DB_NAME,
-        hostname: process.env.PROD_DB_HOSTNAME,
-        port:process.env.PROD_DB_PORT,
-    })
-})
+let app = express()
+app.use(bodyParser.json())
 
-app.listen(port, () => console.log(`App running on port ${port}`))
+// load in the routes
+require('./server/config/routes')(app)
+
+app.listen(8080, () => console.log(`App running on port 8080`))
