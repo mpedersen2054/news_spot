@@ -3,11 +3,12 @@ let Outlet   = require('../models').Outlet,
     scrapers = require('./scrapers_load_obj'),
     logger   = require('./logger').scraperLogger
 
+// pass in an outlet and gather all stories for that outlet
+
 const addStory = (story, outletId) => {
     return new Promise((resolve, reject) => {
         // check to see if that story is already in DB
         // based on the title and its' outletId
-
         Story.findOrCreate({
             where: { title: story['title'], outletId },
             defaults: {

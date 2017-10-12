@@ -12,7 +12,7 @@ if (!fs.existsSync(logDir)) {
 }
 
 const tsFormat = () => (new Date()).toLocaleTimeString()
-// const tsFormat = () => `${new Date().toLocaleDateString()} | ${new Date().toLocaleTimeString()}`
+
 const logfileTransport = new (winston.transports.DailyRotateFile)({
     filename    : `${logDir}/-results.log`,
     datePattern : 'yyyy-MM-dd',

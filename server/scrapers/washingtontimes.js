@@ -21,6 +21,8 @@ module.exports = class WashingtonTimes extends Scraper {
         var newData = []
         if (!data) {
             return []
+        } else if (typeof data !== 'array') {
+            data = [data]
         }
         for (var news of data) {
             var newsObj = {}
