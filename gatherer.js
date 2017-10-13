@@ -23,14 +23,14 @@ const addAll = () => {
         })
 }
 
-addAll()
+// addAll()
 
-// // will call addAll() at 10:15am and 6:15pm eastern time
-// try {
-//     new CronJob('00 15 10,18 * * 0-6', () => {
-//         console.log(`scraping drudgereport.com @ ${new Date().toLocaleTimeString()}`)
-//         addAll()
-//     }, null, true, 'America/New_York')
-// } catch(ex) {
-//     console.log('the pattern was not valid!', ex)
-// }
+// will call addAll() at 10:15am and 6:15pm eastern time
+try {
+    new CronJob('00 15 10,18 * * 0-6', () => {
+        console.log(`scraping drudgereport.com @ ${new Date().toLocaleTimeString()}`)
+        addAll()
+    }, null, true, 'America/New_York')
+} catch(ex) {
+    console.log('the pattern was not valid!', ex)
+}
