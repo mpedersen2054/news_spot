@@ -3,8 +3,10 @@ let addAllStories = require('./server/lib/addallstories'),
     CronJob       = require('cron').CronJob
 
 const addAll = () => {
+    const start = new Date
     addAllStories()
         .then(failures => {
+            logger.log('info', 'It took %j seconds to add all stories.', (new Date - start) / 1000)
             if (failures.length > 0) {
                 logger.log('warn', 'There were %j failures gathering all stories %j', failures.length, failures)
             } else {
