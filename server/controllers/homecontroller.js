@@ -3,7 +3,7 @@ const secrets = require('../../secrets')
 module.exports = {
     index(req, res) {
         res.send({
-            env: process.env.NODE_ENV,
+            env: process.env,
             host: secrets['db']['host'],
             username: secrets['db']['username'],
             password: secrets['db']['password'],
