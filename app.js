@@ -1,3 +1,4 @@
+require('dotenv').config()
 
 let express = require('express'),
     bodyParser = require('body-parser');
