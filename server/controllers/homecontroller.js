@@ -1,4 +1,4 @@
-const secrets = require('../../secrets')
+let Outlet = require('../models').Outlet
 
 module.exports = {
     index(req, res) {
@@ -13,6 +13,15 @@ module.exports = {
     },
 
     about(req, res) {
-        res.send('Hello HomeCtrl.about!\n')
+        return Outlet
+            .findAll()
+            .then(outlets => {
+                res.send(outlets)
+            })
+            .catch((err) => {
+                console.log('THERE WAS ERR')
+                console.log(err)
+                res.send(err)
+            })
     }
 }
