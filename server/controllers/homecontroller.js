@@ -1,7 +1,8 @@
+const secrets = require('../../secrets')
 
 module.exports = {
     index(req, res) {
-        res.send('Hello HomeCtrl.index!\n')
+        res.send(secrets)
     },
 
     about(req, res) {
