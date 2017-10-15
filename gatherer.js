@@ -18,13 +18,14 @@ const addAll = () => {
             }, 5000)
         })
         .catch(err => {
+            console.log(err)
             logger.log('warn', 'There was an error adding all stories %j', err)
             process.exit()
         })
 }
 
-// addAll()
-logger.log('info', 'STARTED GATHERER.JS @ %j', new Date().toLocaleTimeString())
+addAll()
+// logger.log('info', 'STARTED GATHERER.JS @ %j', new Date().toLocaleTimeString())
 
 // will call addAll() at 10:15am and 6:15pm eastern time
 try {

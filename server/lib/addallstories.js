@@ -20,7 +20,7 @@ module.exports = () => {
                 resolve(failures)
             })
             .catch(err => {
-                reject(null)
+                reject(err)
             })
     })
 }
