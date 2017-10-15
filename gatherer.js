@@ -18,7 +18,6 @@ const addAll = () => {
             }, 5000)
         })
         .catch(err => {
-            console.log(err)
             logger.log('warn', 'There was an error adding all stories %j', err)
             process.exit()
         })

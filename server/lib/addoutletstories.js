@@ -15,8 +15,7 @@ const addStory = (story) => {
             attributes: ['id']
         }).then(headline => {
             const headlineId = headline['dataValues']['id']
-            // check to see if that story is already in DB
-            // based on the title and its' outletId
+            // findOrCreate based on story title & outletId
             return Story.findOrCreate({
                 where: { title: story['title'], outletId: story['outletId'] },
                 defaults: {
@@ -37,8 +36,7 @@ const addStory = (story) => {
 module.exports = outlet => {
     outlet = new outlet()
     return new Promise((resolve, reject) => {
-        // get the outlet id to check in story findOrCreate
-        // console.log(outlet.name)
+        // get the outletId
         Outlet.findOne({
             where: { name: outlet.name },
             attributes: ['id'],
@@ -47,6 +45,7 @@ module.exports = outlet => {
             // results: { id: X }
             outlet.init()
                 .then(stories => {
+                    // connect the outletId onto the storyObj
                     const storiesWithOutletId = stories.map(story => {
                         story['outletId'] = results['id']
                         return story
