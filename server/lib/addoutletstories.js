@@ -28,7 +28,7 @@ const addStory = (story) => {
                 }
             })
                 .then(() => resolve())
-                .catch(err => reject(err))
+                .catch(err => resolve())
         }).catch(err => console.log('There was an error finding the headline for story.', err))
     })
 }
