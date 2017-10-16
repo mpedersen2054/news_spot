@@ -1,12 +1,18 @@
 
 let Outlet = require('../models').Outlet,
-    Headline = require('../models').Headline
+    Headline = require('../models').Headline,
+    response = require('../lib/createresponse')
 
 module.exports = {
     index: (req, res) => {
         return Outlet
             .findAll()
-            .then(outlets => res.status(200).json(outlets))
+            .then(outlets => {
+                res.status(202).json(response({
+                    link_current: '/outlets',
+                    data: outlets
+                }))
+            })
             .catch(err => res.status(404).json(err))
     },
 
@@ -26,7 +32,12 @@ module.exports = {
                     .filter((val, idx, arr) => arr.indexOf(val) === idx)
                 return outlet
             })
-            .then(outlet => res.status(200).json(outlet))
+            .then(outlet => {
+                res.status(200).json(response({
+                    link_current: `/outlets/${req.params.id}`,
+                    data: outlet
+                }))
+            })
             .catch(err => res.status(400).json({ message: `Outlet ${req.params.id} does not exist` }))
     }
 }
