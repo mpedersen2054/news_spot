@@ -23,8 +23,8 @@ const addAll = () => {
         })
 }
 
-addAll()
-// logger.log('info', 'STARTED GATHERER.JS @ %j', new Date().toLocaleTimeString())
+// addAll()
+logger.log('info', 'STARTED GATHERER.JS @ %j', new Date().toLocaleTimeString())
 
 // will call addAll() at 10:15am and 6:15pm eastern time
 try {

@@ -28,7 +28,7 @@ const addStory = (story) => {
                 }
             })
                 .then(() => {
-                    console.log(`Added story: ${story['title']}`)
+                    console.log(`OutletId: ${story['outletId']} | story: ${story['title']}`)
                     resolve()
                 })
                 .catch(err => {
