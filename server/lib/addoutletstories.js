@@ -9,33 +9,58 @@ let Outlet    = require('../models').Outlet,
 
 const addStory = (story) => {
     return new Promise((resolve, reject) => {
-        // get the headlineId
-        Headline.findOne({
-            where: { outletId: story['outletId'], name: story['headline'] },
+        // findOrCreate based on story title & outletId
+        return Story.findOrCreate({
+            where: {
+                title      : story['title'],
+                outletId   : story['outletId']
+            },
+            defaults: {
+                title       : story['title'],
+                publishedAt : story['published_at'],
+                thumbnail   : story['thumbnail'],
+                description : story['description'],
+                outletId    : story['outletId'],
+                headlineId  : story['headlineId']
+            }
+        }).then(() => {
+            // console.log(`OutletId: ${story['outletId']} | story: ${story['title']}`)
+            resolve()
+        }).catch(err => {
+            // console.log(`Err adding story: ${story['title']}`)
+            resolve()
+        })
+    })
+}
+
+// takes stories[] and returns { headlineName: [...], headlineName: [...] }
+const seperateByHeadlineName = (stories) => {
+    return stories.reduce((r, a) => {
+        r[a.headline] = r[a.headline] || []
+        r[a.headline].push(a)
+        return r
+    }, Object.create(null))
+}
+
+const addHeadlineId = (key, section) => {
+    return new Promise((resolve, reject) => {
+        const outletId = section[0]['outletId']
+        // find the headlineId based on headlineName & outletId
+        return Headline.findOne({
+            where: { outletId: outletId, name: key },
             attributes: ['id']
         }).then(headline => {
             const headlineId = headline['dataValues']['id']
-            // findOrCreate based on story title & outletId
-            return Story.findOrCreate({
-                where: { title: story['title'], outletId: story['outletId'] },
-                defaults: {
-                    title       : story['title'],
-                    publishedAt : story['published_at'],
-                    thumbnail   : story['thumbnail'],
-                    description : story['description'],
-                    outletId    : story['outletId'],
-                    headlineId
-                }
+            // add the headlineId into each story
+            const storyWithHeadlineId = section.map(story => {
+                story['headlineId'] = headlineId
+                return story
             })
-                .then(() => {
-                    console.log(`OutletId: ${story['outletId']} | story: ${story['title']}`)
-                    resolve()
-                })
-                .catch(err => {
-                    console.log(`Err adding story: ${story['title']}`)
-                    resolve()
-                })
-        }).catch(err => console.log('There was an error finding the headline for story.', err))
+            resolve(storyWithHeadlineId)
+        }).catch(err => {
+            console.log('There was an error in addHeadlineId', err)
+            reject(err)
+        })
     })
 }
 
@@ -56,10 +81,27 @@ module.exports = outlet => {
                         story['outletId'] = results['id']
                         return story
                     })
-                    // had to use map series, was getting too many processes err
-                    mapSeries(storiesWithOutletId, addStory)
-                        .then(() => resolve(1)) // 0 for no failures
-                        .catch(err => reject(err))
+                    const seperated = seperateByHeadlineName(storiesWithOutletId)
+                    // add headlineId into all stories
+                    Promise.all(Object.keys(seperated).map(key => addHeadlineId(key, seperated[key])))
+                        .then(storiesWithHeadlineId => {
+                            // turn [ [ { ...story },  ... ], [{ ..story }  ] ]
+                            // into [ { ...story }, { ...story } ]
+                            const storiesArr = storiesWithHeadlineId.reduce((a, b) => a.concat(b))
+                            // make the array only have uniques, based on the title of story
+                            // reduce having to make a few pointless queries into Story.findOrCreate
+                            const uniqueStoriesArr = storiesArr.filter((item, pos, array) => {
+                                return array.map(story => story['title']).indexOf(item['title']) === pos
+                            })
+                            // had to use map series, was getting too many processes err
+                            mapSeries(uniqueStoriesArr, addStory)
+                                .then(() => resolve(1)) // 1 for no failures
+                                .catch(err => reject(err))
+                        })
+                        .catch(err => {
+                            console.log('Error adding headlineId to stories', err)
+                            reject(err)
+                        })
                 })
                 .catch(errObj => {
                     errObj['id'] = results['id']
