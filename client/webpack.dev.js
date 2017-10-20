@@ -21,6 +21,18 @@ module.exports = {
                         ['env', { targets: { browsers: ['last 2 versions'] } }]
                     ]
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: "style-loader!css-loader?importLoaders=1"
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style-loader!css-loader!sass-loader'
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000'
             }
         ]
     }
