@@ -1,1 +1,26 @@
 
+@import '../modules/_colors';
+
+.filter-container {
+}
+
+.filter-section {
+    .head {
+        text-transform: uppercase;
+        // text-decoration: underline;
+        font-weight: 600;
+    }
+}
+
+.select-list {
+    list-style: none;
+    padding-left: 0;
+    .select-item {
+        padding-left: 0;
+        color: $link-blue;
+        cursor: pointer;
+    }
+    .selected {
+        color: $link-blue-dark;
+    }
+}
