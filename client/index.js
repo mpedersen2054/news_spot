@@ -1,12 +1,14 @@
-
 import 'bootstrap/dist/css/bootstrap.css'
+import './src/styles/main.scss' // spot from public/bundle.js i think?
 import { Container } from 'reactstrap'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+
+import Navigation from './src/components/Navigation'
+import Footer from './src/components/Footer'
 import HomePage from './src/components/HomePage'
 import StoryFeed from './src/components/StoryFeed'
-import Navigation from './src/components/Navigation'
 
 const PrimaryLayout = () => (
     <div className="primary-layout">
@@ -20,6 +22,7 @@ const PrimaryLayout = () => (
                 <Redirect to="/" />
             </Switch>
         </Container>
+        <Footer />
     </div>
 )
 

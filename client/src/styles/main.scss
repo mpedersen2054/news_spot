@@ -1,8 +1,22 @@
 
 html {
     font-size: 16px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    padding-bottom: 6rem;
+    min-height: 100%;
 }
 
 .page-content {
-    padding: 2rem 0 2rem;
+    padding: 1rem 0 1rem;
 }
