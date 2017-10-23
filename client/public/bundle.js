@@ -37450,7 +37450,8 @@ var StoriesFilter = function (_Component) {
         _this.selectUploadedAt = _this.selectUploadedAt.bind(_this);
         _this.state = {
             collapse: false,
-            uploadedAt: [{ name: 'Last Hour', selected: false }, { name: 'Today', selected: false }, { name: 'This Week', selected: false }, { name: 'This Month', selected: false }, { name: 'This Year', selected: false }, { name: 'All', selected: true }]
+            uploadedAt: [{ name: 'Last Hour', selected: false }, { name: 'Today', selected: false }, { name: 'This Week', selected: false }, { name: 'This Month', selected: false }, { name: 'This Year', selected: false }, { name: 'All', selected: true }],
+            politicalLeaning: [{ name: 'Left', selected: false }, { name: 'Right', selected: false }, { name: 'Independant', selected: false }, { name: 'Any', selected: true }]
         };
         return _this;
     }
@@ -37465,10 +37466,19 @@ var StoriesFilter = function (_Component) {
         value: function selectUploadedAt(selectedIdx) {
             this.setState({
                 uploadedAt: this.state.uploadedAt.map(function (item, idx) {
+                    item.selected = selectedIdx === idx ? true : false;
+                    return item;
+                })
+            });
+        }
+    }, {
+        key: 'selectPoliticalLeaning',
+        value: function selectPoliticalLeaning(selectedIdx) {
+            console.log('hi there!', selectedIdx);
+            this.setState({
+                politicalLeaning: this.state.politicalLeaning.map(function (item, idx) {
                     if (selectedIdx === idx) {
-                        item.selected = true;
-                    } else {
-                        item.selected = false;
+                        item.selected = !item.selected;
                     }
                     return item;
                 })
@@ -37483,17 +37493,37 @@ var StoriesFilter = function (_Component) {
                 'ul',
                 { className: 'select-list' },
                 this.state.uploadedAt.map(function (item, idx) {
-                    var formatted = (0, _startCase2.default)(item.name);
-                    var isSelected = item.selected ? 'selected' : '';
                     return _react2.default.createElement(
                         'li',
                         {
-                            className: 'select-item ' + isSelected,
+                            className: 'select-item ' + (item.selected ? 'selected' : ''),
                             key: idx,
                             onClick: function onClick() {
                                 return _this2.selectUploadedAt(idx);
                             } },
-                        formatted
+                        item.name
+                    );
+                })
+            );
+        }
+    }, {
+        key: 'renderPoliticalLeaning',
+        value: function renderPoliticalLeaning() {
+            var _this3 = this;
+
+            return _react2.default.createElement(
+                'ul',
+                { className: 'select-list' },
+                this.state.politicalLeaning.map(function (item, idx) {
+                    return _react2.default.createElement(
+                        'li',
+                        {
+                            className: 'select-item ' + (item.selected ? 'selected' : ''),
+                            key: idx,
+                            onClick: function onClick() {
+                                return _this3.selectPoliticalLeaning(idx);
+                            } },
+                        item.name
                     );
                 })
             );
@@ -37550,7 +37580,8 @@ var StoriesFilter = function (_Component) {
                                             'div',
                                             { className: 'head' },
                                             'Political Leaning'
-                                        )
+                                        ),
+                                        this.renderPoliticalLeaning()
                                     )
                                 )
                             ),

@@ -18,6 +18,12 @@ export default class StoriesFilter extends Component {
                 { name: 'This Month', selected: false },
                 { name: 'This Year', selected: false },
                 { name: 'All', selected: true }
+            ],
+            politicalLeaning: [
+                { name: 'Left', selected: false },
+                { name: 'Right', selected: false },
+                { name: 'Independant', selected: false },
+                { name: 'Any', selected: true },
             ]
         }
     }
@@ -27,10 +33,17 @@ export default class StoriesFilter extends Component {
     selectUploadedAt(selectedIdx) {
         this.setState({
             uploadedAt: this.state.uploadedAt.map((item, idx) => {
+                item.selected = (selectedIdx === idx) ? true : false
+                return item
+            })
+        })
+    }
+    selectPoliticalLeaning(selectedIdx) {
+        console.log('hi there!', selectedIdx)
+        this.setState({
+            politicalLeaning: this.state.politicalLeaning.map((item, idx) => {
                 if (selectedIdx === idx) {
-                    item.selected = true
-                } else {
-                    item.selected = false
+                    item.selected = !item.selected
                 }
                 return item
             })
@@ -40,14 +53,28 @@ export default class StoriesFilter extends Component {
         return(
             <ul className="select-list">
                 {this.state.uploadedAt.map((item, idx) => {
-                    const formatted = startCase(item.name)
-                    const isSelected = item.selected ? 'selected' : ''
                     return(
                         <li
-                            className={`select-item ${isSelected}`}
+                            className={`select-item ${item.selected ? 'selected' : ''}`}
                             key={idx}
                             onClick={() => this.selectUploadedAt(idx)} >
-                                {formatted}
+                                {item.name}
+                        </li>
+                    )
+                })}
+            </ul>
+        )
+    }
+    renderPoliticalLeaning() {
+        return(
+            <ul className="select-list">
+                {this.state.politicalLeaning.map((item, idx) => {
+                    return(
+                        <li
+                            className={`select-item ${item.selected ? 'selected' : ''}`}
+                            key={idx}
+                            onClick={() => this.selectPoliticalLeaning(idx)} >
+                                {item.name}
                         </li>
                     )
                 })}
@@ -74,6 +101,7 @@ export default class StoriesFilter extends Component {
                                 <Col md="6">
                                     <div className="filter-section political-leaning">
                                         <div className="head">Political Leaning</div>
+                                        {this.renderPoliticalLeaning()}
                                     </div>
                                 </Col>
                             </Row>
