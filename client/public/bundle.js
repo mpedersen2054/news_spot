@@ -37426,9 +37426,13 @@ var _reactstrap = __webpack_require__(13);
 
 var _reactFa = __webpack_require__(45);
 
-var _startCase = __webpack_require__(144);
+var _outlets = __webpack_require__(145);
 
-var _startCase2 = _interopRequireDefault(_startCase);
+var _outlets2 = _interopRequireDefault(_outlets);
+
+var _BoxMultiSelect = __webpack_require__(146);
+
+var _BoxMultiSelect2 = _interopRequireDefault(_BoxMultiSelect);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37451,7 +37455,12 @@ var StoriesFilter = function (_Component) {
         _this.state = {
             collapse: false,
             uploadedAt: [{ name: 'Last Hour', selected: false }, { name: 'Today', selected: false }, { name: 'This Week', selected: false }, { name: 'This Month', selected: false }, { name: 'This Year', selected: false }, { name: 'All', selected: true }],
-            politicalLeaning: [{ name: 'Left', selected: false }, { name: 'Right', selected: false }, { name: 'Independant', selected: false }, { name: 'Any', selected: true }]
+            politicalLeaning: [{ name: 'Left', selected: false }, { name: 'Right', selected: false }, { name: 'Independant', selected: false }, { name: 'Any', selected: true }],
+            // import a data obj, might want to query for this in future?
+            outlets: _outlets2.default.map(function (outlet, idx) {
+                outlet.selected = idx === 0 ? true : false;
+                return outlet;
+            })
         };
         return _this;
     }
@@ -37531,6 +37540,7 @@ var StoriesFilter = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+            console.log(this.state);
             return _react2.default.createElement(
                 'div',
                 { className: 'stories-filter' },
@@ -37585,13 +37595,23 @@ var StoriesFilter = function (_Component) {
                                     )
                                 )
                             ),
+                            _react2.default.createElement('hr', null),
                             _react2.default.createElement(
                                 _reactstrap.Row,
                                 null,
                                 _react2.default.createElement(
                                     _reactstrap.Col,
                                     { md: '12' },
-                                    _react2.default.createElement('div', { className: 'filter-section outlets' })
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'filter-section outlets' },
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'head' },
+                                            'Outlets'
+                                        ),
+                                        _react2.default.createElement(_BoxMultiSelect2.default, { items: this.state.outlets })
+                                    )
                                 )
                             ),
                             _react2.default.createElement(
@@ -37675,7 +37695,20 @@ var StoriesList = function (_Component) {
 exports.default = StoriesList;
 
 /***/ }),
-/* 144 */
+/* 144 */,
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = [{ name: 'All' }, { name: 'ABC News' }, { name: 'BBC News' }, { name: 'CBS News' }, { name: 'CNBC News' }, { name: 'CNN News' }, { name: 'The Atlanic' }, { name: 'Boston Globe' }, { name: 'The Chicago Sun' }, { name: 'Christian Science' }, { name: 'The Daily Caller' }, { name: 'Der Spiegel' }, { name: 'EOnline' }, { name: 'The Economist' }, { name: 'Fox News' }, { name: 'France 24' }, { name: 'Free Beacon' }, { name: 'The Hill' }, { name: 'Huffington Post' }, { name: 'Infowars' }, { name: 'The Intercept' }, { name: 'Jerusalem Post' }, { name: 'LA Times' }, { name: 'NY Daily' }, { name: 'NY Post' }, { name: 'NY Times' }, { name: 'News Busters' }, { name: 'Newsmax' }, { name: 'Politico' }, { name: 'Radar Online' }, { name: 'Real Clear Politics' }, { name: 'Roll Call' }, { name: 'Rolling Stone' }, { name: 'Sky News' }, { name: 'Times' }, { name: 'TMZ' }, { name: 'Daily Mail' }, { name: 'Express News' }, { name: 'The Independent' }, { name: 'The Sun' }, { name: 'US News' }, { name: 'USA Today' }, { name: 'Variety' }, { name: 'Wall Street Journal' }, { name: 'The Washington Examiner' }, { name: 'The Washington Post' }, { name: 'The Washington Times' }, { name: 'Weekly Standard' }, { name: 'Zero Hedge' }];
+
+/***/ }),
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37685,12 +37718,21 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-exports.default = function (camelCase) {
-    return camelCase.replace(/([A-Z])/g, function (match) {
-        return " " + match;
-    }).replace(/^./, function (match) {
-        return match.toUpperCase();
-    });
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (_ref) {
+    var items = _ref.items;
+
+    console.log('items from BoxMultiSelect', items);
+    return _react2.default.createElement(
+        'div',
+        null,
+        'hello box multiselect!'
+    );
 };
 
 /***/ })

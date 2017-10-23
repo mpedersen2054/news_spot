@@ -2,7 +2,9 @@
 import React, { Component } from 'react'
 import { Row, Col, Collapse, Button, CardBody, Card } from 'reactstrap'
 import { Icon } from 'react-fa'
-import startCase from '../helpers/startCase'
+import outlets from '../data/outlets'
+
+import BoxMultiSelect from './BoxMultiSelect'
 
 export default class StoriesFilter extends Component {
     constructor(props) {
@@ -24,7 +26,12 @@ export default class StoriesFilter extends Component {
                 { name: 'Right', selected: false },
                 { name: 'Independant', selected: false },
                 { name: 'Any', selected: true },
-            ]
+            ],
+            // import a data obj, might want to query for this in future?
+            outlets: outlets.map((outlet, idx) => {
+                outlet.selected = (idx === 0) ? true : false
+                return outlet
+            })
         }
     }
     toggleCollapse() {
@@ -82,6 +89,7 @@ export default class StoriesFilter extends Component {
         )
     }
     render() {
+        console.log(this.state)
         return(
             <div className="stories-filter">
                 <a href="#" onClick={this.toggleCollapse}>
@@ -105,9 +113,13 @@ export default class StoriesFilter extends Component {
                                     </div>
                                 </Col>
                             </Row>
+                            <hr/>
                             <Row>
                                 <Col md="12">
-                                    <div className="filter-section outlets"></div>
+                                    <div className="filter-section outlets">
+                                        <div className="head">Outlets</div>
+                                        <BoxMultiSelect items={this.state.outlets} />
+                                    </div>
                                 </Col>
                             </Row>
                             <Row>
