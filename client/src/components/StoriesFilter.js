@@ -16,6 +16,7 @@ export default class StoriesFilter extends Component {
         this.selectFromSelectList = this.selectFromSelectList.bind(this)
         this.selectFromBoxMultiSelect = this.selectFromBoxMultiSelect.bind(this)
         this.addKeyword = this.addKeyword.bind(this)
+        this.removeKeyword = this.removeKeyword.bind(this)
         this.state = {
             // collapse: false,
             collapse: true, // open on start
@@ -88,11 +89,20 @@ export default class StoriesFilter extends Component {
     }
     addKeyword(word) {
         console.log('hello world!', word)
-        const kwObj = { id: this.state.keywords.length, name: word }
+        const kwObj = { name: word }
         this.setState({
             keywords: [
                 ...this.state.keywords,
                 kwObj
+            ]
+        })
+    }
+    removeKeyword(keywordId) {
+        console.log('removing kw', keywordId)
+        this.setState({
+            keywords: [
+                ...this.state.keywords.slice(0, keywordId),
+                ...this.state.keywords.slice(keywordId + 1)
             ]
         })
     }
@@ -158,8 +168,21 @@ export default class StoriesFilter extends Component {
                                         <div className="head">Keywords</div>
                                         <Keywords
                                             keywords={this.state.keywords}
-                                            addKeyword={this.addKeyword} />
+                                            addKeyword={this.addKeyword}
+                                            removeKeyword={this.removeKeyword} />
                                     </div>
+                                </Col>
+                            </Row>
+                            <hr/>
+                            <Row>
+                                <Col md="12">
+                                    {/* To use a block button or normal...? */}
+                                    <Button
+                                        color="primary"
+                                        size="lg"
+                                        block>
+                                            Update
+                                    </Button>
                                 </Col>
                             </Row>
                         </CardBody>

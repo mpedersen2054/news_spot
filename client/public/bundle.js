@@ -9236,7 +9236,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, "html {\n  font-size: 16px;\n  height: 100%;\n  box-sizing: border-box; }\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit; }\n\nbody {\n  position: relative;\n  padding-bottom: 6rem;\n  min-height: 100%; }\n\n.page-content {\n  padding: 1.5rem 0 1.5rem; }\n", ""]);
+exports.push([module.i, "html {\n  font-size: 16px;\n  height: 100%;\n  box-sizing: border-box; }\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit; }\n\nbody {\n  position: relative;\n  padding-bottom: 6rem;\n  min-height: 100%; }\n\n.page-content {\n  padding: 1.5rem 0 1.5rem; }\n\nbutton {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -36162,7 +36162,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 0.5rem;\n  padding-top: 0.5rem;\n  border-top: 1px solid #f8f9fa; }\n  .keyword-badges .kw {\n    padding: 0.25rem 0.5rem;\n    margin: 0 0.5rem 0.5rem 0;\n    font-size: 1rem;\n    font-weight: 400;\n    cursor: pointer; }\n    .keyword-badges .kw:hover .kw-close {\n      color: red; }\n  .keyword-badges .kw-text {\n    font-weight: 400; }\n  .keyword-badges .kw-close {\n    margin-left: 0.4rem;\n    color: #2f4bac; }\n", ""]);
+exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 1rem;\n  padding-top: 0.5rem;\n  border-top: 1px solid #f8f9fa;\n  min-height: 2.75rem; }\n  .keyword-badges .kw {\n    padding: 0.25rem 0.5rem;\n    margin: 0 0.5rem 0.5rem 0;\n    font-size: 1rem;\n    font-weight: 400;\n    cursor: pointer; }\n    .keyword-badges .kw:hover .kw-close {\n      color: red; }\n  .keyword-badges .kw-text {\n    font-weight: 400; }\n  .keyword-badges .kw-close {\n    margin-left: 0.4rem;\n    color: #2f4bac; }\n", ""]);
 
 // exports
 
@@ -37470,6 +37470,7 @@ var StoriesFilter = function (_Component) {
         _this.selectFromSelectList = _this.selectFromSelectList.bind(_this);
         _this.selectFromBoxMultiSelect = _this.selectFromBoxMultiSelect.bind(_this);
         _this.addKeyword = _this.addKeyword.bind(_this);
+        _this.removeKeyword = _this.removeKeyword.bind(_this);
         _this.state = {
             // collapse: false,
             collapse: true, // open on start
@@ -37532,9 +37533,17 @@ var StoriesFilter = function (_Component) {
         key: 'addKeyword',
         value: function addKeyword(word) {
             console.log('hello world!', word);
-            var kwObj = { id: this.state.keywords.length, name: word };
+            var kwObj = { name: word };
             this.setState({
                 keywords: [].concat(_toConsumableArray(this.state.keywords), [kwObj])
+            });
+        }
+    }, {
+        key: 'removeKeyword',
+        value: function removeKeyword(keywordId) {
+            console.log('removing kw', keywordId);
+            this.setState({
+                keywords: [].concat(_toConsumableArray(this.state.keywords.slice(0, keywordId)), _toConsumableArray(this.state.keywords.slice(keywordId + 1)))
             });
         }
     }, {
@@ -37662,7 +37671,25 @@ var StoriesFilter = function (_Component) {
                                         ),
                                         _react2.default.createElement(_Keywords2.default, {
                                             keywords: this.state.keywords,
-                                            addKeyword: this.addKeyword })
+                                            addKeyword: this.addKeyword,
+                                            removeKeyword: this.removeKeyword })
+                                    )
+                                )
+                            ),
+                            _react2.default.createElement('hr', null),
+                            _react2.default.createElement(
+                                _reactstrap.Row,
+                                null,
+                                _react2.default.createElement(
+                                    _reactstrap.Col,
+                                    { md: '12' },
+                                    _react2.default.createElement(
+                                        _reactstrap.Button,
+                                        {
+                                            color: 'primary',
+                                            size: 'lg',
+                                            block: true },
+                                        'Update'
                                     )
                                 )
                             )
@@ -37830,6 +37857,7 @@ var Keywords = function (_Component) {
 
         _this.updateKeywordInput = _this.updateKeywordInput.bind(_this);
         _this.validateKeyword = _this.validateKeyword.bind(_this);
+        _this.clickKeyword = _this.clickKeyword.bind(_this);
         _this.state = {
             keywordInput: '',
             warnings: []
@@ -37874,8 +37902,16 @@ var Keywords = function (_Component) {
             }
         }
     }, {
+        key: 'clickKeyword',
+        value: function clickKeyword(e, keywordId) {
+            e.preventDefault();
+            this.props.removeKeyword(keywordId);
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this3 = this;
+
             return _react2.default.createElement(
                 'div',
                 { className: 'keywords' },
@@ -37915,20 +37951,28 @@ var Keywords = function (_Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'keyword-badges' },
-                            _react2.default.createElement(
-                                _reactstrap.Badge,
-                                { color: 'primary', className: 'kw' },
-                                _react2.default.createElement(
-                                    'span',
-                                    { className: 'kw-text' },
-                                    'Hello'
-                                ),
-                                _react2.default.createElement(
-                                    'span',
-                                    { className: 'kw-close' },
-                                    _react2.default.createElement(_reactFa.Icon, { name: 'times' })
-                                )
-                            )
+                            this.props.keywords.map(function (kw, i) {
+                                return _react2.default.createElement(
+                                    _reactstrap.Badge,
+                                    {
+                                        onClick: function onClick(e) {
+                                            return _this3.clickKeyword(e, i);
+                                        },
+                                        key: i,
+                                        color: 'primary',
+                                        className: 'kw' },
+                                    _react2.default.createElement(
+                                        'span',
+                                        { className: 'kw-text' },
+                                        kw.name
+                                    ),
+                                    _react2.default.createElement(
+                                        'span',
+                                        { className: 'kw-close' },
+                                        _react2.default.createElement(_reactFa.Icon, { name: 'times' })
+                                    )
+                                );
+                            })
                         )
                     )
                 )
