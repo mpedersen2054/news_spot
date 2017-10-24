@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import { Row, Col, Form, Input, Badge } from 'reactstrap'
+import { Icon } from 'react-fa'
 
 export default class Keywords extends Component {
     constructor() {
@@ -65,11 +66,15 @@ export default class Keywords extends Component {
                         </Form>
                     </Col>
                 </Row>
-                <Row className="keyword-badges">
-                    <Col md="2">hello</Col>
-                    <Col md="2">hello</Col>
-                    <Col md="2">hello</Col>
-                    <Col md="2">hello</Col>
+                <Row>
+                    <Col md="12">
+                        <div className="keyword-badges">
+                            <Badge color="primary" className="kw">
+                                <span className="kw-text">Hello</span>
+                                <span className="kw-close"><Icon name="times" /></span>
+                            </Badge>
+                        </div>
+                    </Col>
                 </Row>
             </div>
         )
