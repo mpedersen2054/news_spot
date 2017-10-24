@@ -3,7 +3,7 @@ let Scraper = require('./base')
 module.exports = class FreeBeacon extends Scraper {
     constructor(urls) {
         super()
-        this.name = 'http://freebeacon.com/'
+        this.name = 'Free Beacon'
         this.leaning = 'r'
         this.website = 'http://freebeacon.com/'
         this.urls = [

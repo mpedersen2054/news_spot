@@ -3,9 +3,11 @@ import React, { Component } from 'react'
 import { Row, Col, Collapse, Button, CardBody, Card } from 'reactstrap'
 import { Icon } from 'react-fa'
 import outlets from '../data/outlets'
+import categories from '../data/categories'
 
 import SelectList from './SelectList'
 import BoxMultiSelect from './BoxMultiSelect'
+import Keywords from './Keywords'
 
 export default class StoriesFilter extends Component {
     constructor(props) {
@@ -32,6 +34,10 @@ export default class StoriesFilter extends Component {
             outlets: outlets.map((outlet, idx) => {
                 outlet.selected = (idx === 0) ? true : false
                 return outlet
+            }),
+            categories: categories.map((cat, idx) => {
+                cat.selected = (idx === 0) ? true : false
+                return cat
             })
         }
     }
@@ -62,7 +68,7 @@ export default class StoriesFilter extends Component {
                     <Card>
                         <CardBody>
                             <Row>
-                                <Col md="6">
+                                <Col xs="12" sm="6" md="6">
                                     <div className="filter-section uploaded-at">
                                         <div className="head">Uploaded At</div>
                                         <SelectList
@@ -71,7 +77,7 @@ export default class StoriesFilter extends Component {
                                             select={this.selectFromSelectList} />
                                     </div>
                                 </Col>
-                                <Col md="6">
+                                <Col xs="12" sm="6" md="6">
                                     <div className="filter-section political-leaning">
                                         <div className="head">Political Leaning</div>
                                         <SelectList
@@ -90,14 +96,22 @@ export default class StoriesFilter extends Component {
                                     </div>
                                 </Col>
                             </Row>
+                            <hr/>
                             <Row>
                                 <Col md="12">
-                                    <div className="filter-section categories"></div>
+                                    <div className="filter-section categories">
+                                        <div className="head">Categories</div>
+                                        <BoxMultiSelect items={this.state.categories} />
+                                    </div>
                                 </Col>
                             </Row>
+                            <hr/>
                             <Row>
                                 <Col md="12">
-                                    <div className="filter-section keywords"></div>
+                                    <div className="filter-section keywords">
+                                        <div className="head">Keywords</div>
+                                        <Keywords />
+                                    </div>
                                 </Col>
                             </Row>
                         </CardBody>

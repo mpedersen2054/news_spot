@@ -1,0 +1,26 @@
+
+export default [
+    { id: 0, uniq: 'all', name: 'All' },
+    { id: 1, uniq: 'top', name: 'Top' },
+    { id: 2, uniq: 'international', name: 'International' },
+    { id: 3, uniq: 'us', name: 'US' },
+    { id: 4, uniq: 'politics', name: 'Politics' },
+    { id: 5, uniq: 'misc', name: 'Miscellaneous' },
+    { id: 6, uniq: 'economy', name: 'Economy' },
+    { id: 7, uniq: 'technology', name: 'Technology' },
+    { id: 8, uniq: 'health', name: 'Health' },
+    { id: 9, uniq: 'entertainment', name: 'Entertainment' },
+    { id: 10, uniq: 'travel', name: 'Travel' },
+    { id: 11, uniq: 'sports', name: 'Sports' },
+    { id: 12, uniq: 'uk', name: 'UK' },
+    { id: 13, uniq: 'education', name: 'Education' },
+    { id: 14, uniq: 'science', name: 'Science' },
+    { id: 15, uniq: 'asia', name: 'Asia' },
+    { id: 16, uniq: 'eu', name: 'EU' },
+    { id: 17, uniq: 'music', name: 'Music' },
+    { id: 18, uniq: 'cn', name: 'Canada' },
+    { id: 19, uniq: 'me', name: 'Middle East' },
+    { id: 20, uniq: 'af', name: 'Africa' },
+    { id: 21, uniq: 'environment', name: 'Environment' },
+    { id: 23, uniq: 'opinion', name: 'Opinion' }
+]

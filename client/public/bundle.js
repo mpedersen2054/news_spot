@@ -37430,6 +37430,10 @@ var _outlets = __webpack_require__(145);
 
 var _outlets2 = _interopRequireDefault(_outlets);
 
+var _categories = __webpack_require__(148);
+
+var _categories2 = _interopRequireDefault(_categories);
+
 var _SelectList = __webpack_require__(147);
 
 var _SelectList2 = _interopRequireDefault(_SelectList);
@@ -37437,6 +37441,10 @@ var _SelectList2 = _interopRequireDefault(_SelectList);
 var _BoxMultiSelect = __webpack_require__(146);
 
 var _BoxMultiSelect2 = _interopRequireDefault(_BoxMultiSelect);
+
+var _Keywords = __webpack_require__(149);
+
+var _Keywords2 = _interopRequireDefault(_Keywords);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37466,6 +37474,10 @@ var StoriesFilter = function (_Component) {
             outlets: _outlets2.default.map(function (outlet, idx) {
                 outlet.selected = idx === 0 ? true : false;
                 return outlet;
+            }),
+            categories: _categories2.default.map(function (cat, idx) {
+                cat.selected = idx === 0 ? true : false;
+                return cat;
             })
         };
         return _this;
@@ -37517,7 +37529,7 @@ var StoriesFilter = function (_Component) {
                                 null,
                                 _react2.default.createElement(
                                     _reactstrap.Col,
-                                    { md: '6' },
+                                    { xs: '12', sm: '6', md: '6' },
                                     _react2.default.createElement(
                                         'div',
                                         { className: 'filter-section uploaded-at' },
@@ -37534,7 +37546,7 @@ var StoriesFilter = function (_Component) {
                                 ),
                                 _react2.default.createElement(
                                     _reactstrap.Col,
-                                    { md: '6' },
+                                    { xs: '12', sm: '6', md: '6' },
                                     _react2.default.createElement(
                                         'div',
                                         { className: 'filter-section political-leaning' },
@@ -37569,22 +37581,42 @@ var StoriesFilter = function (_Component) {
                                     )
                                 )
                             ),
+                            _react2.default.createElement('hr', null),
                             _react2.default.createElement(
                                 _reactstrap.Row,
                                 null,
                                 _react2.default.createElement(
                                     _reactstrap.Col,
                                     { md: '12' },
-                                    _react2.default.createElement('div', { className: 'filter-section categories' })
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'filter-section categories' },
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'head' },
+                                            'Categories'
+                                        ),
+                                        _react2.default.createElement(_BoxMultiSelect2.default, { items: this.state.categories })
+                                    )
                                 )
                             ),
+                            _react2.default.createElement('hr', null),
                             _react2.default.createElement(
                                 _reactstrap.Row,
                                 null,
                                 _react2.default.createElement(
                                     _reactstrap.Col,
                                     { md: '12' },
-                                    _react2.default.createElement('div', { className: 'filter-section keywords' })
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'filter-section keywords' },
+                                        _react2.default.createElement(
+                                            'div',
+                                            { className: 'head' },
+                                            'Keywords'
+                                        ),
+                                        _react2.default.createElement(_Keywords2.default, null)
+                                    )
                                 )
                             )
                         )
@@ -37660,9 +37692,7 @@ exports.default = StoriesList;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = [{ name: 'All' }, { name: 'ABC News' }, { name: 'BBC News' }, { name: 'CBS News' }, { name: 'CNBC News' }, { name: 'CNN News' }, { name: 'The Atlanic' },
-// { name: 'Boston Globe' },
-{ name: 'The Chicago Sun' }, { name: 'Christian Science' }, { name: 'The Daily Caller' }, { name: 'Der Spiegel' }, { name: 'EOnline' }, { name: 'The Economist' }, { name: 'Fox News' }, { name: 'France 24' }, { name: 'Free Beacon' }, { name: 'The Hill' }, { name: 'Huffington Post' }, { name: 'Infowars' }, { name: 'The Intercept' }, { name: 'Jerusalem Post' }, { name: 'LA Times' }, { name: 'NY Daily' }, { name: 'NY Post' }, { name: 'NY Times' }, { name: 'News Busters' }, { name: 'Newsmax' }, { name: 'Politico' }, { name: 'Radar Online' }, { name: 'Real Clear Politics' }, { name: 'Roll Call' }, { name: 'Rolling Stone' }, { name: 'Sky News' }, { name: 'Times' }, { name: 'TMZ' }, { name: 'Daily Mail' }, { name: 'Express News' }, { name: 'The Independent' }, { name: 'The Sun' }, { name: 'US News' }, { name: 'USA Today' }, { name: 'Variety' }, { name: 'Wall Street Journal' }, { name: 'The Washington Examiner' }, { name: 'The Washington Post' }, { name: 'The Washington Times' }, { name: 'Weekly Standard' }, { name: 'Zero Hedge' }];
+exports.default = [{ id: 0, name: 'All' }, { id: 1, name: 'ABC News' }, { id: 2, name: 'BBC News' }, { id: 3, name: 'CBS News' }, { id: 4, name: 'CNBC News' }, { id: 5, name: 'CNN News' }, { id: 6, name: 'The Atlanic' }, { id: 7, name: 'The Chicago Sun' }, { id: 8, name: 'Christian Science' }, { id: 9, name: 'The Daily Caller' }, { id: 10, name: 'Der Spiegel' }, { id: 11, name: 'EOnline' }, { id: 12, name: 'The Economist' }, { id: 13, name: 'Fox News' }, { id: 14, name: 'France 24' }, { id: 15, name: 'Free Beacon' }, { id: 16, name: 'The Hill' }, { id: 17, name: 'Huffington Post' }, { id: 18, name: 'Infowars' }, { id: 19, name: 'The Intercept' }, { id: 20, name: 'Jerusalem Post' }, { id: 21, name: 'LA Times' }, { id: 22, name: 'NY Daily' }, { id: 23, name: 'NY Post' }, { id: 24, name: 'NY Times' }, { id: 25, name: 'News Busters' }, { id: 26, name: 'Newsmax' }, { id: 27, name: 'Politico' }, { id: 28, name: 'Radar Online' }, { id: 29, name: 'Real Clear Politics' }, { id: 30, name: 'Roll Call' }, { id: 31, name: 'Rolling Stone' }, { id: 32, name: 'Sky News' }, { id: 33, name: 'Times' }, { id: 34, name: 'TMZ' }, { id: 35, name: 'Daily Mail' }, { id: 36, name: 'Express News' }, { id: 37, name: 'The Independent' }, { id: 38, name: 'The Sun' }, { id: 39, name: 'US News' }, { id: 40, name: 'USA Today' }, { id: 41, name: 'Variety' }, { id: 42, name: 'Wall Street Journal' }, { id: 43, name: 'The Washington Examiner' }, { id: 44, name: 'The Washington Post' }, { id: 45, name: 'The Washington Times' }, { id: 46, name: 'Weekly Standard' }, { id: 47, name: 'Zero Hedge' }];
 
 /***/ }),
 /* 146 */
@@ -37695,7 +37725,7 @@ exports.default = function (_ref) {
             items.map(function (item, idx) {
                 return _react2.default.createElement(
                     _reactstrap.Col,
-                    { xs: '6', sm: '4', md: '3', lg: '2', className: 'box' },
+                    { xs: '6', sm: '4', md: '3', lg: '2', key: item.id, className: 'box' },
                     item.name
                 );
             })
@@ -37742,6 +37772,68 @@ exports.default = function (_ref) {
         })
     );
 };
+
+/***/ }),
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = [{ id: 0, uniq: 'all', name: 'All' }, { id: 1, uniq: 'top', name: 'Top' }, { id: 2, uniq: 'international', name: 'International' }, { id: 3, uniq: 'us', name: 'US' }, { id: 4, uniq: 'politics', name: 'Politics' }, { id: 5, uniq: 'misc', name: 'Miscellaneous' }, { id: 6, uniq: 'economy', name: 'Economy' }, { id: 7, uniq: 'technology', name: 'Technology' }, { id: 8, uniq: 'health', name: 'Health' }, { id: 9, uniq: 'entertainment', name: 'Entertainment' }, { id: 10, uniq: 'travel', name: 'Travel' }, { id: 11, uniq: 'sports', name: 'Sports' }, { id: 12, uniq: 'uk', name: 'UK' }, { id: 13, uniq: 'education', name: 'Education' }, { id: 14, uniq: 'science', name: 'Science' }, { id: 15, uniq: 'asia', name: 'Asia' }, { id: 16, uniq: 'eu', name: 'EU' }, { id: 17, uniq: 'music', name: 'Music' }, { id: 18, uniq: 'cn', name: 'Canada' }, { id: 19, uniq: 'me', name: 'Middle East' }, { id: 20, uniq: 'af', name: 'Africa' }, { id: 21, uniq: 'environment', name: 'Environment' }, { id: 23, uniq: 'opinion', name: 'Opinion' }];
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Keywords = function (_Component) {
+    _inherits(Keywords, _Component);
+
+    function Keywords() {
+        _classCallCheck(this, Keywords);
+
+        return _possibleConstructorReturn(this, (Keywords.__proto__ || Object.getPrototypeOf(Keywords)).apply(this, arguments));
+    }
+
+    _createClass(Keywords, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                'Hello there keyworlds!'
+            );
+        }
+    }]);
+
+    return Keywords;
+}(_react.Component);
+
+exports.default = Keywords;
 
 /***/ })
 /******/ ]);

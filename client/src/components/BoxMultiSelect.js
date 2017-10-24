@@ -8,7 +8,7 @@ export default ({items}) => {
             <Row>
                 {items.map((item, idx) => {
                     return(
-                        <Col xs="6" sm="4" md="3" lg="2" className="box">
+                        <Col xs="6" sm="4" md="3" lg="2" key={item.id} className="box">
                             {item.name}
                         </Col>
                     )

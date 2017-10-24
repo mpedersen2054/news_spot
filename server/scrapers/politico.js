@@ -14,7 +14,7 @@ module.exports = class Politico extends Scraper {
             { title: 'energy_news', url: 'http://www.politico.com/rss/energy.xml', category: 'economy' },
             { title: 'politics_news', url: 'http://www.politico.com/rss/politics08.xml', category: 'politics' },
             { title: 'technology_news', url: 'http://www.politico.com/rss/morningtech.xml', category: 'technology' },
-            { title: 'money_news', url: 'http://www.politico.com/rss/morningmoney.xml', category: 'ecoonomy' },
+            { title: 'money_news', url: 'http://www.politico.com/rss/morningmoney.xml', category: 'economy' },
             { title: 'transportation_news', url: 'http://www.politico.com/rss/morningtransportation.xml', category: 'travel' },
             { title: 'education_news', url: 'http://www.politico.com/rss/morningeducation.xml', category: 'education' },
             { title: 'agriculture_news', url: 'http://www.politico.com/rss/morningagriculture.xml', category: 'environment' },
