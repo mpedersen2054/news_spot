@@ -17,22 +17,23 @@ export default class StoriesFilter extends Component {
         this.selectFromBoxMultiSelect = this.selectFromBoxMultiSelect.bind(this)
         this.addKeyword = this.addKeyword.bind(this)
         this.removeKeyword = this.removeKeyword.bind(this)
+        this.submitFilterOpts = this.submitFilterOpts.bind(this)
         this.state = {
             // collapse: false,
             collapse: true, // open on start
             uploadedAt: [
-                { name: 'Last Hour', selected: false },
-                { name: 'Today', selected: false },
-                { name: 'This Week', selected: false },
-                { name: 'This Month', selected: false },
-                { name: 'This Year', selected: false },
-                { name: 'All', selected: true }
+                { name: 'Last Hour', uniq: 'hour', selected: false },
+                { name: 'Today', uniq: 'today', selected: false },
+                { name: 'This Week', uniq: 'week', selected: false },
+                { name: 'This Month', uniq: 'month', selected: false },
+                { name: 'This Year', uniq: 'year', selected: false },
+                { name: 'All', uniq: 'all', selected: true }
             ],
             politicalLeaning: [
-                { name: 'Left', selected: false },
-                { name: 'Right', selected: false },
-                { name: 'Independant', selected: false },
-                { name: 'Any', selected: true },
+                { name: 'Left', uniq: 'l', selected: false },
+                { name: 'Right', uniq: 'r', selected: false },
+                { name: 'Independant', uniq: 'i', selected: false },
+                { name: 'Any', uniq: 'a', selected: true },
             ],
             // import a data obj, might want to query for this in future?
             outlets: outlets.map((outlet, idx) => {
@@ -106,6 +107,40 @@ export default class StoriesFilter extends Component {
             ]
         })
     }
+    submitFilterOpts() {
+        const { uploadedAt, politicalLeaning, outlets, categories, keywords } = this.state
+        // get the names of whats selected
+        const selUploadedAt = uploadedAt.find(opt => opt.selected)
+        const selPolitcalLeaning = politicalLeaning.find(opt => opt.selected)
+        // create an object that will have the opts only if they are not default
+        let filterOpts = {}
+        // if uploadedAt is not only 'Any'
+        if (selUploadedAt.name !== 'All') {
+            filterOpts['uploadedAt'] = selUploadedAt.uniq
+        }
+        // if politicalLeaning is not only 'Any'
+        if (selPolitcalLeaning.name !== 'Any') {
+            filterOpts['politicalLeaning'] = selPolitcalLeaning.uniq
+        }
+        // if outlets is not only 'All'
+        if (!outlets[0].selected) {
+            filterOpts['outlets'] = outlets
+                .filter(o => o.selected)
+                .map(o => o.id)
+        }
+        // if categories is not only 'All'
+        if (!categories[0].selected) {
+            filterOpts['categories'] = categories
+                .filter(c => c.selected)
+                .map(c => c.uniq)
+        }
+        // if keywords is not empty
+        if (keywords.length > 0) {
+            filterOpts['keywords'] = keywords.map(k => k.name.toLowerCase())
+        }
+
+        // call something
+    }
     render() {
         console.log(this.state)
         return(
@@ -178,6 +213,7 @@ export default class StoriesFilter extends Component {
                                 <Col md="12">
                                     {/* To use a block button or normal...? */}
                                     <Button
+                                        onClick={this.submitFilterOpts}
                                         color="primary"
                                         size="lg"
                                         block>

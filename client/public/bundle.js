@@ -37471,11 +37471,12 @@ var StoriesFilter = function (_Component) {
         _this.selectFromBoxMultiSelect = _this.selectFromBoxMultiSelect.bind(_this);
         _this.addKeyword = _this.addKeyword.bind(_this);
         _this.removeKeyword = _this.removeKeyword.bind(_this);
+        _this.submitFilterOpts = _this.submitFilterOpts.bind(_this);
         _this.state = {
             // collapse: false,
             collapse: true, // open on start
-            uploadedAt: [{ name: 'Last Hour', selected: false }, { name: 'Today', selected: false }, { name: 'This Week', selected: false }, { name: 'This Month', selected: false }, { name: 'This Year', selected: false }, { name: 'All', selected: true }],
-            politicalLeaning: [{ name: 'Left', selected: false }, { name: 'Right', selected: false }, { name: 'Independant', selected: false }, { name: 'Any', selected: true }],
+            uploadedAt: [{ name: 'Last Hour', uniq: 'hour', selected: false }, { name: 'Today', uniq: 'today', selected: false }, { name: 'This Week', uniq: 'week', selected: false }, { name: 'This Month', uniq: 'month', selected: false }, { name: 'This Year', uniq: 'year', selected: false }, { name: 'All', uniq: 'all', selected: true }],
+            politicalLeaning: [{ name: 'Left', uniq: 'l', selected: false }, { name: 'Right', uniq: 'r', selected: false }, { name: 'Independant', uniq: 'i', selected: false }, { name: 'Any', uniq: 'a', selected: true }],
             // import a data obj, might want to query for this in future?
             outlets: _outlets2.default.map(function (outlet, idx) {
                 outlet.selected = idx === 0 ? true : false;
@@ -37545,6 +37546,58 @@ var StoriesFilter = function (_Component) {
             this.setState({
                 keywords: [].concat(_toConsumableArray(this.state.keywords.slice(0, keywordId)), _toConsumableArray(this.state.keywords.slice(keywordId + 1)))
             });
+        }
+    }, {
+        key: 'submitFilterOpts',
+        value: function submitFilterOpts() {
+            var _state = this.state,
+                uploadedAt = _state.uploadedAt,
+                politicalLeaning = _state.politicalLeaning,
+                outlets = _state.outlets,
+                categories = _state.categories,
+                keywords = _state.keywords;
+            // get the names of whats selected
+
+            var selUploadedAt = uploadedAt.find(function (opt) {
+                return opt.selected;
+            });
+            var selPolitcalLeaning = politicalLeaning.find(function (opt) {
+                return opt.selected;
+            });
+            // create an object that will have the opts only if they are not default
+            var filterOpts = {};
+            // if uploadedAt is not only 'Any'
+            if (selUploadedAt.name !== 'All') {
+                filterOpts['uploadedAt'] = selUploadedAt.uniq;
+            }
+            // if politicalLeaning is not only 'Any'
+            if (selPolitcalLeaning.name !== 'Any') {
+                filterOpts['politicalLeaning'] = selPolitcalLeaning.uniq;
+            }
+            // if outlets is not only 'All'
+            if (!outlets[0].selected) {
+                filterOpts['outlets'] = outlets.filter(function (o) {
+                    return o.selected;
+                }).map(function (o) {
+                    return o.id;
+                });
+            }
+            // if categories is not only 'All'
+            if (!categories[0].selected) {
+                filterOpts['categories'] = categories.filter(function (c) {
+                    return c.selected;
+                }).map(function (c) {
+                    return c.uniq;
+                });
+            }
+            // if keywords is not empty
+            if (keywords.length > 0) {
+                filterOpts['keywords'] = keywords.map(function (k) {
+                    return k.name.toLowerCase();
+                });
+            }
+
+            // call something
         }
     }, {
         key: 'render',
@@ -37686,6 +37739,7 @@ var StoriesFilter = function (_Component) {
                                     _react2.default.createElement(
                                         _reactstrap.Button,
                                         {
+                                            onClick: this.submitFilterOpts,
                                             color: 'primary',
                                             size: 'lg',
                                             block: true },
