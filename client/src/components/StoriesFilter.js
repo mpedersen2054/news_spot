@@ -4,13 +4,16 @@ import { Row, Col, Collapse, Button, CardBody, Card } from 'reactstrap'
 import { Icon } from 'react-fa'
 import outlets from '../data/outlets'
 
+import SelectList from './SelectList'
 import BoxMultiSelect from './BoxMultiSelect'
 
 export default class StoriesFilter extends Component {
     constructor(props) {
         super(props)
         this.toggleCollapse = this.toggleCollapse.bind(this)
-        this.selectUploadedAt = this.selectUploadedAt.bind(this)
+        this.selectFromSelectList = this.selectFromSelectList.bind(this)
+        // this.selectUploadedAt = this.selectUploadedAt.bind(this)
+        // this.selectPoliticalLeaning = this.selectPoliticalLeaning.bind(this)
         this.state = {
             collapse: false,
             uploadedAt: [
@@ -37,56 +40,17 @@ export default class StoriesFilter extends Component {
     toggleCollapse() {
         this.setState({ collapse: !this.state.collapse })
     }
-    selectUploadedAt(selectedIdx) {
+    selectFromSelectList(selectedIdx, listName) {
+        // combined to alter both 'updatedAt' & 'politicalLeaning'
+        const stateList = (listName === 'uploadedAt')
+            ? this.state.uploadedAt
+            : this.state.politicalLeaning
         this.setState({
-            uploadedAt: this.state.uploadedAt.map((item, idx) => {
+            [stateList]: stateList.map((item, idx) => {
                 item.selected = (selectedIdx === idx) ? true : false
                 return item
             })
         })
-    }
-    selectPoliticalLeaning(selectedIdx) {
-        console.log('hi there!', selectedIdx)
-        this.setState({
-            politicalLeaning: this.state.politicalLeaning.map((item, idx) => {
-                if (selectedIdx === idx) {
-                    item.selected = !item.selected
-                }
-                return item
-            })
-        })
-    }
-    renderUploadedAt() {
-        return(
-            <ul className="select-list">
-                {this.state.uploadedAt.map((item, idx) => {
-                    return(
-                        <li
-                            className={`select-item ${item.selected ? 'selected' : ''}`}
-                            key={idx}
-                            onClick={() => this.selectUploadedAt(idx)} >
-                                {item.name}
-                        </li>
-                    )
-                })}
-            </ul>
-        )
-    }
-    renderPoliticalLeaning() {
-        return(
-            <ul className="select-list">
-                {this.state.politicalLeaning.map((item, idx) => {
-                    return(
-                        <li
-                            className={`select-item ${item.selected ? 'selected' : ''}`}
-                            key={idx}
-                            onClick={() => this.selectPoliticalLeaning(idx)} >
-                                {item.name}
-                        </li>
-                    )
-                })}
-            </ul>
-        )
     }
     render() {
         console.log(this.state)
@@ -103,13 +67,19 @@ export default class StoriesFilter extends Component {
                                 <Col md="6">
                                     <div className="filter-section uploaded-at">
                                         <div className="head">Uploaded At</div>
-                                        {this.renderUploadedAt()}
+                                        <SelectList
+                                            name="uploadedAt"
+                                            items={this.state.uploadedAt}
+                                            select={this.selectFromSelectList} />
                                     </div>
                                 </Col>
                                 <Col md="6">
                                     <div className="filter-section political-leaning">
                                         <div className="head">Political Leaning</div>
-                                        {this.renderPoliticalLeaning()}
+                                        <SelectList
+                                            name="politicalLeaning"
+                                            items={this.state.politicalLeaning}
+                                            select={this.selectFromSelectList} />
                                     </div>
                                 </Col>
                             </Row>

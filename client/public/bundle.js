@@ -37430,11 +37430,17 @@ var _outlets = __webpack_require__(145);
 
 var _outlets2 = _interopRequireDefault(_outlets);
 
+var _SelectList = __webpack_require__(147);
+
+var _SelectList2 = _interopRequireDefault(_SelectList);
+
 var _BoxMultiSelect = __webpack_require__(146);
 
 var _BoxMultiSelect2 = _interopRequireDefault(_BoxMultiSelect);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -37451,7 +37457,9 @@ var StoriesFilter = function (_Component) {
         var _this = _possibleConstructorReturn(this, (StoriesFilter.__proto__ || Object.getPrototypeOf(StoriesFilter)).call(this, props));
 
         _this.toggleCollapse = _this.toggleCollapse.bind(_this);
-        _this.selectUploadedAt = _this.selectUploadedAt.bind(_this);
+        _this.selectFromSelectList = _this.selectFromSelectList.bind(_this);
+        // this.selectUploadedAt = this.selectUploadedAt.bind(this)
+        // this.selectPoliticalLeaning = this.selectPoliticalLeaning.bind(this)
         _this.state = {
             collapse: false,
             uploadedAt: [{ name: 'Last Hour', selected: false }, { name: 'Today', selected: false }, { name: 'This Week', selected: false }, { name: 'This Month', selected: false }, { name: 'This Year', selected: false }, { name: 'All', selected: true }],
@@ -37471,71 +37479,14 @@ var StoriesFilter = function (_Component) {
             this.setState({ collapse: !this.state.collapse });
         }
     }, {
-        key: 'selectUploadedAt',
-        value: function selectUploadedAt(selectedIdx) {
-            this.setState({
-                uploadedAt: this.state.uploadedAt.map(function (item, idx) {
-                    item.selected = selectedIdx === idx ? true : false;
-                    return item;
-                })
-            });
-        }
-    }, {
-        key: 'selectPoliticalLeaning',
-        value: function selectPoliticalLeaning(selectedIdx) {
-            console.log('hi there!', selectedIdx);
-            this.setState({
-                politicalLeaning: this.state.politicalLeaning.map(function (item, idx) {
-                    if (selectedIdx === idx) {
-                        item.selected = !item.selected;
-                    }
-                    return item;
-                })
-            });
-        }
-    }, {
-        key: 'renderUploadedAt',
-        value: function renderUploadedAt() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'ul',
-                { className: 'select-list' },
-                this.state.uploadedAt.map(function (item, idx) {
-                    return _react2.default.createElement(
-                        'li',
-                        {
-                            className: 'select-item ' + (item.selected ? 'selected' : ''),
-                            key: idx,
-                            onClick: function onClick() {
-                                return _this2.selectUploadedAt(idx);
-                            } },
-                        item.name
-                    );
-                })
-            );
-        }
-    }, {
-        key: 'renderPoliticalLeaning',
-        value: function renderPoliticalLeaning() {
-            var _this3 = this;
-
-            return _react2.default.createElement(
-                'ul',
-                { className: 'select-list' },
-                this.state.politicalLeaning.map(function (item, idx) {
-                    return _react2.default.createElement(
-                        'li',
-                        {
-                            className: 'select-item ' + (item.selected ? 'selected' : ''),
-                            key: idx,
-                            onClick: function onClick() {
-                                return _this3.selectPoliticalLeaning(idx);
-                            } },
-                        item.name
-                    );
-                })
-            );
+        key: 'selectFromSelectList',
+        value: function selectFromSelectList(selectedIdx, listName) {
+            // combined to alter both 'updatedAt' & 'politicalLeaning'
+            var stateList = listName === 'uploadedAt' ? this.state.uploadedAt : this.state.politicalLeaning;
+            this.setState(_defineProperty({}, stateList, stateList.map(function (item, idx) {
+                item.selected = selectedIdx === idx ? true : false;
+                return item;
+            })));
         }
     }, {
         key: 'render',
@@ -37577,7 +37528,10 @@ var StoriesFilter = function (_Component) {
                                             { className: 'head' },
                                             'Uploaded At'
                                         ),
-                                        this.renderUploadedAt()
+                                        _react2.default.createElement(_SelectList2.default, {
+                                            name: 'uploadedAt',
+                                            items: this.state.uploadedAt,
+                                            select: this.selectFromSelectList })
                                     )
                                 ),
                                 _react2.default.createElement(
@@ -37591,7 +37545,10 @@ var StoriesFilter = function (_Component) {
                                             { className: 'head' },
                                             'Political Leaning'
                                         ),
-                                        this.renderPoliticalLeaning()
+                                        _react2.default.createElement(_SelectList2.default, {
+                                            name: 'politicalLeaning',
+                                            items: this.state.politicalLeaning,
+                                            select: this.selectFromSelectList })
                                     )
                                 )
                             ),
@@ -37728,10 +37685,53 @@ exports.default = function (_ref) {
     var items = _ref.items;
 
     console.log('items from BoxMultiSelect', items);
+    var clicked = function clicked(e) {
+        console.log('clicked! ', e);
+    };
     return _react2.default.createElement(
         'div',
-        null,
+        { onClick: clicked },
         'hello box multiselect!'
+    );
+};
+
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (_ref) {
+    var name = _ref.name,
+        items = _ref.items,
+        select = _ref.select;
+
+    return _react2.default.createElement(
+        'ul',
+        { className: 'select-list' },
+        items.map(function (item, idx) {
+            return _react2.default.createElement(
+                'li',
+                {
+                    className: 'select-item ' + (item.selected ? 'selected' : ''),
+                    key: idx,
+                    onClick: function onClick() {
+                        return select(idx, name);
+                    } },
+                item.name
+            );
+        })
     );
 };
 
