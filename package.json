@@ -29,6 +29,7 @@
         "npm-run-all": "^4.1.1",
         "path": "0.12.7",
         "promise-map-series": "0.2.3",
+        "query-string": "5.0.1",
         "sanitize-html": "1.14.1",
         "sequelize": "4.11.3",
         "sequelize-cli": "3.0.0",

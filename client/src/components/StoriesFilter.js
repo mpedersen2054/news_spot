@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Row, Col, Collapse, Button, CardBody, Card } from 'reactstrap'
 import { Icon } from 'react-fa'
+import queryString from 'query-string'
 import outlets from '../data/outlets'
 import categories from '../data/categories'
 
@@ -139,7 +140,8 @@ export default class StoriesFilter extends Component {
             filterOpts['keywords'] = keywords.map(k => k.name.toLowerCase())
         }
 
-        // call something
+        // query for the stories
+        this.props.queryStories(queryString.stringify(filterOpts, { arrayFormat: 'bracket' }))
     }
     render() {
         console.log(this.state)
