@@ -37846,11 +37846,12 @@ var Keywords = function (_Component) {
             var _this2 = this;
 
             e.preventDefault();
-            // do validations
             var exists = this.props.keywords.some(function (kw) {
                 return kw.name.toLowerCase() === _this2.state.keywordInput.toLowerCase();
             });
             if (exists) {
+                // check if the warning is already there, if it is dont
+                // add another if it isnt add the warning into warnings
                 var existsWarning = 'That keyword already exists';
                 var existsWarningExists = this.state.warnings.some(function (warning) {
                     return warning === existsWarning;
@@ -37861,7 +37862,9 @@ var Keywords = function (_Component) {
                     });
                 }
             } else {
-                this.props.addKeyword(this.state.keywordInput);
+                var keyword = this.state.keywordInput.toLowerCase();
+                var capitalized = keyword[0].toUpperCase() + keyword.slice(1);
+                this.props.addKeyword(capitalized);
                 this.setState({
                     keywordInput: '',
                     warnings: []

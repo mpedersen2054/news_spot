@@ -17,11 +17,12 @@ export default class Keywords extends Component {
     }
     validateKeyword(e) {
         e.preventDefault()
-        // do validations
         const exists = this.props.keywords.some(kw => {
             return kw.name.toLowerCase() === this.state.keywordInput.toLowerCase()
         })
         if (exists) {
+            // check if the warning is already there, if it is dont
+            // add another if it isnt add the warning into warnings
             const existsWarning = 'That keyword already exists'
             const existsWarningExists = this.state.warnings.some(warning => {
                 return warning === existsWarning
@@ -35,7 +36,9 @@ export default class Keywords extends Component {
                 })
             }
         } else {
-            this.props.addKeyword(this.state.keywordInput)
+            const keyword = this.state.keywordInput.toLowerCase()
+            const capitalized = keyword[0].toUpperCase() + keyword.slice(1)
+            this.props.addKeyword(capitalized)
             this.setState({
                 keywordInput: '',
                 warnings: []
@@ -54,7 +57,9 @@ export default class Keywords extends Component {
                                 onChange={this.updateKeywordInput} />
                             <div className="warnings">
                                 {this.state.warnings.map((warning, i) => {
-                                    return <small key={i} className="text-danger warning">{warning}</small>
+                                    return <small key={i} className="text-danger warning">
+                                        {warning}
+                                    </small>
                                 })}
                             </div>
                         </Form>
