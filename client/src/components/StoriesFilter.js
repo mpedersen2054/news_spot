@@ -16,7 +16,8 @@ export default class StoriesFilter extends Component {
         this.selectFromSelectList = this.selectFromSelectList.bind(this)
         this.selectFromBoxMultiSelect = this.selectFromBoxMultiSelect.bind(this)
         this.state = {
-            collapse: false,
+            // collapse: false,
+            collapse: true, // open on start
             uploadedAt: [
                 { name: 'Last Hour', selected: false },
                 { name: 'Today', selected: false },
@@ -39,7 +40,8 @@ export default class StoriesFilter extends Component {
             categories: categories.map((cat, idx) => {
                 cat.selected = (idx === 0) ? true : false
                 return cat
-            })
+            }),
+            keywords: []
         }
     }
     toggleCollapse() {
@@ -69,7 +71,7 @@ export default class StoriesFilter extends Component {
                         item.selected = false
                     }
                     if (selectedIdx === idx) {
-                        item.selected = true
+                        item.selected = !item.selected
                     }
                 // if 'All' selected unselect everything else
                 } else {
@@ -82,6 +84,9 @@ export default class StoriesFilter extends Component {
                 return item
             })
         })
+    }
+    addKeyword(word) {
+        console.log('hello world!', word)
     }
     render() {
         console.log(this.state)
@@ -143,7 +148,9 @@ export default class StoriesFilter extends Component {
                                 <Col md="12">
                                     <div className="filter-section keywords">
                                         <div className="head">Keywords</div>
-                                        <Keywords />
+                                        <Keywords
+                                            keywords={this.state.keywords}
+                                            addKeyword={this.addKeyword} />
                                     </div>
                                 </Col>
                             </Row>

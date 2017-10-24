@@ -42,6 +42,11 @@
         cursor: pointer;
     }
     .box.selected {
-        background-color: $light-grey;
+        background-color: $medium-grey;
     }
+}
+
+.keywords {}
+.keyword-badges {
+    margin-top: 1rem;
 }
