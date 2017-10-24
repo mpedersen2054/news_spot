@@ -36162,7 +36162,7 @@ exports = module.exports = __webpack_require__(9)(undefined);
 
 
 // module
-exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keyword-badges {\n  margin-top: 1rem; }\n", ""]);
+exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 1rem;\n  border-top: 1px solid #f8f9fa; }\n", ""]);
 
 // exports
 
@@ -37448,6 +37448,8 @@ var _Keywords2 = _interopRequireDefault(_Keywords);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37467,6 +37469,7 @@ var StoriesFilter = function (_Component) {
         _this.toggleCollapse = _this.toggleCollapse.bind(_this);
         _this.selectFromSelectList = _this.selectFromSelectList.bind(_this);
         _this.selectFromBoxMultiSelect = _this.selectFromBoxMultiSelect.bind(_this);
+        _this.addKeyword = _this.addKeyword.bind(_this);
         _this.state = {
             // collapse: false,
             collapse: true, // open on start
@@ -37529,6 +37532,10 @@ var StoriesFilter = function (_Component) {
         key: 'addKeyword',
         value: function addKeyword(word) {
             console.log('hello world!', word);
+            var kwObj = { id: this.state.keywords.length, name: word };
+            this.setState({
+                keywords: [].concat(_toConsumableArray(this.state.keywords), [kwObj])
+            });
         }
     }, {
         key: 'render',
@@ -37803,6 +37810,8 @@ var _reactstrap = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -37820,7 +37829,8 @@ var Keywords = function (_Component) {
         _this.updateKeywordInput = _this.updateKeywordInput.bind(_this);
         _this.validateKeyword = _this.validateKeyword.bind(_this);
         _this.state = {
-            keywordInput: ''
+            keywordInput: '',
+            warnings: []
         };
         return _this;
     }
@@ -37833,10 +37843,30 @@ var Keywords = function (_Component) {
     }, {
         key: 'validateKeyword',
         value: function validateKeyword(e) {
+            var _this2 = this;
+
             e.preventDefault();
-            // do validations here eventually
-            this.props.addKeyword(this.state.keywordInput);
-            this.setState({ keywordInput: '' });
+            // do validations
+            var exists = this.props.keywords.some(function (kw) {
+                return kw.name.toLowerCase() === _this2.state.keywordInput.toLowerCase();
+            });
+            if (exists) {
+                var existsWarning = 'That keyword already exists';
+                var existsWarningExists = this.state.warnings.some(function (warning) {
+                    return warning === existsWarning;
+                });
+                if (!existsWarningExists) {
+                    this.setState({
+                        warnings: [].concat(_toConsumableArray(this.state.warnings), ['That keyword already exists'])
+                    });
+                }
+            } else {
+                this.props.addKeyword(this.state.keywordInput);
+                this.setState({
+                    keywordInput: '',
+                    warnings: []
+                });
+            }
         }
     }, {
         key: 'render',
@@ -37856,11 +37886,45 @@ var Keywords = function (_Component) {
                             _react2.default.createElement(_reactstrap.Input, {
                                 placeholder: 'Enter keyword...',
                                 value: this.state.keywordInput,
-                                onChange: this.updateKeywordInput })
+                                onChange: this.updateKeywordInput }),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'warnings' },
+                                this.state.warnings.map(function (warning, i) {
+                                    return _react2.default.createElement(
+                                        'small',
+                                        { key: i, className: 'text-danger warning' },
+                                        warning
+                                    );
+                                })
+                            )
                         )
                     )
                 ),
-                _react2.default.createElement(_reactstrap.Row, { className: 'keyword-badges' })
+                _react2.default.createElement(
+                    _reactstrap.Row,
+                    { className: 'keyword-badges' },
+                    _react2.default.createElement(
+                        _reactstrap.Col,
+                        { md: '2' },
+                        'hello'
+                    ),
+                    _react2.default.createElement(
+                        _reactstrap.Col,
+                        { md: '2' },
+                        'hello'
+                    ),
+                    _react2.default.createElement(
+                        _reactstrap.Col,
+                        { md: '2' },
+                        'hello'
+                    ),
+                    _react2.default.createElement(
+                        _reactstrap.Col,
+                        { md: '2' },
+                        'hello'
+                    )
+                )
             );
         }
     }]);

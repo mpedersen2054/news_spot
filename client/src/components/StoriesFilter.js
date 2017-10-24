@@ -15,6 +15,7 @@ export default class StoriesFilter extends Component {
         this.toggleCollapse = this.toggleCollapse.bind(this)
         this.selectFromSelectList = this.selectFromSelectList.bind(this)
         this.selectFromBoxMultiSelect = this.selectFromBoxMultiSelect.bind(this)
+        this.addKeyword = this.addKeyword.bind(this)
         this.state = {
             // collapse: false,
             collapse: true, // open on start
@@ -87,6 +88,13 @@ export default class StoriesFilter extends Component {
     }
     addKeyword(word) {
         console.log('hello world!', word)
+        const kwObj = { id: this.state.keywords.length, name: word }
+        this.setState({
+            keywords: [
+                ...this.state.keywords,
+                kwObj
+            ]
+        })
     }
     render() {
         console.log(this.state)

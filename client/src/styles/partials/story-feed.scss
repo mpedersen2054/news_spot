@@ -46,7 +46,12 @@
     }
 }
 
-.keywords {}
+.keywords {
+    .warning {
+        display: block;
+    }
+}
 .keyword-badges {
     margin-top: 1rem;
+    border-top: 1px solid $light-grey;
 }
