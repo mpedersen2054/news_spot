@@ -14,6 +14,7 @@ export default class StoriesFilter extends Component {
         super(props)
         this.toggleCollapse = this.toggleCollapse.bind(this)
         this.selectFromSelectList = this.selectFromSelectList.bind(this)
+        this.selectFromBoxMultiSelect = this.selectFromBoxMultiSelect.bind(this)
         this.state = {
             collapse: false,
             uploadedAt: [
@@ -56,6 +57,32 @@ export default class StoriesFilter extends Component {
             })
         })
     }
+    selectFromBoxMultiSelect(selectedIdx, listName) {
+        const stateList = (listName === 'outlets')
+            ? this.state.outlets
+            : this.state.categories
+        this.setState({
+            [stateList]: stateList.map((item, idx) => {
+                // if anything other than 'All' selected unselected 'All'
+                if (selectedIdx !== 0) {
+                    if (idx === 0) {
+                        item.selected = false
+                    }
+                    if (selectedIdx === idx) {
+                        item.selected = true
+                    }
+                // if 'All' selected unselect everything else
+                } else {
+                    if (idx === 0) {
+                        item.selected = true
+                    } else {
+                        item.selected = false
+                    }
+                }
+                return item
+            })
+        })
+    }
     render() {
         console.log(this.state)
         return(
@@ -92,7 +119,10 @@ export default class StoriesFilter extends Component {
                                 <Col md="12">
                                     <div className="filter-section outlets">
                                         <div className="head">Outlets</div>
-                                        <BoxMultiSelect items={this.state.outlets} />
+                                        <BoxMultiSelect
+                                            name="outlets"
+                                            items={this.state.outlets}
+                                            select={this.selectFromBoxMultiSelect} />
                                     </div>
                                 </Col>
                             </Row>
@@ -101,7 +131,10 @@ export default class StoriesFilter extends Component {
                                 <Col md="12">
                                     <div className="filter-section categories">
                                         <div className="head">Categories</div>
-                                        <BoxMultiSelect items={this.state.categories} />
+                                        <BoxMultiSelect
+                                            name="categories"
+                                            items={this.state.categories}
+                                            select={this.selectFromBoxMultiSelect} />
                                     </div>
                                 </Col>
                             </Row>

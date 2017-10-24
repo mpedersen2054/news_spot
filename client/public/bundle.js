@@ -36162,7 +36162,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box .row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.multi-select-box .box {\n  border: 0.5px solid #f8f9fa;\n  font-size: 0.9rem;\n  padding: 0.75rem 0;\n  text-align: center;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #f8f9fa; }\n", ""]);
 
 // exports
 
@@ -37466,6 +37466,7 @@ var StoriesFilter = function (_Component) {
 
         _this.toggleCollapse = _this.toggleCollapse.bind(_this);
         _this.selectFromSelectList = _this.selectFromSelectList.bind(_this);
+        _this.selectFromBoxMultiSelect = _this.selectFromBoxMultiSelect.bind(_this);
         _this.state = {
             collapse: false,
             uploadedAt: [{ name: 'Last Hour', selected: false }, { name: 'Today', selected: false }, { name: 'This Week', selected: false }, { name: 'This Month', selected: false }, { name: 'This Year', selected: false }, { name: 'All', selected: true }],
@@ -37495,6 +37496,30 @@ var StoriesFilter = function (_Component) {
             var stateList = listName === 'uploadedAt' ? this.state.uploadedAt : this.state.politicalLeaning;
             this.setState(_defineProperty({}, stateList, stateList.map(function (item, idx) {
                 item.selected = selectedIdx === idx ? true : false;
+                return item;
+            })));
+        }
+    }, {
+        key: 'selectFromBoxMultiSelect',
+        value: function selectFromBoxMultiSelect(selectedIdx, listName) {
+            var stateList = listName === 'outlets' ? this.state.outlets : this.state.categories;
+            this.setState(_defineProperty({}, stateList, stateList.map(function (item, idx) {
+                // if anything other than 'All' selected unselected 'All'
+                if (selectedIdx !== 0) {
+                    if (idx === 0) {
+                        item.selected = false;
+                    }
+                    if (selectedIdx === idx) {
+                        item.selected = true;
+                    }
+                    // if 'All' selected unselect everything else
+                } else {
+                    if (idx === 0) {
+                        item.selected = true;
+                    } else {
+                        item.selected = false;
+                    }
+                }
                 return item;
             })));
         }
@@ -37577,7 +37602,10 @@ var StoriesFilter = function (_Component) {
                                             { className: 'head' },
                                             'Outlets'
                                         ),
-                                        _react2.default.createElement(_BoxMultiSelect2.default, { items: this.state.outlets })
+                                        _react2.default.createElement(_BoxMultiSelect2.default, {
+                                            name: 'outlets',
+                                            items: this.state.outlets,
+                                            select: this.selectFromBoxMultiSelect })
                                     )
                                 )
                             ),
@@ -37596,7 +37624,10 @@ var StoriesFilter = function (_Component) {
                                             { className: 'head' },
                                             'Categories'
                                         ),
-                                        _react2.default.createElement(_BoxMultiSelect2.default, { items: this.state.categories })
+                                        _react2.default.createElement(_BoxMultiSelect2.default, {
+                                            name: 'categories',
+                                            items: this.state.categories,
+                                            select: this.selectFromBoxMultiSelect })
                                     )
                                 )
                             ),
@@ -37714,7 +37745,9 @@ var _reactstrap = __webpack_require__(13);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (_ref) {
-    var items = _ref.items;
+    var name = _ref.name,
+        items = _ref.items,
+        select = _ref.select;
 
     return _react2.default.createElement(
         'div',
@@ -37725,7 +37758,13 @@ exports.default = function (_ref) {
             items.map(function (item, idx) {
                 return _react2.default.createElement(
                     _reactstrap.Col,
-                    { xs: '6', sm: '4', md: '3', lg: '2', key: item.id, className: 'box' },
+                    {
+                        xs: '6', sm: '4', md: '3', lg: '2',
+                        key: item.id,
+                        className: 'box ' + (item.selected ? 'selected' : ''),
+                        onClick: function onClick() {
+                            return select(idx, name);
+                        } },
                     item.name
                 );
             })
@@ -37783,7 +37822,7 @@ exports.default = function (_ref) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = [{ id: 0, uniq: 'all', name: 'All' }, { id: 1, uniq: 'top', name: 'Top' }, { id: 2, uniq: 'international', name: 'International' }, { id: 3, uniq: 'us', name: 'US' }, { id: 4, uniq: 'politics', name: 'Politics' }, { id: 5, uniq: 'misc', name: 'Miscellaneous' }, { id: 6, uniq: 'economy', name: 'Economy' }, { id: 7, uniq: 'technology', name: 'Technology' }, { id: 8, uniq: 'health', name: 'Health' }, { id: 9, uniq: 'entertainment', name: 'Entertainment' }, { id: 10, uniq: 'travel', name: 'Travel' }, { id: 11, uniq: 'sports', name: 'Sports' }, { id: 12, uniq: 'uk', name: 'UK' }, { id: 13, uniq: 'education', name: 'Education' }, { id: 14, uniq: 'science', name: 'Science' }, { id: 15, uniq: 'asia', name: 'Asia' }, { id: 16, uniq: 'eu', name: 'EU' }, { id: 17, uniq: 'music', name: 'Music' }, { id: 18, uniq: 'cn', name: 'Canada' }, { id: 19, uniq: 'me', name: 'Middle East' }, { id: 20, uniq: 'af', name: 'Africa' }, { id: 21, uniq: 'environment', name: 'Environment' }, { id: 23, uniq: 'opinion', name: 'Opinion' }];
+exports.default = [{ id: 0, uniq: 'all', name: 'All' }, { id: 1, uniq: 'top', name: 'Top' }, { id: 2, uniq: 'international', name: 'International' }, { id: 3, uniq: 'us', name: 'US' }, { id: 4, uniq: 'politics', name: 'Politics' }, { id: 5, uniq: 'misc', name: 'Miscellaneous' }, { id: 6, uniq: 'economy', name: 'Economy' }, { id: 7, uniq: 'technology', name: 'Technology' }, { id: 8, uniq: 'health', name: 'Health' }, { id: 9, uniq: 'entertainment', name: 'Entertainment' }, { id: 10, uniq: 'travel', name: 'Travel' }, { id: 11, uniq: 'sports', name: 'Sports' }, { id: 12, uniq: 'uk', name: 'UK' }, { id: 13, uniq: 'education', name: 'Education' }, { id: 14, uniq: 'science', name: 'Science' }, { id: 15, uniq: 'asia', name: 'Asia' }, { id: 16, uniq: 'eu', name: 'EU' }, { id: 17, uniq: 'music', name: 'Music' }, { id: 18, uniq: 'cn', name: 'Canada' }, { id: 19, uniq: 'sa', name: 'South America' }, { id: 20, uniq: 'me', name: 'Middle East' }, { id: 21, uniq: 'af', name: 'Africa' }, { id: 22, uniq: 'environment', name: 'Environment' }, { id: 23, uniq: 'opinion', name: 'Opinion' }];
 
 /***/ }),
 /* 149 */

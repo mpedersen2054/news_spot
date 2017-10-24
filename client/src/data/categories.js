@@ -19,8 +19,9 @@ export default [
     { id: 16, uniq: 'eu', name: 'EU' },
     { id: 17, uniq: 'music', name: 'Music' },
     { id: 18, uniq: 'cn', name: 'Canada' },
-    { id: 19, uniq: 'me', name: 'Middle East' },
-    { id: 20, uniq: 'af', name: 'Africa' },
-    { id: 21, uniq: 'environment', name: 'Environment' },
+    { id: 19, uniq: 'sa', name: 'South America' },
+    { id: 20, uniq: 'me', name: 'Middle East' },
+    { id: 21, uniq: 'af', name: 'Africa' },
+    { id: 22, uniq: 'environment', name: 'Environment' },
     { id: 23, uniq: 'opinion', name: 'Opinion' }
 ]

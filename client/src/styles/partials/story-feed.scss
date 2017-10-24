@@ -26,6 +26,7 @@
 }
 
 .multi-select-box {
+    border: 0.5px solid $light-grey;
     .row {
         margin-left: 0;
         margin-right: 0;
@@ -39,5 +40,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         cursor: pointer;
+    }
+    .box.selected {
+        background-color: $light-grey;
     }
 }
