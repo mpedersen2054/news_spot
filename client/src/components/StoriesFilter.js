@@ -12,8 +12,6 @@ export default class StoriesFilter extends Component {
         super(props)
         this.toggleCollapse = this.toggleCollapse.bind(this)
         this.selectFromSelectList = this.selectFromSelectList.bind(this)
-        // this.selectUploadedAt = this.selectUploadedAt.bind(this)
-        // this.selectPoliticalLeaning = this.selectPoliticalLeaning.bind(this)
         this.state = {
             collapse: false,
             uploadedAt: [

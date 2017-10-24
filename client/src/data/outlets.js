@@ -6,7 +6,7 @@ export default [
     { name: 'CNBC News' },
     { name: 'CNN News' },
     { name: 'The Atlanic' },
-    { name: 'Boston Globe' },
+    // { name: 'Boston Globe' },
     { name: 'The Chicago Sun' },
     { name: 'Christian Science' },
     { name: 'The Daily Caller' },

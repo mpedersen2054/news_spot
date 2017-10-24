@@ -36162,7 +36162,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n", ""]);
+exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box .row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.multi-select-box .box {\n  border: 0.5px solid #f8f9fa;\n  font-size: 0.9rem;\n  padding: 0.75rem 0;\n  text-align: center;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -37458,8 +37458,6 @@ var StoriesFilter = function (_Component) {
 
         _this.toggleCollapse = _this.toggleCollapse.bind(_this);
         _this.selectFromSelectList = _this.selectFromSelectList.bind(_this);
-        // this.selectUploadedAt = this.selectUploadedAt.bind(this)
-        // this.selectPoliticalLeaning = this.selectPoliticalLeaning.bind(this)
         _this.state = {
             collapse: false,
             uploadedAt: [{ name: 'Last Hour', selected: false }, { name: 'Today', selected: false }, { name: 'This Week', selected: false }, { name: 'This Month', selected: false }, { name: 'This Year', selected: false }, { name: 'All', selected: true }],
@@ -37662,7 +37660,9 @@ exports.default = StoriesList;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = [{ name: 'All' }, { name: 'ABC News' }, { name: 'BBC News' }, { name: 'CBS News' }, { name: 'CNBC News' }, { name: 'CNN News' }, { name: 'The Atlanic' }, { name: 'Boston Globe' }, { name: 'The Chicago Sun' }, { name: 'Christian Science' }, { name: 'The Daily Caller' }, { name: 'Der Spiegel' }, { name: 'EOnline' }, { name: 'The Economist' }, { name: 'Fox News' }, { name: 'France 24' }, { name: 'Free Beacon' }, { name: 'The Hill' }, { name: 'Huffington Post' }, { name: 'Infowars' }, { name: 'The Intercept' }, { name: 'Jerusalem Post' }, { name: 'LA Times' }, { name: 'NY Daily' }, { name: 'NY Post' }, { name: 'NY Times' }, { name: 'News Busters' }, { name: 'Newsmax' }, { name: 'Politico' }, { name: 'Radar Online' }, { name: 'Real Clear Politics' }, { name: 'Roll Call' }, { name: 'Rolling Stone' }, { name: 'Sky News' }, { name: 'Times' }, { name: 'TMZ' }, { name: 'Daily Mail' }, { name: 'Express News' }, { name: 'The Independent' }, { name: 'The Sun' }, { name: 'US News' }, { name: 'USA Today' }, { name: 'Variety' }, { name: 'Wall Street Journal' }, { name: 'The Washington Examiner' }, { name: 'The Washington Post' }, { name: 'The Washington Times' }, { name: 'Weekly Standard' }, { name: 'Zero Hedge' }];
+exports.default = [{ name: 'All' }, { name: 'ABC News' }, { name: 'BBC News' }, { name: 'CBS News' }, { name: 'CNBC News' }, { name: 'CNN News' }, { name: 'The Atlanic' },
+// { name: 'Boston Globe' },
+{ name: 'The Chicago Sun' }, { name: 'Christian Science' }, { name: 'The Daily Caller' }, { name: 'Der Spiegel' }, { name: 'EOnline' }, { name: 'The Economist' }, { name: 'Fox News' }, { name: 'France 24' }, { name: 'Free Beacon' }, { name: 'The Hill' }, { name: 'Huffington Post' }, { name: 'Infowars' }, { name: 'The Intercept' }, { name: 'Jerusalem Post' }, { name: 'LA Times' }, { name: 'NY Daily' }, { name: 'NY Post' }, { name: 'NY Times' }, { name: 'News Busters' }, { name: 'Newsmax' }, { name: 'Politico' }, { name: 'Radar Online' }, { name: 'Real Clear Politics' }, { name: 'Roll Call' }, { name: 'Rolling Stone' }, { name: 'Sky News' }, { name: 'Times' }, { name: 'TMZ' }, { name: 'Daily Mail' }, { name: 'Express News' }, { name: 'The Independent' }, { name: 'The Sun' }, { name: 'US News' }, { name: 'USA Today' }, { name: 'Variety' }, { name: 'Wall Street Journal' }, { name: 'The Washington Examiner' }, { name: 'The Washington Post' }, { name: 'The Washington Times' }, { name: 'Weekly Standard' }, { name: 'Zero Hedge' }];
 
 /***/ }),
 /* 146 */
@@ -37679,19 +37679,27 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactstrap = __webpack_require__(13);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (_ref) {
     var items = _ref.items;
 
-    console.log('items from BoxMultiSelect', items);
-    var clicked = function clicked(e) {
-        console.log('clicked! ', e);
-    };
     return _react2.default.createElement(
         'div',
-        { onClick: clicked },
-        'hello box multiselect!'
+        { className: 'multi-select-box' },
+        _react2.default.createElement(
+            _reactstrap.Row,
+            null,
+            items.map(function (item, idx) {
+                return _react2.default.createElement(
+                    _reactstrap.Col,
+                    { xs: '6', sm: '4', md: '3', lg: '2', className: 'box' },
+                    item.name
+                );
+            })
+        )
     );
 };
 

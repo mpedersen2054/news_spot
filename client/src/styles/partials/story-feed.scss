@@ -7,8 +7,8 @@
 .filter-section {
     .head {
         text-transform: uppercase;
-        // text-decoration: underline;
         font-weight: 600;
+        margin-bottom: 0.5rem;
     }
 }
 
@@ -22,5 +22,22 @@
     }
     .selected {
         color: $link-blue-dark;
+    }
+}
+
+.multi-select-box {
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .box {
+        border: 0.5px solid $light-grey;
+        font-size: 0.9rem;
+        padding: 0.75rem 0;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
     }
 }

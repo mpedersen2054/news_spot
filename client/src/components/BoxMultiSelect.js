@@ -1,12 +1,19 @@
 
 import React from 'react'
+import { Row, Col } from 'reactstrap'
 
 export default ({items}) => {
-    console.log('items from BoxMultiSelect', items)
-    const clicked = (e) => {
-        console.log('clicked! ', e)
-    }
     return(
-        <div onClick={clicked}>hello box multiselect!</div>
+        <div className="multi-select-box">
+            <Row>
+                {items.map((item, idx) => {
+                    return(
+                        <Col xs="6" sm="4" md="3" lg="2" className="box">
+                            {item.name}
+                        </Col>
+                    )
+                })}
+            </Row>
+        </div>
     )
 }
