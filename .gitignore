@@ -13,3 +13,4 @@ log/*
 .env
 ./.env
 client/public/**
+package-lock.json

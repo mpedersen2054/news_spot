@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import 'bootstrap/dist/css/bootstrap.css'
 import './src/styles/main.scss' // spot from public/bundle.js i think?
 import { Container } from 'reactstrap'
