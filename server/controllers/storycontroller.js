@@ -70,6 +70,7 @@ module.exports = {
         // this isnt necessary correct, it gives me all, for ex,
         // trump & russia stories, but excludes the ones where
         // trump and russia are in the same title
+        // might want to add (inclusive/excluse) keywords selection
         if ('keywords' in rq) {
             let formattedKw = rq['keywords'].map(kw => {
                 return { $like: `%${kw}%` }

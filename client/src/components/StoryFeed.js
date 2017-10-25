@@ -24,7 +24,7 @@ export default class StoryFeed extends Component {
         } catch(err) {
             console.log('there was an error!', err)
         }
-        console.log(req.data)
+        console.log('data recieved', req.data)
     }
     render() {
         return(

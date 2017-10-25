@@ -45057,7 +45057,7 @@ var StoryFeed = function (_Component) {
                                 console.log('there was an error!', _context.t0);
 
                             case 11:
-                                console.log(req.data);
+                                console.log('data recieved', req.data);
 
                             case 12:
                             case 'end':
