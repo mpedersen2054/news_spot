@@ -26,12 +26,23 @@ module.exports = {
         // sqlObj['offset'] = rq.offset || 10
         // sqlObj['limit'] = rq.limit || 10
         sqlObj['where'] = {}
+        // sqlObj['include'] = {}
 
-        // handle if uploadedAt and all its cases
         if ('uploadedAt' in rq) {
             sqlObj['where']['publishedAt'] = {
                 $between: getDateRanges(rq['uploadedAt'])
             }
+        }
+
+        if ('politicalLeaning' in rq) {
+            sqlObj['include'] = []
+            let oInclude = {
+                model: Outlet,
+                where: {
+                    leaning: rq['politicalLeaning']
+                }
+            }
+            sqlObj['include'].push(oInclude)
         }
 
         return Story.findAll(sqlObj)
