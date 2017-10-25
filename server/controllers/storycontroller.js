@@ -56,6 +56,17 @@ module.exports = {
             sqlObj['include'].push(oInclude)
         }
 
+        if ('categories' in rq) {
+            sqlObj['include'] = sqlObj['include'] || []
+            let cInclude = {
+                model: Headline,
+                where: {
+                    category: { $or: rq['categories'] }
+                }
+            }
+            sqlObj['include'].push(cInclude)
+        }
+
         console.log(sqlObj)
 
         return Story.findAll(sqlObj)
