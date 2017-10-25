@@ -67,7 +67,23 @@ module.exports = {
             sqlObj['include'].push(cInclude)
         }
 
-        console.log(sqlObj)
+        // this isnt necessary correct, it gives me all, for ex,
+        // trump & russia stories, but excludes the ones where
+        // trump and russia are in the same title
+        if ('keywords' in rq) {
+            let formattedKw = rq['keywords'].map(kw => {
+                return { $like: `%${kw}%` }
+            })
+            sqlObj['where']['title'] = {
+                $or: formattedKw
+            }
+        }
+
+        // 1638 - total
+        // 1425 - trump
+        // 248 - russia
+        // add them idv - 1673
+        // contains trump & russia in same - 35
 
         return Story.findAll(sqlObj)
             .then(data => {
