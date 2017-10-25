@@ -47,13 +47,20 @@ module.exports = {
 
         if ('outlets' in rq) {
             sqlObj['include'] = sqlObj['include'] || []
+            if (sqlObj['include'].length > 0) {}
             let oInclude = {
                 model: Outlet,
                 where: {
                     id: { $or: rq['outlets'] }
                 }
             }
-            sqlObj['include'].push(oInclude)
+            // if Outlet is already in include dont add another
+            // insted just add a key/value to exists where: { ... }
+            if (sqlObj['include'].length > 0) {
+                sqlObj['include'][0]['where']['id'] = { $or: rq['outlets'] }
+            } else {
+                sqlObj['include'].push(oInclude)
+            }
         }
 
         if ('categories' in rq) {
