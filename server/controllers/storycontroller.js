@@ -20,8 +20,8 @@ module.exports = {
         @politicalLeaning - 'l'
         @outlets - [ id, id, id ]
         @categories - [ str, str ]
-
         */
+
         let sqlObj = {}
         // sqlObj['offset'] = rq.offset || 10
         // sqlObj['limit'] = rq.limit || 10
@@ -44,6 +44,19 @@ module.exports = {
             }
             sqlObj['include'].push(oInclude)
         }
+
+        if ('outlets' in rq) {
+            sqlObj['include'] = sqlObj['include'] || []
+            let oInclude = {
+                model: Outlet,
+                where: {
+                    id: { $or: rq['outlets'] }
+                }
+            }
+            sqlObj['include'].push(oInclude)
+        }
+
+        console.log(sqlObj)
 
         return Story.findAll(sqlObj)
             .then(data => {
