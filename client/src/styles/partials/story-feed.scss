@@ -4,6 +4,25 @@
 .filter-container {
 }
 
+.hspace {
+    position: relative;
+    width: 100%;
+    height: 1rem;
+}
+
+.toggle-link {
+    &:hover {
+        text-decoration: none;
+        .toggle-link-text {
+            text-decoration: none;
+        }
+    }
+    .fa-bars {
+        margin-right: 0.5rem;
+    }
+    .toggle-link-text {}
+}
+
 .filter-section {
     .head {
         text-transform: uppercase;

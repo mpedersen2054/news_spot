@@ -45133,7 +45133,7 @@ exports = module.exports = __webpack_require__(59)(undefined);
 
 
 // module
-exports.push([module.i, ".filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 1rem;\n  padding-top: 0.5rem;\n  border-top: 1px solid #f8f9fa;\n  min-height: 2.75rem; }\n  .keyword-badges .kw {\n    padding: 0.25rem 0.5rem;\n    margin: 0 0.5rem 0.5rem 0;\n    font-size: 1rem;\n    font-weight: 400;\n    cursor: pointer; }\n    .keyword-badges .kw:hover .kw-close {\n      color: red; }\n  .keyword-badges .kw-text {\n    font-weight: 400; }\n  .keyword-badges .kw-close {\n    margin-left: 0.4rem;\n    color: #2f4bac; }\n", ""]);
+exports.push([module.i, ".hspace {\n  position: relative;\n  width: 100%;\n  height: 1rem; }\n\n.toggle-link:hover {\n  text-decoration: none; }\n  .toggle-link:hover .toggle-link-text {\n    text-decoration: none; }\n\n.toggle-link .fa-bars {\n  margin-right: 0.5rem; }\n\n.filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 1rem;\n  padding-top: 0.5rem;\n  border-top: 1px solid #f8f9fa;\n  min-height: 2.75rem; }\n  .keyword-badges .kw {\n    padding: 0.25rem 0.5rem;\n    margin: 0 0.5rem 0.5rem 0;\n    font-size: 1rem;\n    font-weight: 400;\n    cursor: pointer; }\n    .keyword-badges .kw:hover .kw-close {\n      color: red; }\n  .keyword-badges .kw-text {\n    font-weight: 400; }\n  .keyword-badges .kw-close {\n    margin-left: 0.4rem;\n    color: #2f4bac; }\n", ""]);
 
 // exports
 
@@ -46588,14 +46588,15 @@ var StoriesFilter = function (_Component) {
                 { className: 'stories-filter' },
                 _react2.default.createElement(
                     'a',
-                    { href: '#', onClick: this.toggleCollapse },
+                    { href: '#', onClick: this.toggleCollapse, className: 'toggle-link' },
                     _react2.default.createElement(_reactFa.Icon, { name: 'bars' }),
                     _react2.default.createElement(
                         'span',
-                        null,
+                        { className: 'toggle-link-text' },
                         'Filter'
                     )
                 ),
+                _react2.default.createElement('div', { className: 'hspace' }),
                 _react2.default.createElement(
                     _reactstrap.Collapse,
                     { isOpen: this.state.collapse, className: 'filter-container' },
