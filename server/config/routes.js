@@ -9,5 +9,4 @@ module.exports = (app) => {
     app.get('/api/v1/outlets/:id', outletCtrl.show)
 
     app.get('/api/v1/stories', storiesCtrl.index)
-
 }

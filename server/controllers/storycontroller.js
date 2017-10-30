@@ -23,10 +23,11 @@ module.exports = {
         */
 
         let sqlObj = {}
-        // sqlObj['offset'] = rq.offset || 10
-        // sqlObj['limit'] = rq.limit || 10
         sqlObj['where'] = {}
-        // sqlObj['include'] = {}
+        sqlObj['include'] = []
+
+        sqlObj['offset'] = 0
+        sqlObj['limit'] = 5
 
         if ('uploadedAt' in rq) {
             sqlObj['where']['publishedAt'] = {
@@ -35,7 +36,6 @@ module.exports = {
         }
 
         if ('politicalLeaning' in rq) {
-            sqlObj['include'] = []
             let oInclude = {
                 model: Outlet,
                 where: {
@@ -47,7 +47,6 @@ module.exports = {
 
         if ('outlets' in rq) {
             sqlObj['include'] = sqlObj['include'] || []
-            if (sqlObj['include'].length > 0) {}
             let oInclude = {
                 model: Outlet,
                 where: {
@@ -87,16 +86,57 @@ module.exports = {
             }
         }
 
-        // 1638 - total
-        // 1425 - trump
-        // 248 - russia
-        // add them idv - 1673
-        // contains trump & russia in same - 35
+        // add 'as' into each include object
+        // if they are both in there, just add 'as' to each
+        if (sqlObj['include'].length === 2) {
+            for (incl of sqlObj['include']) {
+                if (incl['model'] == Outlet) {
+                    incl['as'] = 'storyOutlet'
+                }
+                if (incl['model'] == Headline) {
+                    incl['as'] = 'storyHeadline'
+                }
+            }
+        }
+        // if there is only 1, add the 'as' and add
+        // the Model that is not included
+        else if (sqlObj['include'].length === 1) {
+            let incl = storyObj['include'][0]
+            if (incl['model'] == Outlet) {
+                incl['as'] = 'storyOutlet'
+                sqlObj['include'].push({
+                    model: Headline,
+                    as: 'storyHeadline'
+                })
+            }
+            if (incl['model'] == Headline) {
+                incl['as'] = 'storyHeadline'
+                sqlObj['include'].push({
+                    model: Outlet,
+                    as: 'storyOutlet'
+                })
+            }
+        }
+        // if nothing in 'include', add each
+        // model along with corresponding 'as'
+        else {
+            sqlObj['include'].push(
+                {
+                    model: Headline,
+                    as: 'storyHeadline'
+                },
+                {
+                    model: Outlet,
+                    as: 'storyOutlet'
+                }
+            )
+        }
 
         return Story.findAll(sqlObj)
             .then(data => {
-                console.log(data.length)
-                res.json(data.length)
+                // eventually use the response_creator
+                console.log(JSON.stringify(data))
+                res.status(200).json(data)
             }).catch(err => console.log('error!', err))
     }
 }

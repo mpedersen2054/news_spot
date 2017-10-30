@@ -45083,7 +45083,8 @@ var StoryFeed = function (_Component) {
                 _react2.default.createElement('hr', null),
                 _react2.default.createElement(_StoriesFilter2.default, {
                     queryStories: this.queryStories }),
-                _react2.default.createElement(_StoriesList2.default, null)
+                _react2.default.createElement(_StoriesList2.default, {
+                    stories: this.state.stories })
             );
         }
     }]);
@@ -47368,6 +47369,10 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Story = __webpack_require__(477);
+
+var _Story2 = _interopRequireDefault(_Story);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47390,8 +47395,11 @@ var StoriesList = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
-                'hello stories list!'
+                { className: 'stories-list' },
+                _react2.default.createElement(_Story2.default, null),
+                _react2.default.createElement(_Story2.default, null),
+                _react2.default.createElement(_Story2.default, null),
+                _react2.default.createElement(_Story2.default, null)
             );
         }
     }]);
@@ -47400,6 +47408,31 @@ var StoriesList = function (_Component) {
 }(_react.Component);
 
 exports.default = StoriesList;
+
+/***/ }),
+/* 477 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (props) {
+    return _react2.default.createElement(
+        "div",
+        { className: "story" },
+        "hello im a story!"
+    );
+};
 
 /***/ })
 /******/ ]);

@@ -24,11 +24,13 @@ module.exports = (sequelize, DataTypes) => {
     Story.associate = (models) => {
         Story.belongsTo(models.Outlet, {
             foreignKey: 'outletId',
-            onDelete: 'CASCADE'
+            onDelete: 'CASCADE',
+            as: 'storyOutlet'
         })
         Story.belongsTo(models.Headline, {
             foreignKey: 'headlineId',
-            onDelete: 'CASCADE'
+            onDelete: 'CASCADE',
+            as: 'storyHeadline'
         })
     }
 

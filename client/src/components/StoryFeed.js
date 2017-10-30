@@ -33,7 +33,8 @@ export default class StoryFeed extends Component {
                 <hr/>
                 <StoriesFilter
                     queryStories={this.queryStories} />
-                <StoriesList />
+                <StoriesList
+                    stories={this.state.stories} />
             </div>
         )
     }
