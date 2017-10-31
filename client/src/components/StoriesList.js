@@ -2,8 +2,6 @@
 import React, { Component } from 'react'
 import Story from './Story'
 
-// import { ListGroup } from 'reactstrap'
-
 export default class StoriesList extends Component {
     constructor() {
         super()
