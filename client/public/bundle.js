@@ -18180,7 +18180,7 @@ exports = module.exports = __webpack_require__(59)(undefined);
 
 
 // module
-exports.push([module.i, "html {\n  font-size: 16px;\n  height: 100%;\n  box-sizing: border-box; }\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit; }\n\nbody {\n  position: relative;\n  padding-bottom: 6rem;\n  min-height: 100%; }\n\n.page-content {\n  padding: 1.5rem 0 1.5rem; }\n\nbutton {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, "html {\n  font-size: 16px;\n  height: 100%;\n  box-sizing: border-box; }\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit; }\n\nbody {\n  position: relative;\n  padding-bottom: 6rem;\n  min-height: 100%; }\n\n.page-content {\n  padding: 1.5rem 0 1.5rem; }\n\nbutton {\n  cursor: pointer; }\n\n.list-group-item {\n  padding: 0.25rem 0.75rem; }\n", ""]);
 
 // exports
 
@@ -45005,6 +45005,8 @@ var _StoriesList2 = _interopRequireDefault(_StoriesList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45013,7 +45015,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var devStoriesUrl = '//localhost:8080/api/v1';
+var devStoriesUrl = '//localhost:8080/api/v1/stories';
 
 var StoryFeed = function (_Component) {
     _inherits(StoryFeed, _Component);
@@ -45025,12 +45027,21 @@ var StoryFeed = function (_Component) {
 
         _this.queryStories = _this.queryStories.bind(_this);
         _this.state = {
-            stories: []
+            stories: [],
+            queryOffset: 0,
+            queryLimit: 10,
+            currentQuery: ''
         };
         return _this;
     }
 
     _createClass(StoryFeed, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var queryStr = 'offset=' + this.state.queryOffset + '&limit=' + this.state.queryLimit;
+            this.queryStories(queryStr);
+        }
+    }, {
         key: 'queryStories',
         value: function () {
             var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(queryString) {
@@ -45043,7 +45054,7 @@ var StoryFeed = function (_Component) {
                                 req = void 0;
                                 _context.prev = 2;
                                 _context.next = 5;
-                                return _axios2.default.get(devStoriesUrl + '/stories?' + queryString);
+                                return _axios2.default.get(devStoriesUrl + '?' + queryString);
 
                             case 5:
                                 req = _context.sent;
@@ -45057,7 +45068,10 @@ var StoryFeed = function (_Component) {
                                 console.log('there was an error!', _context.t0);
 
                             case 11:
-                                console.log('data recieved', req.data);
+                                // console.log(req.data)
+                                this.setState({
+                                    stories: [].concat(_toConsumableArray(this.state.stories), _toConsumableArray(req.data))
+                                });
 
                             case 12:
                             case 'end':
@@ -45076,6 +45090,7 @@ var StoryFeed = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
+            console.log(this.state.stories, 'hihi');
             return _react2.default.createElement(
                 'div',
                 { className: 'page-content story-feed' },
@@ -45134,7 +45149,7 @@ exports = module.exports = __webpack_require__(59)(undefined);
 
 
 // module
-exports.push([module.i, ".hspace {\n  position: relative;\n  width: 100%;\n  height: 1rem; }\n\n.toggle-link:hover {\n  text-decoration: none; }\n  .toggle-link:hover .toggle-link-text {\n    text-decoration: none; }\n\n.toggle-link .fa-bars {\n  margin-right: 0.5rem; }\n\n.filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 1rem;\n  padding-top: 0.5rem;\n  border-top: 1px solid #f8f9fa;\n  min-height: 2.75rem; }\n  .keyword-badges .kw {\n    padding: 0.25rem 0.5rem;\n    margin: 0 0.5rem 0.5rem 0;\n    font-size: 1rem;\n    font-weight: 400;\n    cursor: pointer; }\n    .keyword-badges .kw:hover .kw-close {\n      color: red; }\n  .keyword-badges .kw-text {\n    font-weight: 400; }\n  .keyword-badges .kw-close {\n    margin-left: 0.4rem;\n    color: #2f4bac; }\n", ""]);
+exports.push([module.i, ".hspace {\n  position: relative;\n  width: 100%;\n  height: 0.5rem; }\n\n.toggle-link:hover {\n  text-decoration: none; }\n  .toggle-link:hover .toggle-link-text {\n    text-decoration: none; }\n\n.toggle-link .fa-bars {\n  margin-right: 0.5rem; }\n\n.filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 1rem;\n  padding-top: 0.5rem;\n  border-top: 1px solid #f8f9fa;\n  min-height: 2.75rem; }\n  .keyword-badges .kw {\n    padding: 0.25rem 0.5rem;\n    margin: 0 0.5rem 0.5rem 0;\n    font-size: 1rem;\n    font-weight: 400;\n    cursor: pointer; }\n    .keyword-badges .kw:hover .kw-close {\n      color: red; }\n  .keyword-badges .kw-text {\n    font-weight: 400; }\n  .keyword-badges .kw-close {\n    margin-left: 0.4rem;\n    color: #2f4bac; }\n\n.story {\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  padding: 0.25rem 0.5rem;\n  margin-top: 0.5rem; }\n  .story .date-col {\n    text-align: right; }\n  .story .title {\n    font-size: 0.95rem; }\n  .story .story-hr {\n    border-top: 1px solid #eee;\n    margin-top: 0.5rem;\n    padding-top: 0.5rem; }\n  .story .meta-row {\n    font-size: 0.75rem; }\n  .story .meta-1 .h-divider {\n    margin: 0 0.5rem; }\n  .story .meta-2-col {\n    text-align: right; }\n", ""]);
 
 // exports
 
@@ -47381,13 +47396,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import { ListGroup } from 'reactstrap'
+
 var StoriesList = function (_Component) {
     _inherits(StoriesList, _Component);
 
     function StoriesList() {
         _classCallCheck(this, StoriesList);
 
-        return _possibleConstructorReturn(this, (StoriesList.__proto__ || Object.getPrototypeOf(StoriesList)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (StoriesList.__proto__ || Object.getPrototypeOf(StoriesList)).call(this));
     }
 
     _createClass(StoriesList, [{
@@ -47396,10 +47413,11 @@ var StoriesList = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'stories-list' },
-                _react2.default.createElement(_Story2.default, null),
-                _react2.default.createElement(_Story2.default, null),
-                _react2.default.createElement(_Story2.default, null),
-                _react2.default.createElement(_Story2.default, null)
+                _react2.default.createElement('div', { className: 'hspace' }),
+                this.props.stories.map(function (story) {
+                    console.log('story: ', story);
+                    return _react2.default.createElement(_Story2.default, { key: story.id, data: story });
+                })
             );
         }
     }]);
@@ -47424,13 +47442,104 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactstrap = __webpack_require__(49);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
     return _react2.default.createElement(
-        "div",
-        { className: "story" },
-        "hello im a story!"
+        'div',
+        { className: 'story' },
+        _react2.default.createElement(
+            _reactstrap.Row,
+            null,
+            _react2.default.createElement(
+                _reactstrap.Col,
+                { xs: '12', sm: '12', md: '12', className: 'date-col' },
+                _react2.default.createElement(
+                    'small',
+                    { className: 'date text-muted' },
+                    '3:30 pm |03-27-1992'
+                )
+            ),
+            _react2.default.createElement(
+                _reactstrap.Col,
+                { xs: '12', sm: '12', md: '12' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'title' },
+                    'The chief of staff described the aftermath of his own son\'s death in 2010.'
+                )
+            ),
+            _react2.default.createElement(
+                _reactstrap.Col,
+                { xs: '12', sm: '12', md: '12' },
+                _react2.default.createElement('div', { className: 'story-hr' })
+            ),
+            _react2.default.createElement(
+                _reactstrap.Col,
+                { xs: '12', sm: '12', md: '12' },
+                _react2.default.createElement(
+                    _reactstrap.Row,
+                    { className: 'meta-row' },
+                    _react2.default.createElement(
+                        _reactstrap.Col,
+                        { md: '6' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'meta-1' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'outlet' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '#' },
+                                    'CNN News(L)'
+                                ),
+                                _react2.default.createElement(
+                                    'span',
+                                    { className: 'h-divider' },
+                                    '|'
+                                ),
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '#' },
+                                    'Politics'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'story-extra' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '#' },
+                                    'Image'
+                                ),
+                                _react2.default.createElement(
+                                    'span',
+                                    { className: 'h-divider' },
+                                    '|'
+                                ),
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '#' },
+                                    'Description'
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactstrap.Col,
+                        { md: '6', className: 'meta-2-col' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'meta-2' },
+                            'meta 2'
+                        )
+                    )
+                )
+            )
+        )
     );
 };
 

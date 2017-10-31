@@ -26,8 +26,10 @@ module.exports = {
         sqlObj['where'] = {}
         sqlObj['include'] = []
 
-        sqlObj['offset'] = 0
-        sqlObj['limit'] = 5
+        console.log('HI THERE!')
+        console.log(rq)
+        sqlObj['offset'] = Number(rq.offset) || 0
+        sqlObj['limit'] = Number(rq.limit) || 10
 
         if ('uploadedAt' in rq) {
             sqlObj['where']['publishedAt'] = {

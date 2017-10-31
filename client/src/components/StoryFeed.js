@@ -6,27 +6,41 @@ import StoriesSearch from './StoriesSearch'
 import StoriesFilter from './StoriesFilter'
 import StoriesList from './StoriesList'
 
-const devStoriesUrl = '//localhost:8080/api/v1'
+const devStoriesUrl = '//localhost:8080/api/v1/stories'
 
 export default class StoryFeed extends Component {
     constructor() {
         super()
         this.queryStories = this.queryStories.bind(this)
         this.state = {
-            stories: []
+            stories: [],
+            queryOffset: 0,
+            queryLimit: 10,
+            currentQuery: ''
         }
+    }
+    componentWillMount() {
+        const queryStr = `offset=${this.state.queryOffset}&limit=${this.state.queryLimit}`
+        this.queryStories(queryStr)
     }
     async queryStories(queryString) {
         console.log('queryString: ', queryString)
         let req
         try {
-            req = await axios.get(`${devStoriesUrl}/stories?${queryString}`)
+            req = await axios.get(`${devStoriesUrl}?${queryString}`)
         } catch(err) {
             console.log('there was an error!', err)
         }
-        console.log('data recieved', req.data)
+        // console.log(req.data)
+        this.setState({
+            stories: [
+                ...this.state.stories,
+                ...req.data
+            ]
+        })
     }
     render() {
+        console.log(this.state.stories, 'hihi')
         return(
             <div className="page-content story-feed">
                 <StoriesSearch />
