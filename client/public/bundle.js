@@ -45149,7 +45149,7 @@ exports = module.exports = __webpack_require__(59)(undefined);
 
 
 // module
-exports.push([module.i, ".hspace {\n  position: relative;\n  width: 100%;\n  height: 0.5rem; }\n\n.toggle-link:hover {\n  text-decoration: none; }\n  .toggle-link:hover .toggle-link-text {\n    text-decoration: none; }\n\n.toggle-link .fa-bars {\n  margin-right: 0.5rem; }\n\n.filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 1rem;\n  padding-top: 0.5rem;\n  border-top: 1px solid #f8f9fa;\n  min-height: 2.75rem; }\n  .keyword-badges .kw {\n    padding: 0.25rem 0.5rem;\n    margin: 0 0.5rem 0.5rem 0;\n    font-size: 1rem;\n    font-weight: 400;\n    cursor: pointer; }\n    .keyword-badges .kw:hover .kw-close {\n      color: red; }\n  .keyword-badges .kw-text {\n    font-weight: 400; }\n  .keyword-badges .kw-close {\n    margin-left: 0.4rem;\n    color: #2f4bac; }\n\n.story {\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  padding: 0.25rem 0.5rem;\n  margin-top: 0.5rem; }\n  .story .date-col {\n    text-align: right; }\n  .story .title {\n    font-size: 0.95rem; }\n  .story .story-hr {\n    border-top: 1px solid #eee;\n    margin-top: 0.5rem;\n    padding-top: 0.5rem; }\n  .story .meta-row {\n    font-size: 0.75rem; }\n  .story .meta-1 .h-divider {\n    margin: 0 0.5rem; }\n  .story .meta-2-col {\n    text-align: right; }\n", ""]);
+exports.push([module.i, ".filter-container {\n  margin-bottom: 1rem; }\n\n.hspace {\n  position: relative;\n  width: 100%;\n  height: 0.5rem; }\n\n.toggle-link:hover {\n  text-decoration: none; }\n  .toggle-link:hover .toggle-link-text {\n    text-decoration: none; }\n\n.toggle-link .fa-bars {\n  margin-right: 0.5rem; }\n\n.filter-section .head {\n  text-transform: uppercase;\n  font-weight: 600;\n  margin-bottom: 0.5rem; }\n\n.select-list {\n  list-style: none;\n  padding-left: 0; }\n  .select-list .select-item {\n    padding-left: 0;\n    color: #007bff;\n    cursor: pointer; }\n  .select-list .selected {\n    color: #0056b3; }\n\n.multi-select-box {\n  border: 0.5px solid #f8f9fa; }\n  .multi-select-box .row {\n    margin-left: 0;\n    margin-right: 0; }\n  .multi-select-box .box {\n    border: 0.5px solid #f8f9fa;\n    font-size: 0.9rem;\n    padding: 0.75rem 0;\n    text-align: center;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    cursor: pointer; }\n  .multi-select-box .box.selected {\n    background-color: #ddd; }\n\n.keywords .warning {\n  display: block; }\n\n.keyword-badges {\n  margin-top: 1rem;\n  padding-top: 0.5rem;\n  border-top: 1px solid #f8f9fa;\n  min-height: 2.75rem; }\n  .keyword-badges .kw {\n    padding: 0.25rem 0.5rem;\n    margin: 0 0.5rem 0.5rem 0;\n    font-size: 1rem;\n    font-weight: 400;\n    cursor: pointer; }\n    .keyword-badges .kw:hover .kw-close {\n      color: red; }\n  .keyword-badges .kw-text {\n    font-weight: 400; }\n  .keyword-badges .kw-close {\n    margin-left: 0.4rem;\n    color: #2f4bac; }\n\n.story {\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  padding: 0.25rem 0.5rem;\n  margin-top: 0.5rem; }\n  .story .date-col {\n    text-align: right; }\n  .story .title {\n    font-size: 0.95rem; }\n  .story .story-hr {\n    border-top: 1px solid #eee;\n    margin-top: 0.5rem;\n    padding-top: 0.5rem; }\n  .story .meta-row {\n    font-size: 0.75rem; }\n  .story .meta-1 .h-divider {\n    margin: 0 0.5rem; }\n  .story .meta-2-col {\n    text-align: right; }\n", ""]);
 
 // exports
 
@@ -46464,8 +46464,8 @@ var StoriesFilter = function (_Component) {
         _this.removeKeyword = _this.removeKeyword.bind(_this);
         _this.submitFilterOpts = _this.submitFilterOpts.bind(_this);
         _this.state = {
-            // collapse: false,
-            collapse: true, // open on start
+            collapse: false,
+            // collapse: true, // open on start
             uploadedAt: [{ name: 'Last Hour', uniq: 'hour', selected: false }, { name: 'Today', uniq: 'today', selected: false }, { name: 'This Week', uniq: 'week', selected: false }, { name: 'This Month', uniq: 'month', selected: false }, { name: 'This Year', uniq: 'year', selected: false }, { name: 'All', uniq: 'all', selected: true }],
             politicalLeaning: [{ name: 'Left', uniq: 'l', selected: false }, { name: 'Right', uniq: 'r', selected: false }, { name: 'Independant', uniq: 'i', selected: false }, { name: 'Any', uniq: 'a', selected: true }],
             // import a data obj, might want to query for this in future?
@@ -47410,12 +47410,19 @@ var StoriesList = function (_Component) {
     _createClass(StoriesList, [{
         key: 'render',
         value: function render() {
+            var loading = void 0;
+            if (this.props.stories.length < 1) {
+                loading = _react2.default.createElement(
+                    'div',
+                    null,
+                    'LOADING...'
+                );
+            }
             return _react2.default.createElement(
                 'div',
                 { className: 'stories-list' },
-                _react2.default.createElement('div', { className: 'hspace' }),
+                loading,
                 this.props.stories.map(function (story) {
-                    console.log('story: ', story);
                     return _react2.default.createElement(_Story2.default, { key: story.id, data: story });
                 })
             );
@@ -47446,7 +47453,24 @@ var _reactstrap = __webpack_require__(49);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function (props) {
+exports.default = function (_ref) {
+    var data = _ref.data;
+
+    var pubAt = new Date(data.publishedAt),
+        pubAtDate = pubAt.toLocaleDateString('en-US'),
+        pubAtTime = pubAt.toLocaleTimeString(),
+        pubAtFormatted = void 0;
+
+    pubAtDate = pubAtDate.split('/');
+    pubAtDate[2] = pubAtDate[2].slice(2);
+    pubAtDate = pubAtDate.join('-');
+
+    pubAtTime = pubAtTime.split(':');
+    var tod = pubAtTime[2].slice(3);
+    pubAtTime = pubAtTime.slice(0, 2).join(':') + '' + tod.toLowerCase();
+
+    pubAtFormatted = pubAtTime + ' | ' + pubAtDate;
+
     return _react2.default.createElement(
         'div',
         { className: 'story' },
@@ -47459,7 +47483,7 @@ exports.default = function (props) {
                 _react2.default.createElement(
                     'small',
                     { className: 'date text-muted' },
-                    '3:30 pm |03-27-1992'
+                    pubAtFormatted
                 )
             ),
             _react2.default.createElement(
@@ -47468,7 +47492,7 @@ exports.default = function (props) {
                 _react2.default.createElement(
                     'div',
                     { className: 'title' },
-                    'The chief of staff described the aftermath of his own son\'s death in 2010.'
+                    data.title
                 )
             ),
             _react2.default.createElement(
@@ -47494,7 +47518,10 @@ exports.default = function (props) {
                                 _react2.default.createElement(
                                     'a',
                                     { href: '#' },
-                                    'CNN News(L)'
+                                    data.storyOutlet.name,
+                                    '(',
+                                    data.storyOutlet.leaning.toUpperCase(),
+                                    ')'
                                 ),
                                 _react2.default.createElement(
                                     'span',
@@ -47504,7 +47531,7 @@ exports.default = function (props) {
                                 _react2.default.createElement(
                                     'a',
                                     { href: '#' },
-                                    'Politics'
+                                    data.storyHeadline.category
                                 )
                             ),
                             _react2.default.createElement(

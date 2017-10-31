@@ -3,18 +3,33 @@ import React from 'react'
 
 import { Row, Col } from 'reactstrap'
 
-export default (props) => {
+export default ({data}) => {
+    let pubAt = new Date(data.publishedAt),
+        pubAtDate = pubAt.toLocaleDateString('en-US'),
+        pubAtTime = pubAt.toLocaleTimeString(),
+        pubAtFormatted
+
+    pubAtDate = pubAtDate.split('/')
+    pubAtDate[2] = pubAtDate[2].slice(2)
+    pubAtDate = pubAtDate.join('-')
+
+    pubAtTime = pubAtTime.split(':')
+    const tod = pubAtTime[2].slice(3)
+    pubAtTime = pubAtTime.slice(0, 2).join(':') + '' + tod.toLowerCase()
+
+    pubAtFormatted = `${pubAtTime} | ${pubAtDate}`
+
     return(
         <div className="story">
             <Row>
                 <Col xs="12" sm="12" md="12" className="date-col">
                     <small className="date text-muted">
-                        3:30 pm |03-27-1992
+                        {pubAtFormatted}
                     </small>
                 </Col>
                 <Col xs="12" sm="12" md="12">
                     <div className="title">
-                        The chief of staff described the aftermath of his own son's death in 2010.
+                        {data.title}
                     </div>
                 </Col>
                 <Col xs="12" sm="12" md="12">
@@ -25,9 +40,9 @@ export default (props) => {
                         <Col md="6">
                             <div className="meta-1">
                                 <div className="outlet">
-                                    <a href="#">CNN News(L)</a>
+                                    <a href="#">{data.storyOutlet.name}({data.storyOutlet.leaning.toUpperCase()})</a>
                                     <span className="h-divider">|</span>
-                                    <a href="#">Politics</a>
+                                    <a href="#">{data.storyHeadline.category}</a>
                                 </div>
                                 <div className="story-extra">
                                     <a href="#">Image</a>

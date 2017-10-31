@@ -20,8 +20,8 @@ export default class StoriesFilter extends Component {
         this.removeKeyword = this.removeKeyword.bind(this)
         this.submitFilterOpts = this.submitFilterOpts.bind(this)
         this.state = {
-            // collapse: false,
-            collapse: true, // open on start
+            collapse: false,
+            // collapse: true, // open on start
             uploadedAt: [
                 { name: 'Last Hour', uniq: 'hour', selected: false },
                 { name: 'Today', uniq: 'today', selected: false },

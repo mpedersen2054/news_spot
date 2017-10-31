@@ -25,9 +25,6 @@ module.exports = {
         let sqlObj = {}
         sqlObj['where'] = {}
         sqlObj['include'] = []
-
-        console.log('HI THERE!')
-        console.log(rq)
         sqlObj['offset'] = Number(rq.offset) || 0
         sqlObj['limit'] = Number(rq.limit) || 10
 
