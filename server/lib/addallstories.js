@@ -7,11 +7,11 @@ let scrapers         = require('./scrapers_load_obj'),
 // stories for ALL outlets
 
 // const outlets = Object.values(scrapers).slice(0, 1)
+// const outlets = Object.values(scrapers).slice(43)
 const outlets = Object.values(scrapers).slice(0)
 
 // will run addOutletStories SYNCRONOUSLY. if not sync
 // it will possibly add them out of alpha order
-
 module.exports = () => {
     return new Promise((resolve, reject) => {
         mapSeries(outlets, addOutletStories)

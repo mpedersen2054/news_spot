@@ -23,13 +23,9 @@ const addStory = (story) => {
                 outletId    : story['outletId'],
                 headlineId  : story['headlineId']
             }
-        }).then(() => {
-            // console.log(`OutletId: ${story['outletId']} | story: ${story['title']}`)
-            resolve()
-        }).catch(err => {
-            // console.log(`Err adding story: ${story['title']}`)
-            resolve()
         })
+            .then(() => resolve())
+            .catch(err => resolve())
     })
 }
 
@@ -99,8 +95,8 @@ module.exports = outlet => {
                                 .catch(err => reject(err))
                         })
                         .catch(err => {
-                            console.log('Error adding headlineId to stories', err)
-                            reject(err)
+                            console.log('Error adding headlineId to stories ', err)
+                            resolve(`There was an error in addHeadlineId for outlet #${results['id']}`)
                         })
                 })
                 .catch(errObj => {

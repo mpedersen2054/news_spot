@@ -7,6 +7,7 @@ import Waypoint from 'react-waypoint'
 import StoriesSearch from './StoriesSearch'
 import StoriesFilter from './StoriesFilter'
 import StoriesList from './StoriesList'
+import Loading from './Loading'
 
 const devStoriesUrl = '//localhost:8080/api/v1/stories'
 
@@ -60,7 +61,7 @@ export default class StoryFeed extends Component {
     render() {
         let loadingMore
         if (this.state.loadingMore) {
-            loadingMore = <div className="loading-container">LOADING MORE...</div>
+            loadingMore = <Loading />
         }
         return(
             <div className="page-content story-feed">

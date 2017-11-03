@@ -4,27 +4,32 @@ import React from 'react'
 import { Row, Col } from 'reactstrap'
 
 export default ({data}) => {
-    let pubAt = new Date(data.publishedAt),
-        pubAtDate = pubAt.toLocaleDateString('en-US'),
-        pubAtTime = pubAt.toLocaleTimeString(),
-        pubAtFormatted
 
-    pubAtDate = pubAtDate.split('/')
-    pubAtDate[2] = pubAtDate[2].slice(2)
-    pubAtDate = pubAtDate.join('-')
+    let getPubDateTimeFormatted = (data) => {
+        let pubAt = new Date(data.publishedAt),
+            pubAtDate = pubAt.toLocaleDateString('en-US'),
+            pubAtTime = pubAt.toLocaleTimeString(),
+            pubAtFormatted
 
-    pubAtTime = pubAtTime.split(':')
-    const tod = pubAtTime[2].slice(3)
-    pubAtTime = pubAtTime.slice(0, 2).join(':') + '' + tod.toLowerCase()
+        pubAtDate = pubAtDate.split('/')
+        pubAtDate[2] = pubAtDate[2].slice(2)
+        pubAtDate = pubAtDate.join('-')
 
-    pubAtFormatted = `${pubAtTime} | ${pubAtDate}`
+        pubAtTime = pubAtTime.split(':')
+        const tod = pubAtTime[2].slice(3)
+        pubAtTime = pubAtTime.slice(0, 2).join(':') + '' + tod.toLowerCase()
+
+        return `${pubAtTime} | ${pubAtDate}`
+    }
+
+    const pubDateTime = getPubDateTimeFormatted(data)
 
     return(
         <div className="story">
             <Row>
                 <Col xs="12" sm="12" md="12" className="date-col">
                     <small className="date text-muted">
-                        {pubAtFormatted}
+                        {pubDateTime}
                     </small>
                 </Col>
                 <Col xs="12" sm="12" md="12">

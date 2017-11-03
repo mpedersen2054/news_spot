@@ -1,4 +1,6 @@
 
+@import './modules/_colors';
+
 html {
     font-size: 16px;
     height: 100%;
@@ -23,6 +25,16 @@ body {
 
 button {
     cursor: pointer;
+}
+
+.loading {
+    position: relative;
+    width: 100%;
+    padding: 2em 0;
+    text-align: center;
+    .fa {
+        color: #777;
+    }
 }
 
 // OVERRIDERS

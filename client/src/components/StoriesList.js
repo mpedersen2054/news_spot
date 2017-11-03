@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import Story from './Story'
+import Loading from './Loading'
 
 export default class StoriesList extends Component {
     constructor() {
@@ -9,7 +10,7 @@ export default class StoriesList extends Component {
     render() {
         let loading
         if (this.props.stories.length < 1) {
-            loading = <div className="loading">LOADING...</div>
+            loading = <Loading />
         }
         return(
             <div className="stories-list">

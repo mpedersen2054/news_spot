@@ -100,7 +100,7 @@ module.exports = {
         // if there is only 1, add the 'as' and add
         // the Model that is not included
         else if (sqlObj['include'].length === 1) {
-            let incl = storyObj['include'][0]
+            let incl = sqlObj['include'][0]
             if (incl['model'] == Outlet) {
                 incl['as'] = 'storyOutlet'
                 sqlObj['include'].push({
