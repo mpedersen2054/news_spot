@@ -33,6 +33,7 @@ export default class StoryFeed extends Component {
             notDefaultQuery,
             req
 
+        // add offset/limit to the end of queryString if it exists
         if (!queryString || queryString.length == 0) {
             queryStr = `${devStoriesUrl}?${offsetLimit}`
         } else {
@@ -40,13 +41,14 @@ export default class StoryFeed extends Component {
             notDefaultQuery = true
         }
         try {
-            console.log(queryStr)
             req = await axios.get(queryStr)
         } catch(err) {
             console.log('there was an error!', err)
+            throw Error(err)
         }
-        console.log(req.data)
         this.setState({
+            // replace all current stories if refresh, in case of a
+            // new filter being set forward, else add to current stories
             stories: refresh ?
                      [ ...req.data ] :
                      [
@@ -61,7 +63,7 @@ export default class StoryFeed extends Component {
     loadMore() {
         if (this.state.stories.length == 0) return
         this.setState({ loadingMore: true })
-        console.log(this.state.currentQuery)
+        // query for the current query, if theres a filter
         this.queryStories(this.state.currentQuery, false)
 
     }
