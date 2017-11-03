@@ -140,8 +140,11 @@ export default class StoriesFilter extends Component {
             filterOpts['keywords'] = keywords.map(k => k.name.toLowerCase())
         }
 
-        // query for the stories
-        this.props.queryStories(queryString.stringify(filterOpts, { arrayFormat: 'bracket' }))
+        // close the stories-filter container
+        this.setState({ collapse: false })
+
+        // query for the stories & refresh = true
+        this.props.queryStories(queryString.stringify(filterOpts, { arrayFormat: 'bracket' }), true)
     }
     render() {
         // console.log(this.state)

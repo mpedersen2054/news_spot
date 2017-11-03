@@ -25,37 +25,44 @@ export default class StoryFeed extends Component {
         }
     }
     componentWillMount() {
-        this.queryStories()
+        this.queryStories(null, true)
     }
-    async queryStories(queryString) {
+    async queryStories(queryString, refresh) {
         let offsetLimit = `offset=${this.state.queryOffset}&limit=${this.state.queryLimit}`,
             queryStr,
+            notDefaultQuery,
             req
 
         if (!queryString || queryString.length == 0) {
             queryStr = `${devStoriesUrl}?${offsetLimit}`
         } else {
             queryStr = `${devStoriesUrl}?${queryString}&${offsetLimit}`
+            notDefaultQuery = true
         }
         try {
-            // console.log(queryStr)
+            console.log(queryStr)
             req = await axios.get(queryStr)
         } catch(err) {
             console.log('there was an error!', err)
         }
+        console.log(req.data)
         this.setState({
-            stories: [
-                ...this.state.stories,
-                ...req.data
-            ],
+            stories: refresh ?
+                     [ ...req.data ] :
+                     [
+                         ...this.state.stories,
+                         ...req.data
+                     ],
             queryOffset: this.state.queryOffset += this.state.queryLimit,
-            loadingMore: false
+            loadingMore: false,
+            currentQuery: notDefaultQuery ? queryString : ''
         })
     }
     loadMore() {
         if (this.state.stories.length == 0) return
         this.setState({ loadingMore: true })
-        this.queryStories()
+        console.log(this.state.currentQuery)
+        this.queryStories(this.state.currentQuery, false)
 
     }
     render() {

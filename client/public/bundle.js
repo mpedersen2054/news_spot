@@ -45075,56 +45075,61 @@ var StoryFeed = function (_Component) {
     _createClass(StoryFeed, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            this.queryStories();
+            this.queryStories(null, true);
         }
     }, {
         key: 'queryStories',
         value: function () {
-            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(queryString) {
-                var offsetLimit, queryStr, req;
+            var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(queryString, refresh) {
+                var offsetLimit, queryStr, notDefaultQuery, req;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                offsetLimit = 'offset=' + this.state.queryOffset + '&limit=' + this.state.queryLimit, queryStr = void 0, req = void 0;
+                                offsetLimit = 'offset=' + this.state.queryOffset + '&limit=' + this.state.queryLimit, queryStr = void 0, notDefaultQuery = void 0, req = void 0;
 
 
                                 if (!queryString || queryString.length == 0) {
                                     queryStr = devStoriesUrl + '?' + offsetLimit;
                                 } else {
                                     queryStr = devStoriesUrl + '?' + queryString + '&' + offsetLimit;
+                                    notDefaultQuery = true;
                                 }
                                 _context.prev = 2;
-                                _context.next = 5;
+
+                                console.log(queryStr);
+                                _context.next = 6;
                                 return _axios2.default.get(queryStr);
 
-                            case 5:
+                            case 6:
                                 req = _context.sent;
-                                _context.next = 11;
+                                _context.next = 12;
                                 break;
 
-                            case 8:
-                                _context.prev = 8;
+                            case 9:
+                                _context.prev = 9;
                                 _context.t0 = _context['catch'](2);
 
                                 console.log('there was an error!', _context.t0);
 
-                            case 11:
+                            case 12:
+                                console.log(req.data);
                                 this.setState({
-                                    stories: [].concat(_toConsumableArray(this.state.stories), _toConsumableArray(req.data)),
+                                    stories: refresh ? [].concat(_toConsumableArray(req.data)) : [].concat(_toConsumableArray(this.state.stories), _toConsumableArray(req.data)),
                                     queryOffset: this.state.queryOffset += this.state.queryLimit,
-                                    loadingMore: false
+                                    loadingMore: false,
+                                    currentQuery: notDefaultQuery ? queryString : ''
                                 });
 
-                            case 12:
+                            case 14:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this, [[2, 8]]);
+                }, _callee, this, [[2, 9]]);
             }));
 
-            function queryStories(_x) {
+            function queryStories(_x, _x2) {
                 return _ref.apply(this, arguments);
             }
 
@@ -45135,7 +45140,8 @@ var StoryFeed = function (_Component) {
         value: function loadMore() {
             if (this.state.stories.length == 0) return;
             this.setState({ loadingMore: true });
-            this.queryStories();
+            console.log(this.state.currentQuery);
+            this.queryStories(this.state.currentQuery, false);
         }
     }, {
         key: 'render',
@@ -47575,8 +47581,11 @@ var StoriesFilter = function (_Component) {
                 });
             }
 
-            // query for the stories
-            this.props.queryStories(_queryString2.default.stringify(filterOpts, { arrayFormat: 'bracket' }));
+            // close the stories-filter container
+            this.setState({ collapse: false });
+
+            // query for the stories & refresh = true
+            this.props.queryStories(_queryString2.default.stringify(filterOpts, { arrayFormat: 'bracket' }), true);
         }
     }, {
         key: 'render',
