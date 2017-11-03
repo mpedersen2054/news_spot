@@ -140,15 +140,11 @@ export default class StoriesFilter extends Component {
             filterOpts['keywords'] = keywords.map(k => k.name.toLowerCase())
         }
 
-        // add limit & offset
-        filterOpts['limit'] = 10
-        filterOpts['offset'] = 0
-
         // query for the stories
         this.props.queryStories(queryString.stringify(filterOpts, { arrayFormat: 'bracket' }))
     }
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return(
             <div className="stories-filter">
                 <a href="#" onClick={this.toggleCollapse} className="toggle-link">

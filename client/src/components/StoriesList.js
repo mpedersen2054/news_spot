@@ -9,7 +9,7 @@ export default class StoriesList extends Component {
     render() {
         let loading
         if (this.props.stories.length < 1) {
-            loading = <div>LOADING...</div>
+            loading = <div className="loading">LOADING...</div>
         }
         return(
             <div className="stories-list">

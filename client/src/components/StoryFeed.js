@@ -24,17 +24,24 @@ export default class StoryFeed extends Component {
         }
     }
     componentWillMount() {
-        this.queryStories(`offset=${this.state.queryOffset}&limit=${this.state.queryLimit}`)
+        this.queryStories()
     }
     async queryStories(queryString) {
-        console.log('queryString: ', queryString)
-        let req
+        let offsetLimit = `offset=${this.state.queryOffset}&limit=${this.state.queryLimit}`,
+            queryStr,
+            req
+
+        if (!queryString || queryString.length == 0) {
+            queryStr = `${devStoriesUrl}?${offsetLimit}`
+        } else {
+            queryStr = `${devStoriesUrl}?${queryString}&${offsetLimit}`
+        }
         try {
-            req = await axios.get(`${devStoriesUrl}?${queryString}`)
+            // console.log(queryStr)
+            req = await axios.get(queryStr)
         } catch(err) {
             console.log('there was an error!', err)
         }
-        // console.log(req.data)
         this.setState({
             stories: [
                 ...this.state.stories,
@@ -47,15 +54,14 @@ export default class StoryFeed extends Component {
     loadMore() {
         if (this.state.stories.length == 0) return
         this.setState({ loadingMore: true })
-        this.queryStories(`offset=${this.state.queryOffset}&limit=${this.state.queryLimit}`)
+        this.queryStories()
 
     }
     render() {
         let loadingMore
         if (this.state.loadingMore) {
-            loadingMore = <div>LOADING MORE...</div>
+            loadingMore = <div className="loading-container">LOADING MORE...</div>
         }
-        console.log(this.state.stories.length)
         return(
             <div className="page-content story-feed">
                 <StoriesSearch />

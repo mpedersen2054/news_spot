@@ -134,7 +134,6 @@ module.exports = {
         return Story.findAll(sqlObj)
             .then(data => {
                 // eventually use the response_creator
-                console.log(JSON.stringify(data))
                 res.status(200).json(data)
             }).catch(err => console.log('error!', err))
     }
