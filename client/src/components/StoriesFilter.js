@@ -90,7 +90,6 @@ export default class StoriesFilter extends Component {
         })
     }
     addKeyword(word) {
-        console.log('hello world!', word)
         const kwObj = { name: word }
         this.setState({
             keywords: [
@@ -100,7 +99,6 @@ export default class StoriesFilter extends Component {
         })
     }
     removeKeyword(keywordId) {
-        console.log('removing kw', keywordId)
         this.setState({
             keywords: [
                 ...this.state.keywords.slice(0, keywordId),
@@ -164,22 +162,31 @@ export default class StoriesFilter extends Component {
                     <Card>
                         <CardBody>
                             <Row>
-                                <Col xs="12" sm="6" md="6">
+                                <Col xs="12" sm="6" md="3">
                                     <div className="filter-section uploaded-at">
-                                        <div className="head">Uploaded At</div>
+                                        <div className="head">Published At</div>
                                         <SelectList
                                             name="uploadedAt"
                                             items={this.state.uploadedAt}
                                             select={this.selectFromSelectList} />
                                     </div>
                                 </Col>
-                                <Col xs="12" sm="6" md="6">
+                                <Col xs="12" sm="6" md="3">
                                     <div className="filter-section political-leaning">
                                         <div className="head">Political Leaning</div>
                                         <SelectList
                                             name="politicalLeaning"
                                             items={this.state.politicalLeaning}
                                             select={this.selectFromSelectList} />
+                                    </div>
+                                </Col>
+                                <Col xs="12" sm="12" md="6">
+                                    <div className="filter-section keywords">
+                                        <div className="head">Keywords</div>
+                                        <Keywords
+                                            keywords={this.state.keywords}
+                                            addKeyword={this.addKeyword}
+                                            removeKeyword={this.removeKeyword} />
                                     </div>
                                 </Col>
                             </Row>
@@ -204,18 +211,6 @@ export default class StoriesFilter extends Component {
                                             name="categories"
                                             items={this.state.categories}
                                             select={this.selectFromBoxMultiSelect} />
-                                    </div>
-                                </Col>
-                            </Row>
-                            <hr/>
-                            <Row>
-                                <Col md="12">
-                                    <div className="filter-section keywords">
-                                        <div className="head">Keywords</div>
-                                        <Keywords
-                                            keywords={this.state.keywords}
-                                            addKeyword={this.addKeyword}
-                                            removeKeyword={this.removeKeyword} />
                                     </div>
                                 </Col>
                             </Row>

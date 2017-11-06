@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Row, Col, Form, Input, Badge } from 'reactstrap'
+import { Row, Col, Form, Input, Badge, Button } from 'reactstrap'
 import { Icon } from 'react-fa'
 
 export default class Keywords extends Component {
@@ -55,7 +55,7 @@ export default class Keywords extends Component {
         return(
             <div className="keywords">
                 <Row>
-                    <Col md="4">
+                    <Col xs="12" sm="12" md="10">
                         <Form onSubmit={this.validateKeyword}>
                             <Input
                                 placeholder="Enter keyword..."
