@@ -1,13 +1,17 @@
-let webpack = require('webpack')
-let path = require('path')
-let loaders = require('./webpack.loaders')
-let HtmlWebpackPlugin = require('html-webpack-plugin')
-let WebpackCleanupPlugin = require('webpack-cleanup-plugin')
-let ExtractTextPlugin = require('extract-text-webpack-plugin')
+// WEBPACK FOR PRODUCTIOn
+let webpack = require('webpack'),
+    path = require('path'),
+    loaders = require('./webpack.loaders'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    WebpackCleanupPlugin = require('webpack-cleanup-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 loaders.push({
     test: /\.scss$/,
-    loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader?outputStyle=expanded'}),
+    loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: 'css-loader?sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader?outputStyle=expanded'
+    }),
     exclude: ['node_modules']
 })
 
