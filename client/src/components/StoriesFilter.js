@@ -48,6 +48,9 @@ export default class StoriesFilter extends Component {
             keywords: []
         }
     }
+    componentWillMount() {
+        console.log('HI THRE FRIEND !!!')
+    }
     toggleCollapse() {
         this.setState({ collapse: !this.state.collapse })
     }
@@ -142,6 +145,11 @@ export default class StoriesFilter extends Component {
 
         // close the stories-filter container
         this.setState({ collapse: false })
+
+        // scroll back to the top of the page
+        // window.scrollTo(0, 0)
+        // console.log(window)
+        // console.log('HI THERE !!')
 
         // query for the stories & refresh = true
         this.props.queryStories(queryString.stringify(filterOpts, { arrayFormat: 'bracket' }), true)
