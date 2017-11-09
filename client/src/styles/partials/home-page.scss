@@ -1,13 +1,13 @@
 
+@import '../modules/_colors';
+
 .home-page {
     position: relative;
 }
 
 .home__head {
     position: relative;
-    border: 1px solid red;
     height: 48rem;
-    // padding: 3rem 0;
     background-image: url('../../images/newspaper1.jpeg');
     background-repeat: no-repeat;
     background-position: center;
@@ -20,7 +20,7 @@
 
 .home__head .text {
     position: relative;
-    top: 15rem;
+    top: 13rem;
     float: right;
     width: 29rem;
     padding: 1rem 2rem;
@@ -31,19 +31,40 @@
         font-size: 5rem;
         padding: 0.3rem;
         margin-bottom: 0rem;
-        background-color: #fff;
+        background-color: $off-white;
         border-radius: 4px 4px 0 4px;
-        box-shadow: 0.25rem 0 0 #fff,
-                0.25rem*-1 0 0 #fff;
+        box-shadow: 0.25rem 0 0 $off-white,
+                0.25rem*-1 0 0 $off-white;
     }
     .text-p {
         position: relative;
         font-size: 1.75rem;
-        background-color: #fff;
+        background-color: $off-white;
         // border-radius: 0 0 0 4px;
         padding: 0.3rem;
-        box-shadow: 0.25rem 0 0 #fff,
-                0.25rem*-1 0 0 #fff;
+        box-shadow: 0.25rem 0 0 $off-white,
+                0.25rem*-1 0 0 $off-white;
         box-decoration-break: clone;
+    }
+}
+
+.small-container {
+    width: 35rem;
+    margin: 0 auto;
+}
+
+
+.home__description {
+    position: relative;
+    border: 1px solid red;
+    padding: 3rem 0;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .text {
+        font-size: 1.3rem;
     }
 }
