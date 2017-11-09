@@ -6,12 +6,13 @@ let Outlet = require('../models').Outlet,
 module.exports = {
     index: (req, res) => {
         return Outlet
-            .findAll()
+            .findAll(
+                { attributes: [ 'id', 'name' ] }
+            )
+            .then(outlets => JSON.stringify(outlets))
+            .then(outlets => JSON.parse(outlets))
             .then(outlets => {
-                res.status(202).json(response({
-                    link_current: '/outlets',
-                    data: outlets
-                }))
+                res.status(200).json(outlets)
             })
             .catch(err => res.status(404).json(err))
     },
