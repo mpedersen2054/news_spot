@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Container } from 'reactstrap'
+import { Icon } from 'react-fa'
 
 export default class Navigation extends Component {
     constructor(props) {
@@ -19,9 +20,11 @@ export default class Navigation extends Component {
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
+                <Navbar color="light" fixed="top" light expand="md">
                     <Container>
-                        <NavbarBrand href="/">NewsSpot</NavbarBrand>
+                        <NavbarBrand href="/">
+                            <Icon name="home" size="lg" />
+                        </NavbarBrand>
                         <NavbarToggler onClick={this.toggle}/>
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>

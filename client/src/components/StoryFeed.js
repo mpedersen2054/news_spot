@@ -3,6 +3,7 @@ import '../styles/partials/story-feed.scss'
 import axios from 'axios'
 import React, { Component } from 'react'
 import Waypoint from 'react-waypoint'
+import { Container } from 'reactstrap'
 
 import StoriesSearch from './StoriesSearch'
 import StoriesFilter from './StoriesFilter'
@@ -74,15 +75,17 @@ export default class StoryFeed extends Component {
         }
         return(
             <div className="page-content story-feed">
-                <StoriesSearch />
-                <hr/>
-                <StoriesFilter
-                    queryStories={this.queryStories} />
-                <StoriesList
-                    stories={this.state.stories} />
+                <Container>
+                    <StoriesSearch />
+                    <hr/>
+                    <StoriesFilter
+                        queryStories={this.queryStories} />
+                    <StoriesList
+                        stories={this.state.stories} />
 
-                <Waypoint onEnter={this.loadMore} />
-                {loadingMore}
+                    <Waypoint onEnter={this.loadMore} />
+                    {loadingMore}
+                </Container>
             </div>
         )
     }

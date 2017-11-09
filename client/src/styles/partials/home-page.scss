@@ -1,0 +1,49 @@
+
+.home-page {
+    position: relative;
+}
+
+.home__head {
+    position: relative;
+    border: 1px solid red;
+    height: 48rem;
+    // padding: 3rem 0;
+    background-image: url('../../images/newspaper1.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    .container {
+        padding: 0;
+    }
+}
+
+.home__head .text {
+    position: relative;
+    top: 15rem;
+    float: right;
+    width: 29rem;
+    padding: 1rem 2rem;
+    text-align: right;
+    // line-height: 0;
+
+    h1 {
+        font-size: 5rem;
+        padding: 0.3rem;
+        margin-bottom: 0rem;
+        background-color: #fff;
+        border-radius: 4px 4px 0 4px;
+        box-shadow: 0.25rem 0 0 #fff,
+                0.25rem*-1 0 0 #fff;
+    }
+    .text-p {
+        position: relative;
+        font-size: 1.75rem;
+        background-color: #fff;
+        // border-radius: 0 0 0 4px;
+        padding: 0.3rem;
+        box-shadow: 0.25rem 0 0 #fff,
+                0.25rem*-1 0 0 #fff;
+        box-decoration-break: clone;
+    }
+}
