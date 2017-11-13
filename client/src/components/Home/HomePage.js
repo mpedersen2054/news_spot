@@ -14,9 +14,13 @@ const devOutletsUrl = '//localhost:8080/api/v1/outlets'
 export default class HomePage extends Component {
     constructor() {
         super()
+        this.queryOutlets = this.queryOutlets.bind(this)
+        this.loadMoreOutlets = this.loadMoreOutlets.bind(this)
         this.state = {
             outlets: [],
-            currentOffset: 0
+            currentOffset: 0,
+            loadingMore: false,
+            allOutletsLoaded: false
         }
     }
     componentWillMount() {
@@ -36,8 +40,14 @@ export default class HomePage extends Component {
                 ...this.state.outlets,
                 ...req.data
             ],
-            currentOffset: this.state.currentOffset += 8
+            currentOffset: this.state.currentOffset += 8,
+            loadingMore: false,
+            allOutletsLoaded: req.data.length < 8 ? true : false
         })
+    }
+    loadMoreOutlets() {
+        this.setState({ loadingMore: true })
+        this.queryOutlets()
     }
     render() {
         return(
@@ -46,7 +56,9 @@ export default class HomePage extends Component {
                 <Description />
                 <Outlets
                     outlets={this.state.outlets}
-                    queryOutlets={this.queryOutlets} />
+                    loadMoreOutlets={this.loadMoreOutlets}
+                    loadingMore={this.state.loadingMore}
+                    allOutletsLoaded={this.state.allOutletsLoaded} />
             </div>
         )
     }

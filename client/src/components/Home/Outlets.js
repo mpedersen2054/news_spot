@@ -3,7 +3,28 @@ import React from 'react'
 import { Container, Row, Col, Card, CardImg, CardBody, CardText } from 'reactstrap'
 import { Icon } from 'react-fa'
 
+import Loading from '../Loading'
+
 export default (props) => {
+
+    let loadMore = (e) => {
+        e.preventDefault()
+        props.loadMoreOutlets()
+    }
+
+    let loadingMore = () => props.loadingMore ? <Loading /> : <div></div>
+    const loading = loadingMore()
+
+    let showMoreButton
+    if (!props.allOutletsLoaded) {
+        showMoreButton = <a href="#" className="show-more" onClick={loadMore}>
+            <div className="text">More</div>
+            <div><Icon name="chevron-down" size="2x" /></div>
+        </a>
+    } else {
+        showMoreButton = <div></div>
+    }
+
     return(
         <section className="home__outlets">
             <Container>
@@ -27,14 +48,13 @@ export default (props) => {
                             </Col>
                         )
                     })}
+
+                    {loading}
                 </Row>
 
                 <Row>
                     <Col md="12" className="show-more-container">
-                        <a href="#" className="show-more">
-                            <div className="text">More</div>
-                            <div><Icon name="chevron-down" size="2x" /></div>
-                        </a>
+                        {showMoreButton}
                     </Col>
                 </Row>
             </Container>

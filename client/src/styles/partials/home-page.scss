@@ -83,8 +83,10 @@ $section-padding-med: 3rem 0;
 }
 
 .show-more-container {
+    position: relative;
     text-align: center;
-    margin-top: 0.5rem;
+    // width: 10rem;
+    // margin: 0.5rem auto;
 }
 
 .show-more {
