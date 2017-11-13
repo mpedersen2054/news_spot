@@ -45,7 +45,7 @@ export default class StoryFeed extends Component {
             req = await axios.get(queryStr)
         } catch(err) {
             console.log('there was an error!', err)
-            throw Error(err)
+            throw new Error(err)
         }
         this.setState({
             // replace all current stories if refresh, in case of a

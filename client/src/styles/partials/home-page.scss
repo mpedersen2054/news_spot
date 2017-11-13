@@ -18,7 +18,6 @@ $section-padding-med: 3rem 0;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
     .container {
         padding: 0;
     }
@@ -31,8 +30,6 @@ $section-padding-med: 3rem 0;
     width: 29rem;
     padding: 1rem 2rem;
     text-align: right;
-    // line-height: 0;
-
     h1 {
         font-size: 5rem;
         padding: 0.3rem;
@@ -46,7 +43,6 @@ $section-padding-med: 3rem 0;
         position: relative;
         font-size: 1.75rem;
         background-color: $off-white;
-        // border-radius: 0 0 0 4px;
         padding: 0.3rem;
         box-shadow: 0.25rem 0 0 $off-white,
                 0.25rem*-1 0 0 $off-white;
@@ -54,17 +50,9 @@ $section-padding-med: 3rem 0;
     }
 }
 
-.small-container {
-    // position: relative;
-    // width: 35rem;
-    // max-width: 35rem;
-    // margin: 0 auto;
-}
-
-
 .home__description {
     position: relative;
-    border: 1px solid red;
+    border-bottom: 1px solid #ccc;
     padding: $section-padding-med;
 
     h2 {
@@ -80,6 +68,7 @@ $section-padding-med: 3rem 0;
 .home__outlets {
     position: relative;
     padding: $section-padding-med;
+    border: 1px solid red;
 }
 
 .outlet-list {
@@ -87,8 +76,27 @@ $section-padding-med: 3rem 0;
 }
 
 .outlet-list .outlet {
-    // border: 1px solid red;
+    margin-bottom: 2rem;
     .card-body {
         padding: 0;
+    }
+}
+
+.show-more-container {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.show-more {
+    position: relative;
+    .text {
+        font-size: 1.5rem;
+    }
+    .fa {
+        position: relative;
+        top: -0.5rem;
+    }
+    &:hover {
+        text-decoration: none;
     }
 }
