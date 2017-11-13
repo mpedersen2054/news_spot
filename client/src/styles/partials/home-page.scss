@@ -1,8 +1,14 @@
 
 @import '../modules/_colors';
 
+$section-padding-med: 3rem 0;
+
 .home-page {
     position: relative;
+    h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
 }
 
 .home__head {
@@ -49,15 +55,17 @@
 }
 
 .small-container {
-    width: 35rem;
-    margin: 0 auto;
+    // position: relative;
+    // width: 35rem;
+    // max-width: 35rem;
+    // margin: 0 auto;
 }
 
 
 .home__description {
     position: relative;
     border: 1px solid red;
-    padding: 3rem 0;
+    padding: $section-padding-med;
 
     h2 {
         text-align: center;
@@ -66,5 +74,21 @@
 
     .text {
         font-size: 1.3rem;
+    }
+}
+
+.home__outlets {
+    position: relative;
+    padding: $section-padding-med;
+}
+
+.outlet-list {
+    margin-top: 3rem;
+}
+
+.outlet-list .outlet {
+    // border: 1px solid red;
+    .card-body {
+        padding: 0;
     }
 }

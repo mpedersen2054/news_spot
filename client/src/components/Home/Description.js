@@ -7,7 +7,8 @@ export default () => {
         <section className="home__description">
             <Container>
                 <Row>
-                    <Col md="12">
+                    <Col xs="0" sm="0" md="2" lg="3"></Col>
+                    <Col xs="12" sm="12" md="8" lg="6">
                         <div className="small-container">
                             <h2>What am I?</h2>
                             <div className="text">
@@ -15,6 +16,7 @@ export default () => {
                             </div>
                         </div>
                     </Col>
+                    <Col xs="0" sm="0" md="2" lg="3"></Col>
                 </Row>
             </Container>
         </section>
