@@ -37,7 +37,7 @@ export default (props) => {
                     {props.outlets.map((outlet, idx) => {
                         return(
                             <Col xs="6" sm="6" md="4" lg="3" className="outlet" key={idx}>
-                                <a href="#">
+                                <a href="#" title={outlet.name}>
                                     <Card>
                                         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                                         <CardBody>

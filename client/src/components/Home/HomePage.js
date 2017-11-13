@@ -24,6 +24,7 @@ export default class HomePage extends Component {
         }
     }
     componentWillMount() {
+        this.setState({ loadingMore: true })
         this.queryOutlets()
     }
     async queryOutlets() {
