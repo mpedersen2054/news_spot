@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: false
+        },
+        logo: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: false
         }
     })
 

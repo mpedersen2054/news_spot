@@ -22,6 +22,11 @@ module.exports = {
                 defaultValue: false,
                 type: Sequelize.STRING
             },
+            logo: {
+                allowNull: false,
+                defaultValue: false,
+                type: Sequelize.STRING
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

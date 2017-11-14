@@ -12,7 +12,8 @@ const createOutlet = outlet => {
         Outlet.findOrCreate({ where: { name: outlet['name'] }, defaults: {
             name: outlet['name'],
             leaning: outlet['leaning'],
-            website: outlet['website']
+            website: outlet['website'],
+            logo: outlet['logo']
         }})
             .then(results => {
                 const outletId = results[0]['dataValues']['id']
