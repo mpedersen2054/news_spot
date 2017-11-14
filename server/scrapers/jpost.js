@@ -6,6 +6,7 @@ module.exports = class JPost extends Scraper {
         this.name = 'The Jerusalem Post'
         this.leaning = 'i'
         this.website = 'http://www.jpost.com/'
+        this.logo = 'https://i.imgur.com/g7pHO4V.png'
         this.urls = [
             { title: 'top_news', url: 'http://www.jpost.com/Rss/RssFeedsFrontPage.aspx', category: 'top' },
             { title: 'green_news', url: 'http://www.jpost.com/Rss/RssFeedsGreenIsrael.aspx', category: 'environment' },

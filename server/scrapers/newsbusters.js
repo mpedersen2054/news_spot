@@ -6,6 +6,7 @@ module.exports = class NewsBusters extends Scraper {
         this.name = 'News Busters'
         this.leaning = 'r'
         this.website = 'https://www.newsbusters.org/'
+        this.logo = 'http://via.placeholder.com/350x150.png'
         this.urls = [
             { title: 'top_news', url: 'https://www.newsbusters.org/blog/feed', category: 'top' },
         ]

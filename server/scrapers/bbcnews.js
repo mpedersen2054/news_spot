@@ -6,6 +6,7 @@ module.exports = class BBCNews extends Scraper {
         this.name = 'BBC News'
         this.leaning = 'l'
         this.website = 'http://www.bbc.com/news'
+        this.logo = 'https://i.imgur.com/MB8rULi.png'
         this.urls = [
             { title: 'top_stories', url: 'http://feeds.bbci.co.uk/news/rss.xml', category: 'top' },
             { title: 'world_news', url: 'http://feeds.bbci.co.uk/news/world/rss.xml', category: 'international' },

@@ -3,11 +3,10 @@ let Scraper = require('./base')
 module.exports = class FreeBeacon extends Scraper {
     constructor(urls) {
         super()
-        // this.name = 'Free Beacon'
-        // made error early, dont want to delete all in dev db so just gonna use this
-        this.name = 'http://freebeacon.com/'
+        this.name = 'Free Beacon'
         this.leaning = 'r'
         this.website = 'http://freebeacon.com/'
+        this.logo = 'https://i.imgur.com/THNS23w.png'
         this.urls = [
             { title: 'top_news', url: 'http://feeds.feedburner.com/FreeBeacon', category: 'top' },
         ]

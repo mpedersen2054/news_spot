@@ -6,6 +6,7 @@ module.exports = class RollingStone extends Scraper {
         this.name = 'Rolling Stone'
         this.leaning = 'l'
         this.website = 'http://www.rollingstone.com/'
+        this.logo = 'https://i.imgur.com/OXvbYlD.png'
         this.urls = [
             { title: 'music_news', url: 'http://www.rollingstone.com/music/rss', category: 'entertainment' },
             { title: 'movies_news', url: 'http://www.rollingstone.com/movies/rss', category: 'entertainment' },

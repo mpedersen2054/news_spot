@@ -6,6 +6,7 @@ module.exports = class DerSpiegel extends Scraper {
         this.name = 'Der Spiegel'
         this.leaning = 'l'
         this.website = 'http://www.spiegel.de/international/'
+        this.logo = 'https://i.imgur.com/lhTiCUF.png'
         this.urls = [
             { title: 'top_news', url: 'http://www.spiegel.de/international/index.rss', category: 'top' },
             { title: 'eu_news', url: 'http://www.spiegel.de/international/europe/index.rss', category: 'eu' },

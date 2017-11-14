@@ -6,6 +6,7 @@ module.exports = class FoxNews extends Scraper {
         this.name = 'Fox News'
         this.leaning = 'r'
         this.website = 'http://www.foxnews.com/'
+        this.logo = 'https://i.imgur.com/fcHSzT0.png'
         this.urls = [
             // for some reason top_news isnt loading?
             // { title: 'top_news', url: 'http://feeds.foxnews.com/foxnews/most-popular', category: 'top' },

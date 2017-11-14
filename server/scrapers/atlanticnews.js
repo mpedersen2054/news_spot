@@ -6,6 +6,7 @@ module.exports = class AtlanticNews extends Scraper {
         this.name = 'The Atlantic'
         this.leaning = 'l'
         this.website = 'https://www.theatlantic.com/'
+        this.logo = 'https://i.imgur.com/GAXkgHW.png'
         this.urls = [
             { title: 'politics_news', url: 'https://www.theatlantic.com/feed/channel/politics/', category: 'politics' },
             { title: 'entertainment_news', url: 'https://www.theatlantic.com/feed/channel/entertainment/', category: 'entertainment' },

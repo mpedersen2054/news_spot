@@ -6,6 +6,7 @@ module.exports = class USNews extends Scraper {
         this.name = 'US News'
         this.leaning = 'r'
         this.website = 'https://www.usnews.com/'
+        this.logo = 'https://i.imgur.com/R3HT97h.png'
         this.urls = [
             { title: 'world_news', url: 'https://www.usnews.com/rss/news', category: 'international' },
             { title: 'travel_news', url: 'https://www.usnews.com/rss/travel-editorial', category: 'travel' },

@@ -6,6 +6,7 @@ module.exports = class NYPost extends Scraper {
         this.name = 'New York Post'
         this.leaning = 'i'
         this.website = 'http://nypost.com/'
+        this.logo = 'https://i.imgur.com/FouE5zp.png'
         this.urls = [
             { title: 'top_news', url: 'http://nypost.com/news/feed/', category: 'top' },
             { title: 'ny_news', url: 'http://nypost.com/metro/feed/', category: 'us' },

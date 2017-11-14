@@ -6,6 +6,7 @@ module.exports = class DailyMail extends Scraper {
         this.name = 'The Daily Mail'
         this.leaning = 'i'
         this.website = 'http://www.dailymail.co.uk/ushome/index.html'
+        this.logo = 'http://via.placeholder.com/350x150.png'
         this.urls = [
             { title: 'top_news', url: 'http://www.dailymail.co.uk/news/index.rss', category: 'top' },
             { title: 'us_news', url: 'http://www.dailymail.co.uk/ushome/index.rss', category: 'us' },

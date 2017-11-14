@@ -6,6 +6,7 @@ module.exports = class ExpressNews extends Scraper {
         this.name = 'San Antonio Express News'
         this.leaning = 'i'
         this.website = 'http://www.expressnews.com/'
+        this.logo = 'https://i.imgur.com/1GPiXBn.png'
         this.urls = [
             { title: 'travel_news', url: 'http://feeds.feedburner.com/daily-express-travel', category: 'travel' },
             { title: 'finance_news', url: 'http://feeds.feedburner.com/daily-express-finance-news', category: 'economy' },

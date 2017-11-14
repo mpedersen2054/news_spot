@@ -6,6 +6,7 @@ module.exports = class RealClearPolitics extends Scraper {
         this.name = 'Real Clear Politics'
         this.leaning = 'i'
         this.website = 'https://www.realclearpolitics.com/?i10c.encReferrer='
+        this.logo = 'https://i.imgur.com/NC9ffOW.png'
         this.urls = [
             { title: 'top_news', url: 'http://feeds.feedburner.com/realclearpolitics/qlMj', category: 'top' },
         ]

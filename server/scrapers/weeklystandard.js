@@ -6,6 +6,7 @@ module.exports = class WeeklyStandard extends Scraper {
         this.name = 'The Weekly Standard'
         this.leaning = 'r'
         this.website = 'http://www.weeklystandard.com/'
+        this.logo = 'https://i.imgur.com/uUw5HCK.png'
         this.urls = [
             { title: 'obama_news', url: 'http://www.weeklystandard.com/rss/Obama/rss.xml', category: 'politics' },
             { title: 'healthcare_news', url: 'http://www.weeklystandard.com/rss/Healthcare/rss.xml', category: 'politics' },

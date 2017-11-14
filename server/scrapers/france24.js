@@ -6,6 +6,7 @@ module.exports = class France24 extends Scraper {
         this.name = 'France 24'
         this.leaning = 'l'
         this.website = 'http://www.france24.com/en/'
+        this.logo = 'https://i.imgur.com/4ivq2Jl.png'
         this.urls = [
             { title: 'top_news', url: 'http://www.france24.com/en/top-stories/rss', category: 'top' },
             { title: 'eu_news', url: 'http://www.france24.com/en/europe/rss', category: 'eu' },

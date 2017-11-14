@@ -6,6 +6,7 @@ module.exports = class ChicagoSun extends Scraper {
         this.name = 'The Chicago Sun Times'
         this.leaning = 'l'
         this.website = 'http://chicago.suntimes.com/'
+        this.logo = 'https://i.imgur.com/mrVRe85.png'
         this.urls = [
             { title: 'top_news', url: 'http://www.thesuntimes.com/news?template=rss&mime=xml', category: 'top' },
             { title: 'education_news', url: 'http://www.thesuntimes.com/news/education?template=rss&mime=xml', category: 'education' },

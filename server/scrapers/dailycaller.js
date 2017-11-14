@@ -6,6 +6,7 @@ module.exports = class DailyCaller extends Scraper {
         this.name = 'The Daily Caller'
         this.leaning = 'r'
         this.website = 'http://dailycaller.com/'
+        this.logo = 'https://i.imgur.com/cdbp4xP.png'
         this.urls = [
             { title: 'top_news', url: 'http://feeds.feedburner.com/dailycaller', category: 'top' },
             { title: 'politics_news', url: 'http://feeds.feedburner.com/dailycaller-politics', category: 'politics' },

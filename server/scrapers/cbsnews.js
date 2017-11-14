@@ -6,6 +6,7 @@ module.exports = class CBSNews extends Scraper {
         this.name = 'CBS News'
         this.leaning = 'i'
         this.website = 'https://www.cbsnews.com/'
+        this.logo = 'https://i.imgur.com/smoy3yb.png'
         this.urls = [
             { title: 'latest_news', url: 'https://www.cbsnews.com/latest/rss/main', category: 'top' },
             { title: 'us_news', url: 'https://www.cbsnews.com/latest/rss/us', category: 'us' },

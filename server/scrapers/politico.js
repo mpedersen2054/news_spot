@@ -6,6 +6,7 @@ module.exports = class Politico extends Scraper {
         this.name = 'Politico'
         this.leaning = 'l'
         this.website = 'http://www.politico.com/'
+        this.logo = 'https://i.imgur.com/Z6S5TQj.png'
         this.urls = [
             { title: 'congress_news', url: 'http://www.politico.com/rss/congress.xml', category: 'politics' },
             { title: 'healthcare_news', url: 'http://www.politico.com/rss/healthcare.xml', category: 'politics' },

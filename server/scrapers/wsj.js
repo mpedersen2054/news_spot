@@ -6,6 +6,7 @@ module.exports = class WSJ extends Scraper {
         this.name = 'The Wallstreet Journal'
         this.leaning = 'r'
         this.website = 'https://www.wsj.com/'
+        this.logo = 'https://i.imgur.com/qdAlFNJ.png'
         this.urls = [
             { title: 'world_news', url: 'http://www.wsj.com/xml/rss/3_7085.xml', category: 'international' },
             { title: 'business_news', url: 'http://www.wsj.com/xml/rss/3_7014.xml', category: 'economy' },

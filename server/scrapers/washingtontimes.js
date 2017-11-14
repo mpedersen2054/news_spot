@@ -6,6 +6,7 @@ module.exports = class WashingtonTimes extends Scraper {
         this.name = 'The Washington Times'
         this.leaning = 'r'
         this.website = 'http://www.washingtontimes.com/'
+        this.logo = 'https://i.imgur.com/aauThgg.png'
         this.urls = [
             { title: 'us_news', url: 'http://www.washingtontimes.com/rss/headlines/news/', category: 'us' },
             { title: 'culture_news', url: 'http://www.washingtontimes.com/rss/headlines/culture/', category: 'us' },

@@ -6,6 +6,7 @@ module.exports = class TheEconomist extends Scraper {
         this.name = 'The Economist'
         this.leaning = 'l'
         this.website = 'https://www.economist.com/'
+        this.logo = 'https://i.imgur.com/rsAl5Li.png'
         this.urls = [
             { title: 'business_news', url: 'http://www.economist.com/sections/business-finance/rss.xml', category: 'economy' },
             { title: 'economy_news', url: 'http://www.economist.com/sections/economics/rss.xml', category: 'economy' },

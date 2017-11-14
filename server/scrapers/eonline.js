@@ -6,6 +6,7 @@ module.exports = class EOnline extends Scraper {
         this.name = 'E News'
         this.leaning = 'i'
         this.website = 'http://www.eonline.com/'
+        this.logo = 'https://i.imgur.com/61chGrB.png'
         this.urls = [
             { title: 'entertainment_news', url: 'http://syndication.eonline.com/syndication/feeds/rssfeeds/topstories.xml', category: 'entertainment' },
             { title: 'tv_news', url: 'http://syndication.eonline.com/syndication/feeds/rssfeeds/tvnews.xml', category: 'entertainment' },

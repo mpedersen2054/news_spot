@@ -6,6 +6,7 @@ module.exports = class Newsmax extends Scraper {
         this.name = 'Newsmax'
         this.leaning = 'r'
         this.website = 'http://www.newsmax.com/'
+        this.logo = 'https://i.imgur.com/2SFFU81.png'
         this.urls = [
             { title: 'top_news', url: 'https://www.newsmax.com/rss/Newsfront/16/', category: 'top' },
             { title: 'us_news', url: 'https://www.newsmax.com/rss/US/18/', category: 'us' },

@@ -6,6 +6,7 @@ module.exports = class TheIndependent extends Scraper {
         this.name = 'The Independent'
         this.leaning = 'i'
         this.website = 'http://www.independent.co.uk/us'
+        this.logo = 'https://i.imgur.com/b1phAhZ.png'
         this.urls = [
             { title: 'uk_news', url: 'http://www.independent.co.uk/news/uk/rss', category: 'uk' },
             { title: 'world_news', url: 'http://www.independent.co.uk/news/world/rss', category: 'international' },

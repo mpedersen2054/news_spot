@@ -6,6 +6,7 @@ module.exports = class ChristianScience extends Scraper {
         this.name = 'The Christian Science Monitor'
         this.leaning = 'r'
         this.website = 'https://www.csmonitor.com/'
+        this.logo = 'https://i.imgur.com/w7WXlXX.png'
         this.urls = [
             { title: 'top_news', url: 'http://rss.csmonitor.com/feeds/csm', category: 'top' },
             { title: 'arts_news', url: 'http://rss.csmonitor.com/feeds/arts', category: 'entertainment' },

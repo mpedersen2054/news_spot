@@ -6,6 +6,7 @@ module.exports = class HuffPost extends Scraper {
         this.name = 'The Huffington Post'
         this.leaning = 'l'
         this.website = 'https://www.huffingtonpost.com/?country=US'
+        this.logo = 'https://i.imgur.com/gH1TKeB.png'
         this.urls = [
             { title: 'world_news', url: 'http://www.huffingtonpost.com/section/world-news/feed', category: 'international' },
             { title: 'business_news', url: 'http://www.huffingtonpost.com/section/business/feed', category: 'economy' },

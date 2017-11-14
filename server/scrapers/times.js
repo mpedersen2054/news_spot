@@ -6,6 +6,7 @@ module.exports = class Times extends Scraper {
         this.name = 'Time'
         this.leaning = 'l'
         this.website = 'http://time.com/'
+        this.logo = 'https://i.imgur.com/ZeUQajT.png'
         this.urls = [
             { title: 'top_news', url: 'http://feeds2.feedburner.com/time/topstories', category: 'top' },
             { title: 'us_news', url: 'http://feeds2.feedburner.com/time/nation', category: 'us' },

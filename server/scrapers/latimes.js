@@ -6,6 +6,7 @@ module.exports = class LATimes extends Scraper {
         this.name = 'LA Times'
         this.leaning = 'l'
         this.website = 'http://www.latimes.com/hp-2/'
+        this.logo = 'https://i.imgur.com/VeOa9te.png'
         this.urls = [
             { title: 'la_news', url: 'http://www.latimes.com/local/rss2.0.xml', category: 'us' },
             { title: 'sports_news', url: 'http://www.latimes.com/sports/rss2.0.xml', category: 'sports' },

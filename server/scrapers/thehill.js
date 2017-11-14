@@ -6,6 +6,7 @@ module.exports = class TheHill extends Scraper {
         this.name = 'The Hill'
         this.leaning = 'i'
         this.website = 'http://thehill.com/'
+        this.logo = 'https://i.imgur.com/GExes1S.png'
         this.urls = [
             { title: 'top_news', url: 'http://thehill.com/rss/syndicator/19110', category: 'top' },
             { title: 'administration_news', url: 'http://thehill.com/taxonomy/term/1132/feed', category: 'politics' },

@@ -6,6 +6,7 @@ module.exports = class Variety extends Scraper {
         this.name = 'Variety'
         this.leaning = 'l'
         this.website = 'http://variety.com/'
+        this.logo = 'https://i.imgur.com/dPYBHLH.png'
         this.urls = [
             { title: 'top_news', url: 'http://feeds.feedburner.com/variety/headlines', category: 'entertainment' },
         ]

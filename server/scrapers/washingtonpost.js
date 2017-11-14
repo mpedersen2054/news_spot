@@ -6,6 +6,7 @@ module.exports = class WashingtonPost extends Scraper {
         this.name = 'The Washington Post'
         this.leaning = 'l'
         this.website = 'https://www.washingtonpost.com/'
+        this.logo = 'https://i.imgur.com/IlWa4nw.png'
         this.urls = [
             { title: 'politics_news', url: 'http://feeds.washingtonpost.com/rss/politics', category: 'politics' },
             { title: 'opinion_news', url: 'http://feeds.washingtonpost.com/rss/opinions', category: 'misc' },

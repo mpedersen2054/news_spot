@@ -6,6 +6,7 @@ module.exports = class ZeroHedge extends Scraper {
         this.name = 'Zero Hedge'
         this.leaning = 'r'
         this.website = 'http://www.zerohedge.com/'
+        this.logo = 'https://i.imgur.com/fKjVYET.png'
         this.urls = [
             { title: 'top_news', url: 'http://feeds.feedburner.com/zerohedge/feed', category: 'top' },
         ]

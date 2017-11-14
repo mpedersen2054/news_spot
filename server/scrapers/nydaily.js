@@ -6,6 +6,7 @@ module.exports = class NYDaily extends Scraper {
         this.name = 'Daily News'
         this.leaning = 'l'
         this.website = 'http://www.nydailynews.com/'
+        this.logo = 'https://i.imgur.com/pTDVjyt.png'
         this.urls = [
             { title: 'ny_news', url: 'http://www.nydailynews.com/cmlink/NYDN.Local.rss', category: 'us' },
             { title: 'us_news', url: 'http://www.nydailynews.com/cmlink/NYDN.News.National.rss', category: 'us' },

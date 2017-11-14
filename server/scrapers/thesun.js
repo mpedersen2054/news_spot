@@ -6,6 +6,7 @@ module.exports = class TheSun extends Scraper {
         this.name = 'The Sun'
         this.leaning = 'l'
         this.website = 'https://www.thesun.co.uk/'
+        this.logo = 'https://i.imgur.com/iEpDQm2.png'
         this.urls = [
             { title: 'world_news', url: 'http://www.thesundaily.my/rss/world', category: 'international' },
             { title: 'business_news', url: 'http://www.thesundaily.my/rss/business', category: 'economy' },

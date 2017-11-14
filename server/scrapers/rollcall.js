@@ -6,6 +6,7 @@ module.exports = class RollCall extends Scraper {
         this.name = 'Roll Call'
         this.leaning = 'i'
         this.website = 'https://www.rollcall.com/'
+        this.logo = 'https://i.imgur.com/AYhZD6o.png'
         this.urls = [
             { title: 'top_news', url: 'https://www.rollcall.com/rss/tag/rss-feed/all-news', category: 'politics' },
         ]

@@ -6,6 +6,7 @@ module.exports = class WashingtonExaminer extends Scraper {
         this.name = 'Washington Examiner'
         this.leaning = 'l'
         this.website = 'http://www.washingtonexaminer.com/'
+        this.logo = 'https://i.imgur.com/5A3oBCx.png'
         this.urls = [
             { title: 'politics_news', url: 'http://www.washingtonexaminer.com/rss/politics', category: 'politics' },
             { title: 'policy_news', url: 'http://www.washingtonexaminer.com/rss/policy', category: 'politics' },

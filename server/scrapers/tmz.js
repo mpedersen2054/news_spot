@@ -6,6 +6,7 @@ module.exports = class TMZ extends Scraper {
         this.name = 'TMZ'
         this.leaning = 'l'
         this.website = 'http://www.tmz.com/'
+        this.logo = 'https://i.imgur.com/coccuTL.png'
         this.urls = [
             { title: 'top_news', url: 'http://www.tmz.com/rss.xml', category: 'entertainment' },
         ]

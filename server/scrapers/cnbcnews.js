@@ -6,6 +6,7 @@ module.exports = class CNBCNews extends Scraper {
         this.name = 'CNBC News'
         this.leaning = 'l'
         this.website = 'https://www.cnbc.com/'
+        this.logo = 'https://i.imgur.com/XZSypuD.png'
         this.urls = [
             { title: 'top_news', url: 'https://www.cnbc.com/id/100003114/device/rss/rss.html', category: 'top' },
             { title: 'world_news', url: 'https://www.cnbc.com/id/100727362/device/rss/rss.html', category: 'international' },

@@ -6,6 +6,7 @@ module.exports = class USAToday extends Scraper {
         this.name = 'USA Today'
         this.leaning = 'l'
         this.website = 'https://www.usatoday.com/'
+        this.logo = 'https://i.imgur.com/OcCr4Ri.png'
         this.urls = [
             { title: 'us_news', url: 'http://rssfeeds.usatoday.com/UsatodaycomNation-TopStories', category: 'us' },
             { title: 'politics_news', url: 'http://rssfeeds.usatoday.com/UsatodaycomWashington-TopStories', category: 'politics' },

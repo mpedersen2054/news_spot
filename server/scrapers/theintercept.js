@@ -6,6 +6,7 @@ module.exports = class TheIntercept extends Scraper {
         this.name = 'The Intercept'
         this.leaning = 'i'
         this.website = 'https://theintercept.com/'
+        this.logo = 'https://i.imgur.com/B5dHsrB.png'
         this.urls = [
             { title: 'all_news', url: 'https://theintercept.com/feed/?lang=en', category: 'top' },
         ]

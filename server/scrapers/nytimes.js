@@ -6,6 +6,7 @@ module.exports = class NYTimes extends Scraper {
         this.name = 'The New York Times'
         this.leaning = 'l'
         this.website = 'https://www.nytimes.com/?mcubz=0'
+        this.logo = 'https://i.imgur.com/JvVLNAs.png'
         this.urls = [
             { title: 'top_news', url: 'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml', category: 'top' },
             { title: 'world_news', url: 'http://rss.nytimes.com/services/xml/rss/nyt/World.xml', category: 'international' },

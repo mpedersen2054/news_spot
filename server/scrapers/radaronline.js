@@ -6,6 +6,7 @@ module.exports = class RadarOnline extends Scraper {
         this.name = 'Radar Online'
         this.leaning = 'l'
         this.website = 'http://radaronline.com/'
+        this.logo = 'https://i.imgur.com/F0c6L3B.png'
         this.urls = [
             { title: 'celebrity_news', url: 'http://radaronline.com/feed/', category: 'entertainment' },
         ]

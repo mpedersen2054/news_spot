@@ -6,6 +6,7 @@ module.exports = class Infowars extends Scraper {
         this.name = 'Infowars'
         this.leaning = 'r'
         this.website = 'https://www.infowars.com/'
+        this.logo = 'https://i.imgur.com/p6Adx9o.png'
         this.urls = [
             { title: 'top_news', url: 'https://www.infowars.com/feed/custom_feed_rss', category: 'top' },
         ]

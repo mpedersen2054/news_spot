@@ -8,6 +8,7 @@ module.exports = class BostonGlobe extends Scraper {
         this.name = 'The Boston Globe'
         this.leaning = 'l'
         this.website = 'https://www.bostonglobe.com/'
+        this.logo = 'http://via.placeholder.com/350x150.png'
         this.urls = [
             { title: 'us_news', url: 'https://www.boston.com/tag/national-news/feed', category: 'us' },
             { title: 'world_news', url: 'https://www.boston.com/tag/world-news/feed', category: 'international' },

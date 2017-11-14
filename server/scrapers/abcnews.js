@@ -6,6 +6,7 @@ module.exports = class ABCNews extends Scraper {
         this.name = 'ABC News'
         this.leaning = 'l'
         this.website = 'http://abcnews.go.com/'
+        this.logo = 'https://i.imgur.com/DDJX4MA.png'
         this.urls = [
             { title: 'top_news', url: 'http://abcnews.go.com/abcnews/topstories', category: 'top' },
             { title: 'international_news', url: 'http://abcnews.go.com/abcnews/internationalheadlines', category: 'international' },
