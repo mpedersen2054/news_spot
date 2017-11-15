@@ -10,7 +10,7 @@ module.exports = {
         return Outlet
             .findAll({
                 limit, offset,
-                attributes: [ 'id', 'name' ]
+                attributes: [ 'id', 'name', 'logo' ]
             })
             .then(outlets => JSON.stringify(outlets))
             .then(outlets => JSON.parse(outlets))

@@ -78,6 +78,9 @@ $section-padding-med: 3rem 0;
 .outlet-list .outlet {
     position: relative;
     margin-bottom: 2rem;
+    .card {
+        border: 1px solid #ddd;
+    }
     .card-body {
         position: relative;
         width: 100%;
@@ -91,6 +94,21 @@ $section-padding-med: 3rem 0;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    .img {
+        position: relative;
+        height: 7rem;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .img-overlay {
+        position: relative;
+        margin-top: -7rem;
+        height: 7rem;
+    }
+    .text {
+        border-top: 1px solid #ddd;
     }
 }
 
