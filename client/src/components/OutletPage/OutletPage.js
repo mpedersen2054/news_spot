@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react'
+import Outlets from '../Home/Outlets'
+import axios from 'axios'
 
 export default class OutletPage extends Component {
     constructor() {

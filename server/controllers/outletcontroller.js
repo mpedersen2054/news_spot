@@ -5,13 +5,22 @@ let Outlet = require('../models').Outlet,
 
 module.exports = {
     index: (req, res) => {
-        const limit  = Number(req.query.limit)
-        const offset = Number(req.query.offset)
-        return Outlet
-            .findAll({
+        let rq = req.query,
+            query
+        if (rq.limit && rq.offset) {
+            const limit  = Number(req.query.limit)
+            const offset = Number(req.query.offset)
+            query = {
                 limit, offset,
                 attributes: [ 'id', 'name', 'logo' ]
-            })
+            }
+        } else {
+            query = {
+                attributes: [ 'id', 'name', 'logo' ]
+            }
+        }
+        return Outlet
+            .findAll(query)
             .then(outlets => JSON.stringify(outlets))
             .then(outlets => JSON.parse(outlets))
             .then(outlets => {

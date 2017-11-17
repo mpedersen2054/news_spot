@@ -2,6 +2,7 @@
 import '../../styles/partials/home-page.scss'
 import axios from 'axios'
 import React, { Component } from 'react'
+import { Container } from 'reactstrap'
 
 import {
     Head,
@@ -56,11 +57,17 @@ export default class HomePage extends Component {
             <div className="page-content home-page">
                 <Head />
                 <Description />
-                <Outlets
-                    outlets={this.state.outlets}
-                    loadMoreOutlets={this.loadMoreOutlets}
-                    loadingMore={this.state.loadingMore}
-                    allOutletsLoaded={this.state.allOutletsLoaded} />
+
+                <div className="home__outlets">
+                    <Container>
+                        <Outlets
+                            outlets={this.state.outlets}
+                            loadMoreOutlets={this.loadMoreOutlets}
+                            loadingMore={this.state.loadingMore}
+                            allOutletsLoaded={this.state.allOutletsLoaded}
+                            isHomePage={true} />
+                    </Container>
+                </div>
             </div>
         )
     }

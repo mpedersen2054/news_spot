@@ -26,46 +26,50 @@ export default (props) => {
         showMoreButton = <div></div>
     }
 
+    let outletsHeader
+    if (props.isHomePage) {
+        outletsHeader = (
+            <Row>
+                <Col md="12">
+                    <h2>Outlets</h2>
+                </Col>
+            </Row>
+        )
+    }
+
     return(
-        <section className="home__outlets">
-            <Container>
-                <Row>
-                    <Col md="12">
-                        <h2>Outlets</h2>
-                    </Col>
-                </Row>
-                <Row className="outlet-list">
-                    {props.outlets.map((outlet, idx) => {
-                        return(
-                            <Col xs="6" sm="6" md="4" lg="3" className="outlet" key={idx}>
-                                <Link to={`/outlets/${outlet.id}`} title={outlet.name}>
-                                    <Card>
-                                        <CardImg
-                                            top
-                                            width="100%"
-                                            className="img"
-                                            style={{
-                                                backgroundImage: `url(${outlet.logo})`
-                                            }} />
-                                        <div className="img-overlay"></div>
-                                        <CardBody className="text">
-                                            <CardText>{outlet.name}</CardText>
-                                        </CardBody>
-                                    </Card>
-                                </Link>
-                            </Col>
-                        )
-                    })}
+        <section className="outlets">
+            {outletsHeader}
+            <Row className="outlet-list">
+                {props.outlets.map((outlet, idx) => {
+                    return(
+                        <Col xs="6" sm="6" md="4" lg="3" className="outlet" key={idx}>
+                            <Link to={`/outlets/${outlet.id}`} title={outlet.name}>
+                                <Card>
+                                    <CardImg
+                                        top
+                                        width="100%"
+                                        className="img"
+                                        style={{
+                                            backgroundImage: `url(${outlet.logo})`
+                                        }} />
+                                    <div className="img-overlay"></div>
+                                    <CardBody className="text">
+                                        <CardText>{outlet.name}</CardText>
+                                    </CardBody>
+                                </Card>
+                            </Link>
+                        </Col>
+                    )
+                })}
+                {loading}
+            </Row>
 
-                    {loading}
-                </Row>
-
-                <Row>
-                    <Col md="12" className="show-more-container">
-                        {showMoreButton}
-                    </Col>
-                </Row>
-            </Container>
+            <Row>
+                <Col md="12" className="show-more-container">
+                    {showMoreButton}
+                </Col>
+            </Row>
         </section>
     )
 }
