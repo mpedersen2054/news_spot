@@ -23,14 +23,15 @@ export default class HomePage extends Component {
             allOutletsLoaded: false
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         this.setState({ loadingMore: true })
         this.queryOutlets()
     }
     async queryOutlets() {
-        let req
+        let queryStr = `${devOutletsUrl}?limit=8&offset=${this.state.currentOffset}`,
+            req
         try {
-            req = await axios.get(`${devOutletsUrl}?limit=8&offset=${this.state.currentOffset}`)
+            req = await axios.get(queryStr)
             console.log(req.data)
         } catch(err) {
             console.log('There was an error querying outlets.', err)

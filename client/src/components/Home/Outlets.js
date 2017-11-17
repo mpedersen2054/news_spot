@@ -46,7 +46,7 @@ export default (props) => {
                                             style={{
                                                 backgroundImage: `url(${outlet.logo})`
                                             }} />
-                                        <div className="img-overlay">hi</div>
+                                        <div className="img-overlay"></div>
                                         <CardBody className="text">
                                             <CardText>{outlet.name}</CardText>
                                         </CardBody>
