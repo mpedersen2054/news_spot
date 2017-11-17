@@ -2,6 +2,7 @@
 import React from 'react'
 import { Container, Row, Col, Card, CardImg, CardBody, CardText } from 'reactstrap'
 import { Icon } from 'react-fa'
+import { Link } from 'react-router-dom'
 
 import Loading from '../Loading'
 
@@ -37,7 +38,7 @@ export default (props) => {
                     {props.outlets.map((outlet, idx) => {
                         return(
                             <Col xs="6" sm="6" md="4" lg="3" className="outlet" key={idx}>
-                                <a href="#" title={outlet.name}>
+                                <Link to={`/outlets/${outlet.id}`} title={outlet.name}>
                                     <Card>
                                         <CardImg
                                             top
@@ -51,7 +52,7 @@ export default (props) => {
                                             <CardText>{outlet.name}</CardText>
                                         </CardBody>
                                     </Card>
-                                </a>
+                                </Link>
                             </Col>
                         )
                     })}

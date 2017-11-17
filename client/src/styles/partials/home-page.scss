@@ -68,7 +68,6 @@ $section-padding-med: 3rem 0;
 .home__outlets {
     position: relative;
     padding: $section-padding-med;
-    border: 1px solid red;
 }
 
 .outlet-list {
@@ -79,7 +78,6 @@ $section-padding-med: 3rem 0;
     position: relative;
     margin-bottom: 2rem;
     .card {
-        border: 0px solid #aaa;
     }
     .card-body {
         position: relative;

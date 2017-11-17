@@ -10,7 +10,9 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import Navigation from './src/components/Navigation'
 import Footer from './src/components/Footer'
 import HomePage from './src/components/Home/HomePage'
-import StoryFeed from './src/components/StoryFeed'
+import StoryFeed from './src/components/Feed/StoryFeed'
+import OutletList from './src/components/OutletList'
+import OutletPage from './src/components/OutletPage/OutletPage'
 
 const PrimaryLayout = () => (
     <div className="primary-layout">
@@ -20,6 +22,8 @@ const PrimaryLayout = () => (
         <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/feed" component={StoryFeed} />
+            <Route path="/outlets/:id" component={OutletPage} />
+            <Route path="/outlets" component={OutletList} />
             <Redirect to="/" />
         </Switch>
         <Footer />
