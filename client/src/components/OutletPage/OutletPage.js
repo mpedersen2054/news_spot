@@ -1,7 +1,9 @@
 
 import React, { Component } from 'react'
-import Outlets from '../Home/Outlets'
 import axios from 'axios'
+import { Container } from 'reactstrap'
+
+import Outlets from '../Home/Outlets'
 
 export default class OutletPage extends Component {
     constructor() {
@@ -13,7 +15,9 @@ export default class OutletPage extends Component {
         console.log(id)
         return(
             <div className="page-content outlet-page">
-                hello single outlet!
+                <Container>
+                    hello outlet {id}
+                </Container>
             </div>
         )
     }
