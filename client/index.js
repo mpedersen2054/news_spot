@@ -13,6 +13,7 @@ import HomePage from './src/components/Home/HomePage'
 import StoryFeed from './src/components/Feed/StoryFeed'
 import OutletList from './src/components/OutletList'
 import OutletPage from './src/components/OutletPage/OutletPage'
+import ApiPage from './src/components/ApiPage'
 
 const PrimaryLayout = () => (
     <div className="primary-layout">
@@ -24,6 +25,7 @@ const PrimaryLayout = () => (
             <Route path="/feed" component={StoryFeed} />
             <Route path="/outlets/:id" component={OutletPage} />
             <Route path="/outlets" component={OutletList} />
+            <Route path="/api" component={ApiPage} />
             <Redirect to="/" />
         </Switch>
         <Footer />
