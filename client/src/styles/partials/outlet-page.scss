@@ -1,0 +1,37 @@
+
+@import '../modules/_colors';
+
+.page-content.outlet-page {
+    padding: 4rem 0 1.5rem;
+}
+
+.banner {
+    position: relative;
+    height: 25rem;
+    background-color: yellow;
+    margin-bottom: 1rem;
+}
+
+.overlay-txt {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    font-size: 32px;
+    background-color: $off-white;
+    padding: 0.5rem 1rem;
+}
+
+.headlines,
+.types,
+.stories {
+    margin: 1rem 0;
+    h4 {
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+}
+
+.headlines {
+}
+
+.types {}
