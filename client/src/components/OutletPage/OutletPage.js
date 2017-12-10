@@ -59,8 +59,6 @@ export default class OutletPage extends Component {
             }
         })
 
-        console.log(req.data)
-
         this.setState({
             name: req.data.name,
             leaning: req.data.leaning,
@@ -75,6 +73,41 @@ export default class OutletPage extends Component {
                 ...categories
             ],
             loadingOutlet: false
+        })
+    }
+    // click handler for clicking on either Headline or Category
+    // if headline clicked, make selected=true for that headline,
+    // and all other headlines selected=false & ALL categories
+    // selected=false & visa-versa for clicking on category
+    selectOption(selectedIdx, which) {
+        let currentWhich,
+            otherWhich,
+            whichName1,
+            whichName2
+
+        if (which === 'headlines') {
+            whichName1 = 'headlines'
+            whichName2 = 'categories'
+            currentWhich = this.state.headlines
+            otherWhich = this.state.categories
+        } else {
+            whichName1 = 'categories'
+            whichName2 = 'headlines'
+            currentWhich = this.state.categories
+            otherWhich = this.state.headlines
+        }
+
+        this.setState({
+            [whichName1]: currentWhich.map((item, idx) => {
+                item.selected = (item.id == selectedIdx)
+                    ? true
+                    : false
+                return item
+            }),
+            [whichName2]: otherWhich.map((item, idx) => {
+                item.selected = false
+                return item
+            })
         })
     }
     render() {
@@ -106,8 +139,11 @@ export default class OutletPage extends Component {
                                 <Row>
                                     {this.state.headlines.map(h => {
                                         return(
-                                            <Col md="3" key={h.id}>
-                                                <div className="o-headline">
+                                            <Col
+                                                md="3"
+                                                key={h.id}
+                                                onClick={() => this.selectOption(h.id, 'headlines')}>
+                                                <div className={`o-headline ${h.selected ? 'active' : ''}`}>
                                                     {h.name}
                                                 </div>
                                             </Col>
@@ -128,8 +164,11 @@ export default class OutletPage extends Component {
                                 <Row>
                                     {this.state.categories.map(c => {
                                         return(
-                                            <Col md="3" key={c.id}>
-                                                <div className="o-category">
+                                            <Col
+                                                md="3"
+                                                key={c.id}
+                                                onClick={() => this.selectOption(c.id, 'categories')}>
+                                                <div className={`o-category ${c.selected ? 'active' : ''}`}>
                                                     {c.name}
                                                 </div>
                                             </Col>

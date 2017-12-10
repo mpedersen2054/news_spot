@@ -38,6 +38,10 @@
     color: $link-blue;
     cursor: pointer;
     font-size: 14px;
+
+    &.active {
+        color: $link-blue-dark;
+    }
 }
 
 .o-headlines {
