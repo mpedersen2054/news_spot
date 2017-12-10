@@ -20,6 +20,7 @@ module.exports = {
         @politicalLeaning - 'l'
         @outlets - [ id, id, id ]
         @categories - [ str, str ]
+        @headlines - int
         */
 
         let sqlObj = {}
@@ -73,6 +74,13 @@ module.exports = {
                 }
             }
             sqlObj['include'].push(cInclude)
+        }
+
+        // headlines currently only being used by /outlets/<id>
+        // page to find all stories from given headline
+        // 1 at a time, might need to change later if more headlines being used
+        if ('headline' in rq) {
+            sqlObj['where']['headlineId'] = rq['headline']
         }
 
         // this isnt necessary correct, it gives me all, for ex,

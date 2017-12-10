@@ -6,6 +6,7 @@ let homeCtrl = require('../controllers/homecontroller'),
 module.exports = (app) => {
     // api endpoints
     app.get('/api/v1/outlets', outletCtrl.index)
+    app.get('/api/v1/outlets/hi', outletCtrl.hi) // del me
     app.get('/api/v1/outlets/:id', outletCtrl.show)
 
     app.get('/api/v1/stories', storiesCtrl.index)

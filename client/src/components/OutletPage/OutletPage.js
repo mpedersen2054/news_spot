@@ -23,6 +23,7 @@ export default class OutletPage extends Component {
     componentDidMount() {
         this.setState({ loadingOutlet: true })
         this.queryOutlet()
+        this.queryInitialOutletStories()
     }
     async queryOutlet() {
         let req,
@@ -74,6 +75,20 @@ export default class OutletPage extends Component {
             ],
             loadingOutlet: false
         })
+    }
+    async queryInitialOutletStories() {
+        // /api/v1/stories?categories[]=science&limit=10&offset=0&outlets[]=31
+        let qString = `/api/v1/stories?limit=10&offset=0&outlets[]=${this.props.match.params.id}`,
+            req = await axios(qString)
+        try {
+
+        } catch(err) {
+            console.log('there was an error!', err)
+            throw new Error(err)
+        }
+
+        console.log(req)
+
     }
     // click handler for clicking on either Headline or Category
     // if headline clicked, make selected=true for that headline,
