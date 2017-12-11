@@ -2,13 +2,20 @@ import '../../styles/partials/outlet-page.scss'
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Container, Row, Col } from 'reactstrap'
+import Waypoint from 'react-waypoint'
 
 import Outlets from '../Home/Outlets'
 import Loading from '../Loading'
+import StoriesList from '../Feed/StoriesList'
+
+const devStoriesUrl = '/api/v1/stories'
 
 export default class OutletPage extends Component {
     constructor() {
         super()
+        this.queryOutlet = this.queryOutlet.bind(this)
+        this.queryOutletStories = this.queryOutletStories.bind(this)
+        this.loadMore = this.loadMore.bind(this)
         this.state = {
             name: null,
             leaning: null,
@@ -17,13 +24,17 @@ export default class OutletPage extends Component {
             stories: [],
             headlines: [],
             categories: [],
-            loadingOutlet: false
+            loadingOutlet: false,
+            loadingStories: false,
+            currentQuery: '',
+            queryOffset: 0,
+            queryLimit: 15
         }
     }
     componentDidMount() {
         this.setState({ loadingOutlet: true })
         this.queryOutlet()
-        this.queryInitialOutletStories()
+        this.queryOutletStories(null, true)
     }
     async queryOutlet() {
         let req,
@@ -36,7 +47,6 @@ export default class OutletPage extends Component {
             console.log('there was an error!', err)
             throw new Error(err)
         }
-
         // turn headlines & categories into array of objects
         // to be loaded into state
         headlines = req.data.outletHeadlines.map(h => {
@@ -59,7 +69,6 @@ export default class OutletPage extends Component {
                 selected: false
             }
         })
-
         this.setState({
             name: req.data.name,
             leaning: req.data.leaning,
@@ -76,19 +85,43 @@ export default class OutletPage extends Component {
             loadingOutlet: false
         })
     }
-    async queryInitialOutletStories() {
+    async queryOutletStories(queryString, refresh) {
         // /api/v1/stories?categories[]=science&limit=10&offset=0&outlets[]=31
-        let qString = `/api/v1/stories?limit=10&offset=0&outlets[]=${this.props.match.params.id}`,
-            req = await axios(qString)
-        try {
+        let offsetLimit = `offset=${this.state.queryOffset}&limit=${this.state.queryLimit}`,
+            queryStr,
+            notDefaultQuery,
+            req
 
+        // check if there is already a query going, used to infinite scroll
+        if (!queryString || queryString.length == 0) {
+            queryStr = `${devStoriesUrl}?${offsetLimit}&outlets[]=${this.props.match.params.id}`
+        } else {
+            queryStr = `${devStoriesUrl}?${queryString}&${offsetLimit}&outlets[]=${this.props.match.params.id}`
+            notDefaultQuery = true
+        }
+
+        try {
+            req = await axios(queryStr)
         } catch(err) {
             console.log('there was an error!', err)
             throw new Error(err)
         }
 
-        console.log(req)
-
+        this.setState({
+            stories: refresh ?
+                     [ ...req.data ] :
+                     [
+                         ...this.state.stories,
+                         ...req.data
+                     ],
+            queryOffset: this.state.queryOffset += this.state.queryLimit,
+            loadingStories: false
+        })
+    }
+    loadMore() {
+        if (this.state.stories.length == 0) return
+        this.setState({ loadingStories: true })
+        this.queryOutletStories(this.state.currentQuery, false)
     }
     // click handler for clicking on either Headline or Category
     // if headline clicked, make selected=true for that headline,
@@ -126,9 +159,14 @@ export default class OutletPage extends Component {
         })
     }
     render() {
-        let loading = (this.state.loadingOutlet)
+        let loadingOutlet = (this.state.loadingOutlet)
             ? <Loading />
             : <div></div>
+
+        let loadingStories = (this.state.loadingStories)
+            ? <Loading />
+            : <div></div>
+
         return(
             <div className="page-content outlet-page">
                 <Container>
@@ -150,7 +188,7 @@ export default class OutletPage extends Component {
                         <Col md="12">
                             <div className="o-headlines">
                                 <h4>Headlines</h4>
-                                {loading}
+                                {loadingOutlet}
                                 <Row>
                                     {this.state.headlines.map(h => {
                                         return(
@@ -175,7 +213,7 @@ export default class OutletPage extends Component {
                         <Col md="12">
                             <div className="o-categories">
                                 <h4>Types</h4>
-                                {loading}
+                                {loadingOutlet}
                                 <Row>
                                     {this.state.categories.map(c => {
                                         return(
@@ -201,9 +239,19 @@ export default class OutletPage extends Component {
                             <div className="o-stories">
                                 <h4>Stories</h4>
                                 <Row>
-                                    <Col md="12">stories</Col>
+                                    <Col md="12">
+                                        <StoriesList
+                                            stories={this.state.stories} />
+                                    </Col>
                                 </Row>
                             </div>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col md="12">
+                            <Waypoint onEnter={this.loadMore} />
+                            {loadingStories}
                         </Col>
                     </Row>
                 </Container>

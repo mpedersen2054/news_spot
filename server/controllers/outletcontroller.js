@@ -51,16 +51,5 @@ module.exports = {
                 res.status(200).json(outlet)
             })
             .catch(err => res.status(400).json({ message: `Outlet ${req.params.id} does not exist` }))
-    },
-
-    hi: (req, res) => {
-        // write code here to get all Stories given a HeadlineId
-        return Story
-            .findAll({
-                where: { headlineId: 1 }
-            })
-            .then(data => {
-                res.send(data)
-            })
     }
 }

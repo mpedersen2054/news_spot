@@ -10,7 +10,7 @@ import StoriesFilter from './StoriesFilter'
 import StoriesList from './StoriesList'
 import Loading from '../Loading'
 
-const devStoriesUrl = '//localhost:8080/api/v1/stories'
+const devStoriesUrl = '/api/v1/stories'
 
 export default class StoryFeed extends Component {
     constructor() {
