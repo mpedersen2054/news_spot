@@ -153,7 +153,7 @@ export default class StoriesFilter extends Component {
         // console.log(this.state)
         return(
             <div className="stories-filter">
-                <a href="#" onClick={this.toggleCollapse} className="toggle-link">
+                <a onClick={this.toggleCollapse} className="toggle-link">
                     <Icon name="bars" />
                     <span className="toggle-link-text">Filter</span>
                 </a>

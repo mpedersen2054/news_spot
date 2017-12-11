@@ -12,7 +12,10 @@
 }
 
 .toggle-link {
+    color: $link-blue;
+    cursor: pointer;
     &:hover {
+        color: $link-blue-dark;
         text-decoration: none;
         .toggle-link-text {
             text-decoration: none;

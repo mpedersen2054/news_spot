@@ -32,7 +32,7 @@ export default class Navigation extends Component {
                                     <NavLink href="/outlets">Outlets</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink href="/">API</NavLink>
+                                    <NavLink href="/api">API</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink href="/feed">Feed</NavLink>
