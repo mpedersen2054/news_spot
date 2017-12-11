@@ -1,6 +1,10 @@
 let addAllStories = require('./server/lib/addallstories'),
     logger        = require('./server/lib/logger').scraperLogger,
-    CronJob       = require('cron').CronJob
+    CronJob       = require('cron').CronJob,
+    ARGS          = process.argv.slice(2)
+
+// Adds all stories, passing 'once' when running program
+// to add only once, otherwise it will try to add stories everyday at 2:00pm
 
 const addAll = () => {
     const start = new Date
@@ -26,11 +30,16 @@ const addAll = () => {
 addAll()
 logger.log('info', 'STARTED GATHERER.JS @ %j', new Date().toLocaleTimeString())
 
-// // will call addAll() at 10:15am and 6:15pm eastern time
-// try {
-//     new CronJob('00 15 10,18 * * 0-6', () => {
-//         addAll()
-//     }, null, true, 'America/New_York')
-// } catch(ex) {
-//     logger.log('warn', 'the pattern was not valid! %j', ex)
-// }
+if (ARGS.length > 0 && ARGS[0] == 'once') {
+    logger.log('info', 'Add stories once.')
+    addAll()
+} else {
+    // will call addAll() at 2pm everyday
+    try {
+        new CronJob('00 00 14 * * 0-6', () => {
+            addAll()
+        }, null, true, 'America/New_York')
+    } catch(ex) {
+        logger.log('warn', 'the pattern was not valid! %j', ex)
+    }
+}

@@ -6,8 +6,6 @@ let scrapers         = require('./scrapers_load_obj'),
 // which adds all stories for each outlet. This file will add ALL
 // stories for ALL outlets
 
-// const outlets = Object.values(scrapers).slice(0, 1)
-// const outlets = Object.values(scrapers).slice(43)
 const outlets = Object.values(scrapers).slice(0)
 
 // will run addOutletStories SYNCRONOUSLY. if not sync

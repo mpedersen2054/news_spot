@@ -4,7 +4,6 @@ import './src/styles/main.scss' // spot from public/bundle.js i think?
 import { Container } from 'reactstrap'
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import { AppContainer } from 'react-hot-loader'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 
 import Navigation from './src/components/Navigation'
