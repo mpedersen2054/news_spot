@@ -100,6 +100,9 @@ export default class OutletPage extends Component {
             notDefaultQuery = true
         }
 
+        console.log('querying for:')
+        console.log(queryStr)
+
         try {
             req = await axios(queryStr)
         } catch(err) {
@@ -115,7 +118,8 @@ export default class OutletPage extends Component {
                          ...req.data
                      ],
             queryOffset: this.state.queryOffset += this.state.queryLimit,
-            loadingStories: false
+            loadingStories: false,
+            currentQuery: notDefaultQuery ? queryString : ''
         })
     }
     loadMore() {
@@ -127,11 +131,14 @@ export default class OutletPage extends Component {
     // if headline clicked, make selected=true for that headline,
     // and all other headlines selected=false & ALL categories
     // selected=false & visa-versa for clicking on category
-    selectOption(selectedIdx, which) {
+    selectOption(selectedId, which) {
         let currentWhich,
             otherWhich,
             whichName1,
-            whichName2
+            whichName2,
+            toBeSelected,
+            removeSelected,
+            newQString
 
         if (which === 'headlines') {
             whichName1 = 'headlines'
@@ -145,18 +152,34 @@ export default class OutletPage extends Component {
             otherWhich = this.state.headlines
         }
 
-        this.setState({
-            [whichName1]: currentWhich.map((item, idx) => {
-                item.selected = (item.id == selectedIdx)
-                    ? true
-                    : false
-                return item
-            }),
-            [whichName2]: otherWhich.map((item, idx) => {
-                item.selected = false
-                return item
-            })
+        toBeSelected = currentWhich.map((item, idx) => {
+            item.selected = (item.id == selectedId)
+                ? true
+                : false
+            return item
         })
+        removeSelected = otherWhich.map((item, idx) => {
+            item.selected = false
+            return item
+        })
+
+        // create the new query string based on weather
+        // it was a headline or a category
+        const story = currentWhich.filter(s => s.id == selectedId)
+        if (whichName1 === 'headlines') {
+            console.log(story)
+            newQString = `headline=${story[0].id}`
+        } else {
+            newQString = `categories[]=${story[0].name.slice(0, 1).toLowerCase() + story[0].name.slice(1)}`
+        }
+
+        this.setState({
+            [whichName1]: toBeSelected,
+            [whichName2]: removeSelected,
+            currentQuery: newQString
+        })
+
+        this.queryOutletStories(newQString, true)
     }
     render() {
         let loadingOutlet = (this.state.loadingOutlet)
