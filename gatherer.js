@@ -27,9 +27,7 @@ const addAll = () => {
         })
 }
 
-addAll()
-logger.log('info', 'STARTED GATHERER.JS @ %j', new Date().toLocaleTimeString())
-
+// check weather arg 'once' was passed in, if it was, only addAll() 1 time
 if (ARGS.length > 0 && ARGS[0] == 'once') {
     logger.log('info', 'Add stories once.')
     addAll()
