@@ -1,3 +1,4 @@
+let secrets = require('../../secrets')
 
 module.exports = {
     development: {
@@ -19,11 +20,11 @@ module.exports = {
     // might want to move these to env variables
     // process.env.DB_USERNAME .....
     production: {
-        username : process.env.DB_USERNAME,
-        password : process.env.DB_PASSWORD,
-        database : process.env.DB_NAME,
-        host     : process.env.DB_HOST,
-        port     : process.env.DB_PORT,
+        username : secrets['db']['username'],
+        password : secrets['db']['password'],
+        database : secrets['db']['name'],
+        host     : secrets['db']['host'],
+        port     : secrets['db']['port'],
         dialect  : 'mysql',
         logging  : false
     }
