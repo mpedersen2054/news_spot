@@ -11,6 +11,7 @@ import StoriesList from './StoriesList'
 import Loading from '../Loading'
 
 const devStoriesUrl = '/api/v1/stories'
+const prodStoriesUrl = `http://54.208.240.171${devStoriesUrl}`
 
 export default class StoryFeed extends Component {
     constructor() {
@@ -36,9 +37,9 @@ export default class StoryFeed extends Component {
 
         // add offset/limit to the end of queryString if it exists
         if (!queryString || queryString.length == 0) {
-            queryStr = `${devStoriesUrl}?${offsetLimit}`
+            queryStr = `${prodStoriesUrl}?${offsetLimit}`
         } else {
-            queryStr = `${devStoriesUrl}?${queryString}&${offsetLimit}`
+            queryStr = `${prodStoriesUrl}?${queryString}&${offsetLimit}`
             notDefaultQuery = true
         }
         try {
