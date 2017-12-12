@@ -7,7 +7,7 @@ import { Container } from 'reactstrap'
 import Outlets from './Home/Outlets'
 import Loading from './Loading'
 
-const devOutletsUrl = '//localhost:8080/api/v1/outlets'
+const devOutletsUrl = '/api/v1/outlets'
 
 export default class OutletList extends Component {
     constructor() {

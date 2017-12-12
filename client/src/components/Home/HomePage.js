@@ -10,7 +10,7 @@ import {
     Outlets
 } from './'
 
-const devOutletsUrl = '//localhost:8080/api/v1/outlets'
+const devOutletsUrl = '/api/v1/outlets'
 
 export default class HomePage extends Component {
     constructor() {
