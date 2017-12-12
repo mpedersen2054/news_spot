@@ -15,7 +15,8 @@
         "dev": "npm-run-all --parallel dev:*",
         "dev:server": "nodemon app.js",
         "dev:build": "webpack --config client/webpack.dev.js --watch --progress --colors",
-        "prod:build": "webpack --config client/webpack.prod.js --progress --profile --colors"
+        "prod:build": "webpack --config client/webpack.prod.js --progress --profile --colors",
+        "prod:server": "NODE_ENV=production node app.js"
     },
     "author": "",
     "license": "ISC",
