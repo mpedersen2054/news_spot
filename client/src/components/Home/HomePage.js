@@ -11,7 +11,6 @@ import {
 } from './'
 
 const devOutletsUrl = '/api/v1/outlets'
-const prodOutletsUrl = `http://54.208.240.171${devOutletsUrl}`
 
 export default class HomePage extends Component {
     constructor() {
@@ -30,7 +29,7 @@ export default class HomePage extends Component {
         this.queryOutlets()
     }
     async queryOutlets() {
-        let queryStr = `${prodOutletsUrl}?limit=8&offset=${this.state.currentOffset}`,
+        let queryStr = `${devOutletsUrl}?limit=8&offset=${this.state.currentOffset}`,
             req
         try {
             req = await axios.get(queryStr)

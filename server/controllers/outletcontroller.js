@@ -47,7 +47,6 @@ module.exports = {
                 return outlet
             })
             .then(outlet => {
-                console.log(outlet)
                 res.status(200).json(outlet)
             })
             .catch(err => res.status(400).json({ message: `Outlet ${req.params.id} does not exist` }))

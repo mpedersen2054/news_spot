@@ -8,7 +8,6 @@ import Outlets from './Home/Outlets'
 import Loading from './Loading'
 
 const devOutletsUrl = '/api/v1/outlets'
-const prodOutletsUrl = `http://54.208.240.171${devOutletsUrl}`
 
 export default class OutletList extends Component {
     constructor() {
@@ -21,7 +20,7 @@ export default class OutletList extends Component {
     async componentDidMount() {
         let req
         try {
-            req = await axios.get(prodOutletsUrl)
+            req = await axios.get(devOutletsUrl)
         } catch(err) {
             console.log('There was an error querying outlets.', err)
             throw new Error(err)
