@@ -17,7 +17,7 @@ module.exports = {
         port     : secrets['db']['port'],
         dialect  : 'mysql',
         logging  : false
-    }
+    },
     test: {
         username : 'root',
         password : null,
